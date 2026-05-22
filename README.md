@@ -1,4 +1,43 @@
-Installation instructions to come 
+**Quick Setup**
+
+Download and install one of the CLI binaries from the releases page.
+
+Depending on your OS, you will need to mark the binary as executable and put it on your path. 
+
+For macOS or Linux (adjust paths to match your download):
+```
+chmod +x ./agentic_<version>_darwin_arm64
+sudo mv ./agentic_<version>_darwin_arm64 /usr/local/bin/agentic 
+```
+
+For Windows
+```
+Rename-Item .\agentic_<version>_windows_x86_64.exe agentic.exe
+New-Item -ItemType Directory -Force "$env:USERPROFILE\bin"
+Move-Item .\agentic.exe "$env:USERPROFILE\bin\agentic.exe"
+```
+Then add `%USERPROFILE%\bin` to your user PATH if it is not already there:
+```
+[Environment]::SetEnvironmentVariable(
+  "Path",
+  $env:Path + ";$env:USERPROFILE\bin",
+  "User"
+)
+```
+
+To run the CLI, either set the env variable `export MDBAP_SOURCE=public` or create an alias like `alias agentic='MDBAP_SOURCE=public agentic'`
+
+Then run `agentic` to get started. 
+
+Before trying to run an agent locally, make sure you have GitHub CLI, Docker Desktop, and Python 3.11+ installed.
+
+More detailed development instructions can be found [here](https://learn.mongodb.com/learn/article/docs-preview-mongodb-agentic-platform)
+
+If you have questions please reach out to your MongoDB contact.
+
+
+
+
 
 **License Agreement**
 
