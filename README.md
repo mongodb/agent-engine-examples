@@ -1,4 +1,8 @@
-**Quick Setup**
+# Quick Setup
+
+More detailed development instructions can be found [here](https://learn.mongodb.com/learn/article/docs-preview-mongodb-agentic-platform)
+
+## Install CLI
 
 Download and install one of the CLI binaries from the releases page.
 
@@ -29,17 +33,30 @@ To run the CLI, either set the env variable `export MDBAP_SOURCE=public` or crea
 
 Then run `agentic` to get started. 
 
+## To get an Agent Running
 Before trying to run an agent locally, make sure you have GitHub CLI, Docker Desktop, and Python 3.11+ installed.
 
-More detailed development instructions can be found [here](https://learn.mongodb.com/learn/article/docs-preview-mongodb-agentic-platform)
+Clone this repo and navigate to the example. Then copy the example env file so you can update the secrets. 
+```
+cd simple-agent-example
+cp env.example .env 
+```
+Then update `.env` with your LLM base URL and API key.
+```
+<PROVIDER>_BASE_URL="https://chatgpt.com/"
+<PROVIDER>_API_KEY="<your-api-key>"
+```
 
-If you have questions please reach out to your MongoDB contact.
+Then run `agentic dev up` to get the local UI running. 
 
 
 
+If you have questions please reach out to your MongoDB contact. 
+
+___
 
 
-**License Agreement**
+### License Agreement
 
 This License Agreement (the “**Agreement**”) establishes the terms on which MongoDB, Inc. (“**Company**”) grants a license to Company’s proprietary MongoDB Agentic Platform software solely in machine-readable, executable, object-code form and related documentation (the “**Software**”) to the licensee (“**You**” or “**Your**”) solely on the condition that You accept all of the terms in this Agreement. By clicking through any applicable acceptance screen, or otherwise accessing, installing, or using the Software, you are indicating your acceptance of this Agreement, and if you do not agree to the terms of this Agreement, you may not access, install, or use the Software. If You are an employee or agent of a company (the “**Customer**”), You hereby agree that You enter into this Agreement on behalf of the Customer and that You have the authority to bind the Customer to the terms and conditions of this Agreement. 
 
