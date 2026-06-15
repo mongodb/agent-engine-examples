@@ -39,19 +39,19 @@ Released CLI binaries may report unexpected local failures to Sentry. Sentry rep
 
 For macOS or Linux:
 ```
-export MDBAP_SOURCE=public
+export AP_SOURCE=public
 export AGENTIC_SENTRY_ENABLED=0
 agentic
 ```
 
 Or include it in your alias:
 ```
-alias agentic='MDBAP_SOURCE=public AGENTIC_SENTRY_ENABLED=0 agentic'
+alias agentic='AP_SOURCE=public AGENTIC_SENTRY_ENABLED=0 agentic'
 ```
 
 For Windows PowerShell:
 ```
-$env:MDBAP_SOURCE = "public"
+$env:AP_SOURCE = "public"
 $env:AGENTIC_SENTRY_ENABLED = "0"
 agentic
 ```
