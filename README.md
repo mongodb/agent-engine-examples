@@ -33,13 +33,41 @@ To run the CLI, either set the env variable `export AP_SOURCE=public` or create 
 
 Then run `agentic` to get started. 
 
+## Turn Off Sentry Reporting
+
+Released CLI binaries may report unexpected local failures to Sentry. Sentry reporting is optional. If you prefer not to send Sentry reports, you can opt out for both the CLI and the generated local Docker Compose stack by setting `AGENTIC_SENTRY_ENABLED=0` in the same shell before running `agentic`.
+
+For macOS or Linux:
+```
+export MDBAP_SOURCE=public
+export AGENTIC_SENTRY_ENABLED=0
+agentic
+```
+
+Or include it in your alias:
+```
+alias agentic='MDBAP_SOURCE=public AGENTIC_SENTRY_ENABLED=0 agentic'
+```
+
+For Windows PowerShell:
+```
+$env:MDBAP_SOURCE = "public"
+$env:AGENTIC_SENTRY_ENABLED = "0"
+agentic
+```
+
+If you only want to opt out of Sentry reporting for generated Docker Compose services, add this line to your project `.env` file:
+```
+AGENTIC_SENTRY_ENABLED=0
+```
+
 ## To get an Agent Running
 Before trying to run an agent locally, make sure you have GitHub CLI, Docker Desktop, and Python 3.11+ installed.
 
-Clone this repo and navigate to the example. Then copy the example env file so you can update the secrets. 
+Clone this repo and navigate to the example. Then copy the example env file so you can update the secrets.
 ```
 cd simple-agent-example
-cp env.example .env 
+cp env.example .env
 ```
 Then update `.env` with your LLM base URL and API key.
 ```
@@ -47,11 +75,11 @@ Then update `.env` with your LLM base URL and API key.
 <PROVIDER>_API_KEY="<your-api-key>"
 ```
 
-Then run `agentic dev up` to get the local UI running. 
+Then run `agentic dev up` to get the local UI running.
 
 
 
-If you have questions please reach out to your MongoDB contact. 
+If you have questions please reach out to your MongoDB contact.
 
 ___
 
