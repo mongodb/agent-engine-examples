@@ -29,7 +29,7 @@ Then add `%USERPROFILE%\bin` to your user PATH if it is not already there:
 )
 ```
 
-To run the CLI, either set the env variable `export MDBAP_SOURCE=public` or create an alias like `alias agentic='MDBAP_SOURCE=public agentic'`
+To run the CLI, either set the env variable `export AP_SOURCE=public` or create an alias like `alias agentic='AP_SOURCE=public agentic'`
 
 Then run `agentic` to get started. 
 
