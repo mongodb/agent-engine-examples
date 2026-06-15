@@ -65,7 +65,7 @@ make docker-run
 
 ## Architecture
 
-The agent uses the MDBAP SDK with a standard LangGraph pattern:
+The agent uses the ATLASAP SDK with a standard LangGraph pattern:
 
 ```
 START → agent → should_continue? → tools → agent → ... → END
