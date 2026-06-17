@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andre Santos — Resume</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #1a1a2e;
+      background: #f8f9fa;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+      color: #fff;
+      padding: 2.5rem 2.5rem 2rem;
+    }
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .header .title {
+      font-size: 1.1rem;
+      color: #a3cfff;
+      margin-bottom: 0.2rem;
+    }
+    .header .company {
+      font-size: 0.95rem;
+      color: #7fb3e0;
+    }
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #c8ddf0;
+    }
+    .contact span { display: flex; align-items: center; gap: 0.3rem; }
+    .body { padding: 2rem 2.5rem 2.5rem; }
+    .section { margin-bottom: 1.8rem; }
+    .section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #0f3460;
+      border-bottom: 2px solid #e8edf3;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .summary { color: #444; font-size: 0.95rem; }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill {
+      background: #e8f0fe;
+      color: #0f3460;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+    .exp-entry { margin-bottom: 1.4rem; }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .exp-role { font-weight: 600; font-size: 1rem; color: #1a1a2e; }
+    .exp-duration { font-size: 0.85rem; color: #666; }
+    .exp-company { font-size: 0.9rem; color: #0f3460; margin-bottom: 0.4rem; }
+    .exp-highlights { padding-left: 1.2rem; }
+    .exp-highlights li {
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+      color: #333;
+    }
+    .edu-entry { margin-bottom: 0.6rem; }
+    .edu-degree { font-weight: 600; font-size: 0.95rem; }
+    .edu-meta { font-size: 0.85rem; color: #666; }
+    .signals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .signal {
+      padding: 0.2rem 0.65rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .signal-yes { background: #d4edda; color: #155724; }
+    .signal-no { background: #f8d7da; color: #721c24; }
+    .signal-neutral { background: #fff3cd; color: #856404; }
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.75rem;
+      color: #999;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Andre Santos</h1>
+      <div class="title">ML Lead</div>
+      <div class="company">Nubank (fintech startup)</div>
+      <div class="contact">
+        <span>São Paulo, Brazil</span>
+        <span>andre.santos@email.com</span>
+        <span>linkedin.com/in/andresantos-ml</span>
+      </div>
+    </div>
+    <div class="body">
+      <div class="section">
+        <div class="section-title">Summary</div>
+        <p class="summary">ML lead at Latin America's largest fintech who shipped real-time fraud detection serving 80M+ customers. Deep production ML experience in a fast-moving startup environment. Built systems handling millions of transactions daily.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Key Signals</div>
+        <div class="signals"><span class="signal signal-yes">✓ Startup Experience</span>
+        <span class="signal signal-yes">✓ Shipped Product</span>
+        <span class="signal signal-yes">✓ Production Deployment</span>
+        <span class="signal signal-no">✗ Research Focus</span>
+        <span class="signal signal-neutral">1 Publications</span></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Skills</div>
+        <div class="skills"><span class="skill">machine learning</span>
+        <span class="skill">Python</span>
+        <span class="skill">fraud detection</span>
+        <span class="skill">real-time systems</span>
+        <span class="skill">Kafka</span>
+        <span class="skill">Spark</span>
+        <span class="skill">SQL</span>
+        <span class="skill">feature engineering</span></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Experience</div>
+              <div class="exp-entry">
+        <div class="exp-header">
+          <span class="exp-role">ML Lead</span>
+          <span class="exp-duration">2020 – Present</span>
+        </div>
+        <div class="exp-company">Nubank</div>
+        <ul class="exp-highlights">
+          <li>Shipped real-time fraud detection model processing 5M+ transactions/day with <50ms latency</li>
+          <li>Reduced fraud losses by 40% through ensemble model redesign</li>
+          <li>Built feature store serving 200+ ML features across 6 product teams</li>
+        </ul>
+      </div>
+      <div class="exp-entry">
+        <div class="exp-header">
+          <span class="exp-role">Senior ML Engineer</span>
+          <span class="exp-duration">2017 – 2020</span>
+        </div>
+        <div class="exp-company">iFood (food delivery startup)</div>
+        <ul class="exp-highlights">
+          <li>Deployed delivery time prediction model improving accuracy by 20%</li>
+          <li>Built recommendation system increasing average order value by 8%</li>
+          <li>Shipped driver-order matching algorithm optimizing fleet utilization</li>
+        </ul>
+      </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Education</div>
+              <div class="edu-entry">
+        <div class="edu-degree">MSc in Computer Science</div>
+        <div class="edu-meta">Universidade de São Paulo — 2017</div>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-degree">BSc in Computer Engineering</div>
+        <div class="edu-meta">UNICAMP — 2015</div>
+      </div>
+      </div>
+    </div>
+    <div class="footer">
+      Candidate ID: C013 &middot; 8 years of experience &middot; Mock resume for demo purposes
+    </div>
+  </div>
+</body>
+</html>

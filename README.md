@@ -64,9 +64,15 @@ AGENTIC_SENTRY_ENABLED=0
 ## To get an Agent Running
 Before trying to run an agent locally, make sure you have GitHub CLI, Docker Desktop, and Python 3.11+ installed.
 
-Clone this repo and navigate to the example. Then copy the example env file so you can update the secrets.
+Clone this repo and navigate to one of the examples. This repo includes:
+
+- `agents/simple-agent-example` — web search assistant
+- `agents/recruiting-assistant-agent` — recruiting assistant with local candidate data and memory seeds
+- `agents/insurance-agent` — insurance assistant for policy and claims workflows
+
+Then copy the example env file so you can update the secrets.
 ```
-cd simple-agent-example
+cd agents/simple-agent-example
 cp env.example .env
 ```
 Then update `.env` with your LLM base URL and API key.

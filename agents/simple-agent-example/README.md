@@ -9,7 +9,7 @@ Helps users search the web and get summarized results via:
 ## File Structure
 
 ```
-agents/simple-agent/
+agents/simple-agent-example/
 ├── src/simple_agent/
 │   ├── __init__.py           # Package docstring
 │   ├── main.py               # App + @app.entrypoint graph definition
@@ -31,7 +31,7 @@ agents/simple-agent/
 ## Setup
 
 ```bash
-cd agents/simple-agent
+cd agents/simple-agent-example
 
 # Create .env from template
 cp env.example .env
@@ -77,4 +77,3 @@ START → agent → should_continue? → tools → agent → ... → END
 
 
 **`.env` setup** —  LLM URLs and Keys must be added to the env file. 
-

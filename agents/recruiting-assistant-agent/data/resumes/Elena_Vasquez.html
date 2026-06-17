@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elena Vasquez — Resume</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #1a1a2e;
+      background: #f8f9fa;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+      color: #fff;
+      padding: 2.5rem 2.5rem 2rem;
+    }
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .header .title {
+      font-size: 1.1rem;
+      color: #a3cfff;
+      margin-bottom: 0.2rem;
+    }
+    .header .company {
+      font-size: 0.95rem;
+      color: #7fb3e0;
+    }
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #c8ddf0;
+    }
+    .contact span { display: flex; align-items: center; gap: 0.3rem; }
+    .body { padding: 2rem 2.5rem 2.5rem; }
+    .section { margin-bottom: 1.8rem; }
+    .section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #0f3460;
+      border-bottom: 2px solid #e8edf3;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .summary { color: #444; font-size: 0.95rem; }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill {
+      background: #e8f0fe;
+      color: #0f3460;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+    .exp-entry { margin-bottom: 1.4rem; }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .exp-role { font-weight: 600; font-size: 1rem; color: #1a1a2e; }
+    .exp-duration { font-size: 0.85rem; color: #666; }
+    .exp-company { font-size: 0.9rem; color: #0f3460; margin-bottom: 0.4rem; }
+    .exp-highlights { padding-left: 1.2rem; }
+    .exp-highlights li {
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+      color: #333;
+    }
+    .edu-entry { margin-bottom: 0.6rem; }
+    .edu-degree { font-weight: 600; font-size: 0.95rem; }
+    .edu-meta { font-size: 0.85rem; color: #666; }
+    .signals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .signal {
+      padding: 0.2rem 0.65rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .signal-yes { background: #d4edda; color: #155724; }
+    .signal-no { background: #f8d7da; color: #721c24; }
+    .signal-neutral { background: #fff3cd; color: #856404; }
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.75rem;
+      color: #999;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Elena Vasquez</h1>
+      <div class="title">Robotics Engineer</div>
+      <div class="company">Nuro (autonomous delivery startup)</div>
+      <div class="contact">
+        <span>Mountain View, CA</span>
+        <span>elena.v@email.com</span>
+        <span>linkedin.com/in/elenavasquez-robotics</span>
+      </div>
+    </div>
+    <div class="body">
+      <div class="section">
+        <div class="section-title">Summary</div>
+        <p class="summary">Early-career robotics engineer at an autonomous delivery startup. Fresh PhD who immediately joined industry and shipped perception features for production delivery robots. Strong execution despite fewer years of experience.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Key Signals</div>
+        <div class="signals"><span class="signal signal-yes">✓ Startup Experience</span>
+        <span class="signal signal-yes">✓ Shipped Product</span>
+        <span class="signal signal-yes">✓ Production Deployment</span>
+        <span class="signal signal-no">✗ Research Focus</span>
+        <span class="signal signal-neutral">1 Publications</span></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Skills</div>
+        <div class="skills"><span class="skill">perception</span>
+        <span class="skill">SLAM</span>
+        <span class="skill">Python</span>
+        <span class="skill">C++</span>
+        <span class="skill">ROS2</span>
+        <span class="skill">deep learning</span>
+        <span class="skill">camera calibration</span>
+        <span class="skill">edge inference</span></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Experience</div>
+              <div class="exp-entry">
+        <div class="exp-header">
+          <span class="exp-role">Robotics Engineer</span>
+          <span class="exp-duration">2021 – Present</span>
+        </div>
+        <div class="exp-company">Nuro</div>
+        <ul class="exp-highlights">
+          <li>Shipped camera-based perception module for R3 autonomous delivery vehicle</li>
+          <li>Reduced false-positive pedestrian detection by 45% using improved training data pipeline</li>
+          <li>Deployed edge inference models achieving 20ms latency on NVIDIA Jetson platform</li>
+        </ul>
+      </div>
+      <div class="exp-entry">
+        <div class="exp-header">
+          <span class="exp-role">Graduate Research Assistant</span>
+          <span class="exp-duration">2017 – 2021</span>
+        </div>
+        <div class="exp-company">University of Michigan — APRIL Lab</div>
+        <ul class="exp-highlights">
+          <li>PhD thesis on real-time visual SLAM for resource-constrained platforms</li>
+          <li>Published 1 paper at ICRA on lightweight SLAM for micro aerial vehicles</li>
+        </ul>
+      </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Education</div>
+              <div class="edu-entry">
+        <div class="edu-degree">PhD in Robotics</div>
+        <div class="edu-meta">University of Michigan — 2021</div>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-degree">BSc in ECE</div>
+        <div class="edu-meta">Purdue University — 2017</div>
+      </div>
+      </div>
+    </div>
+    <div class="footer">
+      Candidate ID: C007 &middot; 4 years of experience &middot; Mock resume for demo purposes
+    </div>
+  </div>
+</body>
+</html>
