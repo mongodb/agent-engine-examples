@@ -1,0 +1,42 @@
+[
+  {
+    "domain": "role_families",
+    "term": "Robotics",
+    "definition": "Role family covering robotics engineering positions. Key skills: SLAM, perception, computer vision, ROS/ROS2, C++, sensor fusion, navigation, motion planning, embedded systems. Relevant companies: Boston Dynamics, Skydio, Nuro, iRobot, Covariant, Amazon Robotics, Toyota Research Institute.",
+    "related_terms": ["robotics engineer", "perception engineer", "SLAM", "ROS", "autonomous systems"],
+    "org_id": "org_recruiting_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "role_families",
+    "term": "Data Science",
+    "definition": "Role family covering data science and ML positions. Key skills: machine learning, Python, SQL, statistics, experimentation, A/B testing, recommendation systems, NLP, deep learning, feature engineering. Range from product analytics roles to research-heavy ML scientist roles.",
+    "related_terms": ["data scientist", "ML engineer", "machine learning", "analytics", "experimentation"],
+    "org_id": "org_recruiting_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "role_families",
+    "term": "Backend",
+    "definition": "Role family covering backend and platform engineering positions. Key skills: Go, Python, Java, distributed systems, Kafka, PostgreSQL, Redis, Kubernetes, microservices, API design, gRPC. Often includes on-call responsibilities and production ownership.",
+    "related_terms": ["backend engineer", "platform engineer", "distributed systems", "microservices", "API"],
+    "org_id": "org_recruiting_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "outreach_preferences",
+    "term": "professional tone",
+    "definition": "Default outreach tone for most engineering roles. Characteristics: respectful, concise, highlights role specifics and company strengths, avoids overly casual language. Appropriate for senior candidates and most corporate/enterprise contexts.",
+    "related_terms": ["tone", "outreach", "professional", "formal", "email"],
+    "org_id": "org_recruiting_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "outreach_preferences",
+    "term": "technical tone",
+    "definition": "Outreach tone for highly technical candidates (staff+ engineers, researchers). Characteristics: leads with technical challenge or problem space, mentions tech stack specifics, references candidate's published work or open-source contributions. Avoids generic company pitches.",
+    "related_terms": ["tone", "outreach", "technical", "engineer-to-engineer", "deep-dive"],
+    "org_id": "org_recruiting_demo",
+    "visibility": "org"
+  }
+]

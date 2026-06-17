@@ -1,0 +1,16 @@
+{
+  "include": ["src", "tests"],
+  "pythonVersion": "3.11",
+  "typeCheckingMode": "basic",
+  "venvPath": ".",
+  "venv": ".venv",
+  "extraPaths": ["src"],
+  "reportMissingTypeStubs": false,
+  "reportMissingImports": false,
+  "reportAttributeAccessIssue": false,
+  "reportUnknownMemberType": false,
+  "reportUnknownArgumentType": false,
+  "reportUnknownVariableType": false,
+  "reportUnknownParameterType": false,
+  "reportOptionalMemberAccess": false
+}

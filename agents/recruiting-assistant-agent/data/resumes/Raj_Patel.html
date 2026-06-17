@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raj Patel — Resume</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      color: #1a1a2e;
+      background: #f8f9fa;
+      line-height: 1.6;
+    }
+    .container {
+      max-width: 800px;
+      margin: 2rem auto;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      overflow: hidden;
+    }
+    .header {
+      background: linear-gradient(135deg, #0f3460 0%, #16213e 100%);
+      color: #fff;
+      padding: 2.5rem 2.5rem 2rem;
+    }
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.3rem;
+    }
+    .header .title {
+      font-size: 1.1rem;
+      color: #a3cfff;
+      margin-bottom: 0.2rem;
+    }
+    .header .company {
+      font-size: 0.95rem;
+      color: #7fb3e0;
+    }
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+      margin-top: 1rem;
+      font-size: 0.85rem;
+      color: #c8ddf0;
+    }
+    .contact span { display: flex; align-items: center; gap: 0.3rem; }
+    .body { padding: 2rem 2.5rem 2.5rem; }
+    .section { margin-bottom: 1.8rem; }
+    .section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #0f3460;
+      border-bottom: 2px solid #e8edf3;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    .summary { color: #444; font-size: 0.95rem; }
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill {
+      background: #e8f0fe;
+      color: #0f3460;
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 500;
+    }
+    .exp-entry { margin-bottom: 1.4rem; }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
+    .exp-role { font-weight: 600; font-size: 1rem; color: #1a1a2e; }
+    .exp-duration { font-size: 0.85rem; color: #666; }
+    .exp-company { font-size: 0.9rem; color: #0f3460; margin-bottom: 0.4rem; }
+    .exp-highlights { padding-left: 1.2rem; }
+    .exp-highlights li {
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+      color: #333;
+    }
+    .edu-entry { margin-bottom: 0.6rem; }
+    .edu-degree { font-weight: 600; font-size: 0.95rem; }
+    .edu-meta { font-size: 0.85rem; color: #666; }
+    .signals {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+    .signal {
+      padding: 0.2rem 0.65rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+    .signal-yes { background: #d4edda; color: #155724; }
+    .signal-no { background: #f8d7da; color: #721c24; }
+    .signal-neutral { background: #fff3cd; color: #856404; }
+    .footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.75rem;
+      color: #999;
+      border-top: 1px solid #eee;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Raj Patel</h1>
+      <div class="title">Principal Robotics Engineer</div>
+      <div class="company">iRobot</div>
+      <div class="contact">
+        <span>Bedford, MA</span>
+        <span>raj.patel@email.com</span>
+        <span>linkedin.com/in/rajpatel-robotics</span>
+      </div>
+    </div>
+    <div class="body">
+      <div class="section">
+        <div class="section-title">Summary</div>
+        <p class="summary">Principal engineer who shipped navigation systems for multiple generations of Roomba and Terra robots. Deep product development experience with millions of units in the field. No startup experience but exceptional shipping track record.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Key Signals</div>
+        <div class="signals"><span class="signal signal-no">✗ Startup Experience</span>
+        <span class="signal signal-yes">✓ Shipped Product</span>
+        <span class="signal signal-yes">✓ Production Deployment</span>
+        <span class="signal signal-no">✗ Research Focus</span>
+        <span class="signal signal-neutral">4 Publications</span></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Skills</div>
+        <div class="skills"><span class="skill">SLAM</span>
+        <span class="skill">perception</span>
+        <span class="skill">navigation</span>
+        <span class="skill">C++</span>
+        <span class="skill">Python</span>
+        <span class="skill">ROS</span>
+        <span class="skill">embedded Linux</span>
+        <span class="skill">product development</span></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Experience</div>
+              <div class="exp-entry">
+        <div class="exp-header">
+          <span class="exp-role">Principal Robotics Engineer</span>
+          <span class="exp-duration">2019 – Present</span>
+        </div>
+        <div class="exp-company">iRobot</div>
+        <ul class="exp-highlights">
+          <li>Led SLAM and navigation team for Roomba j9+ — shipped to millions of customers</li>
+          <li>Architected visual SLAM system running on custom ASIC with 50ms loop closure</li>
+          <li>Reduced navigation failure rate by 70% across product line through sensor fusion redesign</li>
+        </ul>
+      </div>
+      <div class="exp-entry">
+        <div class="exp-header">
+          <span class="exp-role">Senior Robotics Engineer</span>
+          <span class="exp-duration">2013 – 2019</span>
+        </div>
+        <div class="exp-company">iRobot</div>
+        <ul class="exp-highlights">
+          <li>Shipped navigation stack for Roomba i7 — first vSLAM-based consumer robot at scale</li>
+          <li>Built automated testing infrastructure for SLAM validation (10,000+ test runs)</li>
+          <li>Patented multi-floor mapping system (US Patent #10,234,567)</li>
+        </ul>
+      </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Education</div>
+              <div class="edu-entry">
+        <div class="edu-degree">MSc in Electrical Engineering</div>
+        <div class="edu-meta">MIT — 2013</div>
+      </div>
+      <div class="edu-entry">
+        <div class="edu-degree">BSc in ECE</div>
+        <div class="edu-meta">University of Michigan — 2011</div>
+      </div>
+      </div>
+    </div>
+    <div class="footer">
+      Candidate ID: C008 &middot; 12 years of experience &middot; Mock resume for demo purposes
+    </div>
+  </div>
+</body>
+</html>

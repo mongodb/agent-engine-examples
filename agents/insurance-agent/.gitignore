@@ -1,0 +1,12 @@
+.agentic/
+docker-compose.yml
+.dockerignore
+
+.env
+.devcontainer/
+
+__pycache__
+logs
+observability
+agentic
+.env.*
