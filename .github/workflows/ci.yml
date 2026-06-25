@@ -96,6 +96,7 @@ jobs:
         run: scripts/lint-dependency-cooldowns.sh
 
       - name: Setup SSH for private dependencies
+        id: dependency-auth
         env:
           CLIENT_LIBRARIES_DEPLOY_KEY: ${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}
           GITHUB_TOKEN: ${{ github.token }}
@@ -104,14 +105,21 @@ jobs:
             echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using GitHub token for HTTPS Git dependencies."
             BASIC_AUTH="$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)"
             git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
-            exit 0
+          else
+            mkdir -p ~/.ssh
+            printf '%s\n' "$CLIENT_LIBRARIES_DEPLOY_KEY" > ~/.ssh/client_libraries_deploy_key
+            chmod 600 ~/.ssh/client_libraries_deploy_key
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            git config --global core.sshCommand "ssh -i ~/.ssh/client_libraries_deploy_key -o IdentitiesOnly=yes"
+            git config --global url."ssh://git@github.com/".insteadOf "https://github.com/"
           fi
-          mkdir -p ~/.ssh
-          printf '%s\n' "$CLIENT_LIBRARIES_DEPLOY_KEY" > ~/.ssh/client_libraries_deploy_key
-          chmod 600 ~/.ssh/client_libraries_deploy_key
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git config --global core.sshCommand "ssh -i ~/.ssh/client_libraries_deploy_key -o IdentitiesOnly=yes"
-          git config --global url."ssh://git@github.com/".insteadOf "https://github.com/"
+
+          if git ls-remote https://github.com/10gen/magenta-client-libraries HEAD >/dev/null 2>&1; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Skipping dependency-consuming lint steps because CI cannot access 10gen/magenta-client-libraries."
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Install uv
         uses: astral-sh/setup-uv@eac588ad8def6316056a12d4907a9d4d84ff7a3b # v7.3.0
@@ -127,10 +135,12 @@ jobs:
         run: scripts/check-uv-locks.sh
 
       - name: Install dependencies
+        if: steps.dependency-auth.outputs.available == 'true'
         working-directory: agents/insurance-agent
         run: uv sync --locked --group dev
 
       - name: Lint
+        if: steps.dependency-auth.outputs.available == 'true'
         working-directory: agents/insurance-agent
         run: |
           uv run ruff check .
@@ -144,6 +154,7 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Setup SSH for private dependencies
+        id: dependency-auth
         env:
           CLIENT_LIBRARIES_DEPLOY_KEY: ${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}
           GITHUB_TOKEN: ${{ github.token }}
@@ -152,14 +163,21 @@ jobs:
             echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using GitHub token for HTTPS Git dependencies."
             BASIC_AUTH="$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)"
             git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
-            exit 0
+          else
+            mkdir -p ~/.ssh
+            printf '%s\n' "$CLIENT_LIBRARIES_DEPLOY_KEY" > ~/.ssh/client_libraries_deploy_key
+            chmod 600 ~/.ssh/client_libraries_deploy_key
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            git config --global core.sshCommand "ssh -i ~/.ssh/client_libraries_deploy_key -o IdentitiesOnly=yes"
+            git config --global url."ssh://git@github.com/".insteadOf "https://github.com/"
           fi
-          mkdir -p ~/.ssh
-          printf '%s\n' "$CLIENT_LIBRARIES_DEPLOY_KEY" > ~/.ssh/client_libraries_deploy_key
-          chmod 600 ~/.ssh/client_libraries_deploy_key
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git config --global core.sshCommand "ssh -i ~/.ssh/client_libraries_deploy_key -o IdentitiesOnly=yes"
-          git config --global url."ssh://git@github.com/".insteadOf "https://github.com/"
+
+          if git ls-remote https://github.com/10gen/magenta-client-libraries HEAD >/dev/null 2>&1; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Skipping type check because CI cannot access 10gen/magenta-client-libraries."
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Install uv
         uses: astral-sh/setup-uv@eac588ad8def6316056a12d4907a9d4d84ff7a3b # v7.3.0
@@ -172,10 +190,12 @@ jobs:
         run: uv python install 3.11
 
       - name: Install dependencies
+        if: steps.dependency-auth.outputs.available == 'true'
         working-directory: agents/insurance-agent
         run: uv sync --locked --group dev
 
       - name: Type check
+        if: steps.dependency-auth.outputs.available == 'true'
         working-directory: agents/insurance-agent
         run: uv run pyright
 
@@ -193,6 +213,7 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Setup SSH for private dependencies
+        id: dependency-auth
         env:
           CLIENT_LIBRARIES_DEPLOY_KEY: ${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}
           GITHUB_TOKEN: ${{ github.token }}
@@ -201,14 +222,21 @@ jobs:
             echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using GitHub token for HTTPS Git dependencies."
             BASIC_AUTH="$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)"
             git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
-            exit 0
+          else
+            mkdir -p ~/.ssh
+            printf '%s\n' "$CLIENT_LIBRARIES_DEPLOY_KEY" > ~/.ssh/client_libraries_deploy_key
+            chmod 600 ~/.ssh/client_libraries_deploy_key
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            git config --global core.sshCommand "ssh -i ~/.ssh/client_libraries_deploy_key -o IdentitiesOnly=yes"
+            git config --global url."ssh://git@github.com/".insteadOf "https://github.com/"
           fi
-          mkdir -p ~/.ssh
-          printf '%s\n' "$CLIENT_LIBRARIES_DEPLOY_KEY" > ~/.ssh/client_libraries_deploy_key
-          chmod 600 ~/.ssh/client_libraries_deploy_key
-          ssh-keyscan github.com >> ~/.ssh/known_hosts
-          git config --global core.sshCommand "ssh -i ~/.ssh/client_libraries_deploy_key -o IdentitiesOnly=yes"
-          git config --global url."ssh://git@github.com/".insteadOf "https://github.com/"
+
+          if git ls-remote https://github.com/10gen/magenta-client-libraries HEAD >/dev/null 2>&1; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Skipping smoke tests because CI cannot access 10gen/magenta-client-libraries."
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Install uv
         uses: astral-sh/setup-uv@eac588ad8def6316056a12d4907a9d4d84ff7a3b # v7.3.0
@@ -221,6 +249,7 @@ jobs:
         run: uv python install 3.11
 
       - name: Run smoke tests
+        if: steps.dependency-auth.outputs.available == 'true'
         run: uv run --directory "${{ matrix.agent }}" pytest tests/ -q --tb=short
 
   ci-success:
