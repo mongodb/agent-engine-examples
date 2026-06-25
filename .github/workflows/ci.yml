@@ -98,9 +98,12 @@ jobs:
       - name: Setup SSH for private dependencies
         env:
           CLIENT_LIBRARIES_DEPLOY_KEY: ${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           if [[ -z "$CLIENT_LIBRARIES_DEPLOY_KEY" ]]; then
-            echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using HTTPS for Git dependencies."
+            echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using GitHub token for HTTPS Git dependencies."
+            BASIC_AUTH="$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)"
+            git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
             exit 0
           fi
           mkdir -p ~/.ssh
@@ -143,9 +146,12 @@ jobs:
       - name: Setup SSH for private dependencies
         env:
           CLIENT_LIBRARIES_DEPLOY_KEY: ${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           if [[ -z "$CLIENT_LIBRARIES_DEPLOY_KEY" ]]; then
-            echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using HTTPS for Git dependencies."
+            echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using GitHub token for HTTPS Git dependencies."
+            BASIC_AUTH="$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)"
+            git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
             exit 0
           fi
           mkdir -p ~/.ssh
@@ -189,9 +195,12 @@ jobs:
       - name: Setup SSH for private dependencies
         env:
           CLIENT_LIBRARIES_DEPLOY_KEY: ${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           if [[ -z "$CLIENT_LIBRARIES_DEPLOY_KEY" ]]; then
-            echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using HTTPS for Git dependencies."
+            echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using GitHub token for HTTPS Git dependencies."
+            BASIC_AUTH="$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)"
+            git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
             exit 0
           fi
           mkdir -p ~/.ssh
