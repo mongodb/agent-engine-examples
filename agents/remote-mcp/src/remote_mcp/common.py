@@ -9,7 +9,7 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 from langgraph.graph.state import CompiledStateGraph
 from langgraph.prebuilt import ToolNode
-from magenta_sdklanggraph import App
+from atlasap_sdklanggraph import App
 
 
 class AgentState(TypedDict):

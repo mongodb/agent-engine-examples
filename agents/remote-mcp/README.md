@@ -1,6 +1,6 @@
 # Remote MCP Agents
 
-Minimal LangGraph agents for testing Magenta remote MCP support against hosted
+Minimal LangGraph agents for testing AtlasAP remote MCP support against hosted
 Streamable HTTP MCP servers. The agents do not define custom `@app.tool`
 functions; their tools are discovered from the `mcp.servers` block in
 `agent.yaml`.
@@ -226,7 +226,7 @@ From this directory:
 agentic dev up
 ```
 
-From the magenta-examples repo root:
+From the atlasap repo root:
 
 ```bash
 agentic dev up --workspace remote-mcp

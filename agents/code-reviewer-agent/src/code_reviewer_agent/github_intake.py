@@ -171,7 +171,7 @@ class GitHubIntake:
     def _auth_headers(self) -> dict[str, str]:
         return {
             "Authorization": f"Bearer {self._token}",
-            "User-Agent": "magenta-code-reviewer",
+            "User-Agent": "atlasap-code-reviewer",
         }
 
     # ------------------------------------------------------------------

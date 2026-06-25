@@ -10,7 +10,7 @@ from google.transit import gtfs_realtime_pb2
 from langchain_core.messages import AIMessage, SystemMessage
 from langgraph.graph import END, MessagesState, StateGraph
 from langgraph.prebuilt import ToolNode
-from magenta_sdklanggraph import App
+from atlasap_sdklanggraph import App
 
 app = App(app_name="MTA Alerts Agent")
 

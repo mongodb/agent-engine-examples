@@ -18,7 +18,7 @@ from langchain_core.messages import AIMessage, BaseMessage, HumanMessage, System
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.state import CompiledStateGraph
 from langgraph.prebuilt import ToolNode
-from magenta_sdklanggraph import App
+from atlasap_sdklanggraph import App
 from pydantic import BaseModel, Field
 from runner_shared.context import (
     get_current_execution_id,

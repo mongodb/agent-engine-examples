@@ -3,7 +3,7 @@
 These exercise:
 
 - Graph compiles and routes to END when the LLM emits a plain text reply.
-- Tools registered via magenta's ``App`` include every convenience read,
+- Tools registered via atlasap's ``App`` include every convenience read,
   every generic mutation tool, and every workflow tool.
 - ToolNode can dispatch a tool call back through the agent node (one full
   ReAct round-trip).

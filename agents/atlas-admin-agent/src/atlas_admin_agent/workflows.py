@@ -495,7 +495,7 @@ def _serialize_plan_for_review(plan: dict[str, Any]) -> dict[str, Any]:
 
 
 def register_workflows(app: Any) -> dict[str, Any]:
-    """Register workflow tools on the given magenta ``App``."""
+    """Register workflow tools on the given atlasap ``App``."""
 
     @app.tool(is_local=True)
     def run_snapshot_restore_test(

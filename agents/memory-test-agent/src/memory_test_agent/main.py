@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 from langchain_core.messages import AIMessage
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.state import CompiledStateGraph
-from magenta_sdklanggraph import App
+from atlasap_sdklanggraph import App
 
 from memory_test_agent.state import MemoryTestAgentState
 from memory_test_agent.tools import register

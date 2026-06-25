@@ -1,12 +1,12 @@
 [project]
 name = "code-reviewer-agent"
 version = "0.1.0"
-description = "Code reviewer agent demonstrating App.deep_agent() skills scaffold on Magenta"
+description = "Code reviewer agent demonstrating App.deep_agent() skills scaffold on AtlasAP"
 readme = "README.md"
 requires-python = ">=3.11"
 license = {text = "Apache-2.0"}
 dependencies = [
-    "magenta-sdklanggraph",
+    "atlasap-sdklanggraph",
     # Pinned exactly: SkillsMiddleware + reserved tool-name contracts can
     # shift between minor versions; SDK tests pin compatibility against this.
     "deepagents==0.5.3",
@@ -39,4 +39,4 @@ dev = [
 testpaths = ["tests"]
 
 [tool.uv.sources]
-magenta-sdklanggraph = { git = "https://github.com/10gen/magenta-client-libraries", subdirectory = "packages/magenta-sdklanggraph" }
+atlasap-sdklanggraph = { git = "https://github.com/10gen/atlasap-client-libraries", subdirectory = "packages/atlasap-sdklanggraph" }

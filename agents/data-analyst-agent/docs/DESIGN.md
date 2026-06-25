@@ -1,6 +1,6 @@
 # Data Analyst Agent Design
 
-This example ports the old data-and-list demo into a standalone Magenta agent
+This example ports the old data-and-list demo into a standalone AtlasAP agent
 without carrying over the old Guardrails dependency or trace-specific UI hooks.
 
 ## Flow Contract
@@ -14,7 +14,7 @@ without carrying over the old Guardrails dependency or trace-specific UI hooks.
 
 ## Code Organization
 
-- `main.py` bootstraps the Magenta `App`, data store, tool registration, and
+- `main.py` bootstraps the AtlasAP `App`, data store, tool registration, and
   entrypoint.
 - `graph.py` owns the LangGraph topology and should read like the flow diagram.
 - `routing.py` owns flow selection and conditional-edge routing.

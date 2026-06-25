@@ -12,7 +12,7 @@ from langchain_core.messages import SystemMessage
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.state import CompiledStateGraph
 from langgraph.prebuilt import ToolNode
-from magenta_sdklanggraph import App
+from atlasap_sdklanggraph import App
 
 from holiday_assistant_agent.llm import build_llm, patch_runtime_llm
 from holiday_assistant_agent.state import HolidayAssistantState

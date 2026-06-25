@@ -1,4 +1,0 @@
-interface:
-  display_name: "Insurance Agent Local Eval"
-  short_description: "Run local OE evals and smoke tests for insurance-agent"
-  default_prompt: "Use $eval-insurance-agent-local to run a local OE eval or smoke test for the insurance-agent in this repo."

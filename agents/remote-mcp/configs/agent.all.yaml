@@ -37,7 +37,7 @@ mcp:
       auth:
         type: oauth
         scope: "mcp search documents entities"
-        client_name: Magenta Glean Remote MCP Agent
+        client_name: AtlasAP Glean Remote MCP Agent
       timeout_seconds: 30
     atlas:
       transport: streamable_http

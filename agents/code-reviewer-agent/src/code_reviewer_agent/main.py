@@ -1,9 +1,9 @@
-"""Code Reviewer Agent - Code review assistant on Magenta.
+"""Code Reviewer Agent - Code review assistant on AtlasAP.
 
 Demonstrates the full ``App.deep_agent()`` API surface with:
 - **Built-in filesystem + shell tools**: ``write_file``, ``read_file``,
   ``edit_file``, ``ls``, ``glob``, ``grep``, ``execute`` — all routed
-  through ``MagentaToolPodBackend`` (SecureToolWrapper -> OE -> Tool Pod)
+  through ``default Tool Pod backend`` (SecureToolWrapper -> OE -> Tool Pod)
 - **Middleware**: ``LoggingMiddleware`` showing the ``middleware=`` param
 - **Skills**: eight SKILL.md files loaded via the canonical ``skills=``
   kwarg, progressively disclosed by deepagents' skill-dispatch
@@ -29,7 +29,7 @@ from langchain.agents.middleware.types import (
     ModelResponse,
 )
 from langchain_openai import ChatOpenAI
-from magenta_sdklanggraph import App
+from atlasap_sdklanggraph import App
 
 from code_reviewer_agent.github_intake import GitHubIntake, PullRequestRef, from_env
 
@@ -284,7 +284,7 @@ responses you collect from `task` calls.
 
 
 _SPECIALIST_PROMPT_TEMPLATE = """You are the {domain} specialist subagent
-for the Code Reviewer running on Magenta. Your entire job is to review a
+for the Code Reviewer running on AtlasAP. Your entire job is to review a
 unified diff against your one loaded skill and return structured findings.
 
 ## Skill
@@ -353,7 +353,7 @@ class CodeReviewerLoggingMiddleware(AgentMiddleware):
 
     Named with the agent prefix to make scope obvious — this is example-app
     glue, not a platform feature. If a future platform-level middleware
-    grows the same shape it should live in ``magenta_sdklanggraph.middleware``
+    grows the same shape it should live in ``atlasap_sdklanggraph.middleware``
     so every deep agent can reuse it; until then, this stays here.
 
     Demonstrates the ``middleware=`` parameter for ``app.deep_agent()`` —
@@ -529,7 +529,7 @@ def _build_specialists() -> list[dict]:
 def main():
     """Main entry point."""
     logger.info("=" * 60)
-    logger.info("Starting Code Reviewer Agent (Magenta SDK)")
+    logger.info("Starting Code Reviewer Agent (AtlasAP SDK)")
     logger.info("=" * 60)
     app.run()
 

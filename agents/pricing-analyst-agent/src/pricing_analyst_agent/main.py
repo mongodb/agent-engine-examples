@@ -1,5 +1,5 @@
 """
-Pricing Analyst Agent - Magenta SDK example for pricing workflow demos.
+Pricing Analyst Agent - AtlasAP SDK example for pricing workflow demos.
 
 This is a minimal agent that demonstrates:
 - @app.tool decorator for secure, logged tools
@@ -34,7 +34,7 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 from langgraph.graph.state import CompiledStateGraph
 from langgraph.prebuilt import InjectedState, ToolNode
-from magenta_sdklanggraph import App
+from atlasap_sdklanggraph import App
 from runner_shared.context import (
     get_current_execution_id,
     get_current_oe_url,
@@ -2087,7 +2087,7 @@ def build_agent(llm: Optional[BaseChatModel] = None) -> CompiledStateGraph:
 def main():
     """Main entry point."""
     logger.info("=" * 60)
-    logger.info(f"Starting {APP_NAME} (Magenta SDK)")
+    logger.info(f"Starting {APP_NAME} (AtlasAP SDK)")
     logger.info("=" * 60)
 
     app.run()

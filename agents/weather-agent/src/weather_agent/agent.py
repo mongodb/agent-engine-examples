@@ -7,7 +7,7 @@ from langchain_core.messages import AIMessage
 from langgraph.graph import END, MessagesState, StateGraph
 from langgraph.prebuilt import ToolNode
 
-from magenta_sdklanggraph import App
+from atlasap_sdklanggraph import App
 
 app = App(app_name="Weather Agent")
 

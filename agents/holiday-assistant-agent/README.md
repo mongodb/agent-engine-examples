@@ -1,6 +1,6 @@
 # Holiday Assistant Agent
 
-A multi-skill holiday-planning agent built on top of `magenta-sdklanggraph`.
+A multi-skill holiday-planning agent built on top of `atlasap-sdklanggraph`.
 The agent combines three specialist competencies in a single LangGraph:
 
 - **Hotels** — semantic + structured search of accommodation, room availability,
@@ -13,7 +13,7 @@ The agent combines three specialist competencies in a single LangGraph:
 
 It is a Python port of the
 [multi-agent-holiday-assistant-mongodb](https://github.com/) reference app,
-adapted to the magenta-examples conventions (single graph, magenta `App`,
+adapted to the atlasap conventions (single graph, atlasap `App`,
 `@app.tool` decorators).
 
 ## Quick start

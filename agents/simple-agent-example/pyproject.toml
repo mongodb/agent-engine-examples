@@ -1,0 +1,41 @@
+[project]
+name = "simple-agent"
+version = "0.1.0"
+description = "Simple Web Search Assistant agent"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "magenta-sdklanggraph",
+    "python-dotenv>=1.0.0",
+    "langchain-openai>=0.3.0",
+    "langchain-anthropic>=0.3.0",
+    "langchain-google-genai>=2.1.0",
+    "langchain-cerebras>=0.8.2",
+    "crawl4ai>=0.6.0",
+    "duckduckgo-search>=8.0.0",
+]
+
+[project.scripts]
+simple-agent = "simple_agent.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/simple_agent"]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.390",
+    "pytest>=7.4.0",
+    "ruff>=0.1.0",
+]
+
+[tool.uv.sources]
+magenta-sdklanggraph = { git = "https://github.com/10gen/magenta-client-libraries", subdirectory = "packages/magenta-sdklanggraph" }
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
