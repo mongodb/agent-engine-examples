@@ -1,0 +1,55 @@
+[
+  {
+    "procedure": "pedal-cohort-pricing-review",
+    "description": "Use when the user asks to investigate the pedal-cohort result with claims narratives and provide a rating recommendation, or to auto-run the full pedal-count cohort analysis through evidence, compliance review, approval, and writeback.",
+    "content": "## Canonical trigger question\nInvestigate the pedal-cohort result with claims narratives and provide a rating recommendation.\n\nUse this learned workflow when the user wants the pedal-count cohort analysis carried all the way through supporting evidence and a pricing recommendation, even if the request is phrased as an investigation or recommendation follow-up instead of restating the analytics question.\n\n## 1. analytics_flow\nRun the full controlled analytics workflow for the pedal-count cohorts.\n\nGoals:\n- compare one-, two-, and three-pedal cohorts on loss frequency\n- control for age, zip, and annual mileage\n- show how cohort mix or book share changes over time\n- present the quantitative answer in plain English\n\nExecution expectations:\n- normalize the request into structured analytics asks\n- plan the cohort comparison and the trend-over-time analysis\n- build and validate the MongoDB query specs\n- execute the pipelines\n- present the result with clear business wording\n- if the user starts with narratives or recommendation language, still run this analytics step first so the downstream investigation and recommendation are grounded in fresh results\n\n## 2. investigation_flow\nInvestigate and justify the numbers using claims narratives and supporting evidence.\n\nGoals:\n- retrieve narrative evidence for the one-pedal and related cohorts\n- explain likely reasons behind the observed loss-frequency differences\n- connect the narrative evidence back to the quantitative result\n- present a combined analytics plus evidence summary\n\n## 3. interpretation_flow\nGenerate the business interpretation, rating recommendation, compliance view, approval, and writeback.\n\nGoals:\n- recommend a rating action based on the analytics and investigation\n- include proposed relativities or rate movement guidance\n- explain risk redistribution and expected business impact\n- state whether regulatory filing or compliance review is required\n- show the recommendation to the user, require approval, and write the decision to MongoDB\n\n## Demo note\nFor the highest-magic Session 2 demo, this workflow should run end-to-end from the initial pedal-count investigation question so the audience sees analytics_flow, investigation_flow, and interpretation_flow execute as one learned analyst playbook.",
+    "tags": [
+      "loss frequency across",
+      "pedal-count cohorts",
+      "pedal count",
+      "pedal cohorts",
+      "one pedal",
+      "two pedal",
+      "three pedal",
+      "loss frequency",
+      "cohort mix over time",
+      "book share",
+      "age zip mileage controls",
+      "claims narratives",
+      "rating recommendation",
+      "compliance",
+      "learned_count:1"
+    ],
+    "trigger_conditions": [
+      "Show me the loss frequency across pedal-count cohorts.",
+      "Compare loss frequency across one, two, and three pedal vehicles, controlling for age, zip, and annual mileage. Show me how the cohort mix has changed over time.",
+      "Compare loss frequency across pedal-count cohorts and explain how the cohort mix changed over time."
+    ],
+    "visibility": "org",
+    "source_format": "json",
+    "source_path": "runner/example-applications/example-memories/data/data-analyst-agent/procedural.json",
+    "steps": [
+      {
+        "step_type": "instruction",
+        "description": "handler:analytics_flow | Compare pedal cohorts and cohort mix under age, zip, and annual mileage controls",
+        "content": "Run the analytics workflow to compare one-, two-, and three-pedal vehicles on loss frequency and cohort mix over time, then present the quantitative result in plain English.",
+        "expected_output": "A user-facing analytics summary covering loss frequency differences and cohort-mix change over time.",
+        "timeout_ms": 30000
+      },
+      {
+        "step_type": "instruction",
+        "description": "handler:investigation_flow | Investigate the pedal-cohort differences using claims narratives",
+        "content": "Retrieve narrative evidence that explains the observed pedal-cohort differences and present the combined analytics plus evidence story.",
+        "expected_output": "A combined answer that connects claims narratives to the previously presented analytics result.",
+        "timeout_ms": 30000
+      },
+      {
+        "step_type": "instruction",
+        "description": "handler:interpretation_flow | Recommend rating action with compliance review, approval, and writeback",
+        "content": "Generate the rating recommendation, risk redistribution, and compliance view; show it to the user; trigger approval; and write the approved decision to MongoDB.",
+        "expected_output": "A recommendation message, approval checkpoint, and final writeback confirmation.",
+        "timeout_ms": 30000
+      }
+    ]
+  }
+]

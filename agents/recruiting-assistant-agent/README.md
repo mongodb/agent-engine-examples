@@ -1,6 +1,6 @@
 # Recruiting Assistant Agent (Runner SDK)
 
-An intelligent recruiting assistant built on the Runner SDK. This example packages a recruiting workflow demo into `atlasap` with local candidate data, memory seeds, human-in-the-loop outreach approval, and fair-hiring guardrail scenarios.
+An intelligent recruiting assistant built on the Runner SDK. This example packages the Indeed-style demo into `magenta-examples` with local candidate data, memory seeds, human-in-the-loop outreach approval, and fair-hiring guardrail scenarios.
 
 ## What It Shows
 

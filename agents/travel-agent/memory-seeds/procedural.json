@@ -1,0 +1,46 @@
+[
+  {
+    "procedure": "travel-disruption-reaccommodation-playbook",
+    "description": "Use when the user wants a weather-disruption event triaged end-to-end: assess impacted passengers, handle the highest-priority PNR, then complete compliant re-accommodation with approval and traveler notification.",
+    "content": "## Canonical trigger\nRe-accommodate passengers impacted by a weather cancellation.\n\n## 1. impact_flow\nAssess the disruption, segment passengers, and surface the highest-priority queue.\n\n## 2. reaccommodation_flow\nRetrieve passenger context, policy constraints, and ranked recovery options for the selected PNR.\n\n## 3. resolution_flow\nHold the recommended option, request approval when required, then complete ticketing, hotel/voucher actions, and notification.",
+    "tags": [
+      "weather cancellation",
+      "irrops",
+      "reaccommodation",
+      "priority handling",
+      "approval flow",
+      "travel disruption"
+    ],
+    "trigger_conditions": [
+      "Flight TA217 has been cancelled due to weather. Re-accommodate impacted passengers.",
+      "A weather cancellation hit a transatlantic flight. Rebook the highest-priority passengers.",
+      "Handle this disruption and protect affected travelers."
+    ],
+    "visibility": "org",
+    "source_format": "json",
+    "source_path": "runner/example-applications/example-memories/data/travel-agent/procedural.json",
+    "steps": [
+      {
+        "step_type": "instruction",
+        "description": "handler:impact_flow | Assess the disruption and prioritize impacted passengers",
+        "content": "Summarize the cancellation, group the impacted passengers, and identify the highest-priority handling queue.",
+        "expected_output": "A disruption summary with passenger queues and a recommended hero PNR.",
+        "timeout_ms": 30000
+      },
+      {
+        "step_type": "instruction",
+        "description": "handler:reaccommodation_flow | Build passenger-specific recovery options for the selected PNR",
+        "content": "Load the selected passenger profile, policy constraints, and rank the top recovery options.",
+        "expected_output": "A recommended option with approval flags and rationale.",
+        "timeout_ms": 30000
+      },
+      {
+        "step_type": "instruction",
+        "description": "handler:resolution_flow | Execute the approved recovery plan and notify the traveler",
+        "content": "Hold the recommendation, request approval if needed, then complete ticketing, hotel or voucher actions, and notification.",
+        "expected_output": "A final recovery outcome with approval status and action summary.",
+        "timeout_ms": 30000
+      }
+    ]
+  }
+]

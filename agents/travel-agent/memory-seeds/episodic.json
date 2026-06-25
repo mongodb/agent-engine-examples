@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Same-day partner recovery approved for platinum traveler",
+    "content": "Previous LHR-JFK disruption: a platinum traveler with a board-meeting deadline was protected on a Partner Atlantic same-day service even though the additional spend exceeded the default threshold. Approval was granted because the alternative required an overnight stay and would have missed the client commitment.",
+    "session_id": "session_travel_mar_2026_1",
+    "summary_type": "manual",
+    "source_agent": "travel_agent",
+    "participants": ["Operations Supervisor", "Travel Agent (AI)"],
+    "tags": ["partner-recovery", "platinum", "same-day-arrival"],
+    "visibility": "org"
+  },
+  {
+    "title": "Wheelchair traveler required manual airport coordination",
+    "content": "A prior wheelchair-assistance passenger could not be auto-rebooked even though seats were available, because airport escort and terminal-transfer support had to be confirmed before the ticket could be reissued.",
+    "session_id": "session_travel_mar_2026_2",
+    "summary_type": "manual",
+    "source_agent": "travel_agent",
+    "participants": ["Airport Operations", "Travel Agent (AI)"],
+    "tags": ["special-assistance", "manual-review", "wheelchair"],
+    "visibility": "org"
+  },
+  {
+    "title": "Split-itinerary baggage issue through Boston",
+    "content": "A previous same-day recovery through Boston produced a baggage misconnect for a premium traveler. Since then, single-connection recoveries with late-evening transfer risk are treated cautiously when a nonstop next-day option exists.",
+    "session_id": "session_travel_mar_2026_3",
+    "summary_type": "manual",
+    "source_agent": "travel_agent",
+    "participants": ["Baggage Control", "Travel Agent (AI)"],
+    "tags": ["baggage-risk", "bos-connection", "premium-traveler"],
+    "visibility": "org"
+  }
+]

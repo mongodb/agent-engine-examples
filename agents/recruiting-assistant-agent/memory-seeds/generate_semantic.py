@@ -13,7 +13,8 @@ import json
 from pathlib import Path
 
 CANDIDATES_FILE = (
-    Path(__file__).resolve().parents[1]
+    Path(__file__).resolve().parent.parent.parent.parent
+    / "recruiting-assistant-agent"
     / "data"
     / "candidates.json"
 )

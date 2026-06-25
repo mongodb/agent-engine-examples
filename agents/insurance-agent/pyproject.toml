@@ -7,7 +7,7 @@ requires-python = ">=3.11"
 license = {text = "Apache-2.0"}
 dependencies = [
     "runner-shared[mongodb,tracing]",
-    "atlasap-sdklanggraph",
+    "magenta-sdklanggraph",
     "python-dotenv>=1.0.0",
     "langchain-cerebras>=0.8.2",
     "langchain-google-genai>=2.1.0",
@@ -34,8 +34,8 @@ dev = [
 ]
 
 [tool.uv.sources]
-runner-shared = { git = "https://github.com/10gen/atlasap-client-libraries", subdirectory = "packages/runner-shared" }
-atlasap-sdklanggraph = { git = "https://github.com/10gen/atlasap-client-libraries", subdirectory = "packages/atlasap-sdklanggraph" }
+runner-shared = { git = "https://github.com/10gen/magenta-client-libraries", subdirectory = "packages/runner-shared" }
+magenta-sdklanggraph = { git = "https://github.com/10gen/magenta-client-libraries", subdirectory = "packages/magenta-sdklanggraph" }
 
 [tool.ruff]
 line-length = 100

@@ -1,0 +1,9 @@
+name: code-reviewer-agent
+entrypoint: code_reviewer_agent.main:app
+framework: langgraph
+description: Code reviewer agent demonstrating App.deep_agent() skills scaffold
+build:
+  context: .
+
+features:
+  deep_agent: true

@@ -1,0 +1,4 @@
+.agentic/
+.devcontainer/
+.env
+.env.*

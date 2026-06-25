@@ -1,0 +1,5 @@
+name: memory-test-agent
+entrypoint: memory_test_agent.main:app
+
+features:
+  memory: true

@@ -1,6 +1,6 @@
-# Insurance Agent (atlasap SDK)
+# Insurance Agent (Magenta SDK)
 
-A comprehensive insurance assistant built on the **atlasap SDK** demonstrating the complete insurance lifecycle: customer acquisition, policy management, claims processing, and human-in-the-loop dispute resolution
+A comprehensive insurance assistant built on the **Magenta SDK** demonstrating the complete insurance lifecycle: customer acquisition, policy management, claims processing, and human-in-the-loop dispute resolution
 
 ## Features
 

@@ -1,0 +1,38 @@
+[project]
+name = "holiday-assistant-agent"
+version = "0.1.0"
+description = "Multi-agent holiday planning assistant (hotels / transport / policy) backed by MongoDB"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "magenta-sdklanggraph",
+    "runner-shared",
+    "python-dotenv>=1.0.0",
+    "grpcio>=1.76.0",
+    "grpcio-health-checking>=1.76.0",
+    "langchain-openai>=1.1.12",
+    "langchain-anthropic>=0.3.0",
+    "langchain-google-genai>=2.1.0",
+    "langchain-cerebras>=0.8.2",
+    "pymongo>=4.6.0",
+]
+
+[project.scripts]
+holiday-assistant-agent = "holiday_assistant_agent.main:main"
+holiday-assistant-seed = "holiday_assistant_agent.seed:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/holiday_assistant_agent"]
+
+[tool.uv.sources]
+magenta-sdklanggraph = { git = "https://github.com/10gen/magenta-client-libraries", subdirectory = "packages/magenta-sdklanggraph" }
+runner-shared = { git = "https://github.com/10gen/magenta-client-libraries", subdirectory = "packages/runner-shared" }
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

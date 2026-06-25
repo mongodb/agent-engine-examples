@@ -1,0 +1,12 @@
+{
+  "weather_cancellation": {
+    "partner_auto_approval_threshold_usd": 650,
+    "overnight_hotel_cap_usd": 220,
+    "meal_voucher_usd": 40,
+    "same_cabin_required_for_priority_tiers": ["gold", "platinum"],
+    "manual_review_traveler_types": ["unaccompanied_minor", "special_assistance", "medical"],
+    "avoid_connections_for_ssr_codes": ["WCHR", "MEDA", "UMNR"],
+    "hotel_eligible_after_delay_hours": 8,
+    "preferred_notification_channel": "sms"
+  }
+}

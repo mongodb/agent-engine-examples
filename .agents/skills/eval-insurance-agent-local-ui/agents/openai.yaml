@@ -1,0 +1,4 @@
+interface:
+  display_name: "Insurance Agent Local UI Eval"
+  short_description: "Validate insurance-agent through the local UI and reviews"
+  default_prompt: "Use $eval-insurance-agent-local-ui to validate the insurance-agent flow in the local UI, including human review."

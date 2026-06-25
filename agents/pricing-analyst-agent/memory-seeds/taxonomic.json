@@ -1,0 +1,90 @@
+[
+  {
+    "domain": "account_tiers",
+    "term": "Tier 1",
+    "definition": "High-value customer accounts defined by revenue and volume thresholds. Tier 1 accounts receive priority pricing support. When comparing metrics like specialty-by-brand ratio or margin targets, the Tier 1 average is often used as a benchmark. Deal outcomes and pricing patterns for Tier 1 accounts are used to inform recommendations for other Tier 1 customers.",
+    "related_terms": ["Tier 1 average", "Tier 1 accounts", "high-value accounts", "benchmark accounts"],
+    "org_id": "org_pricing_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "product_classification",
+    "term": "specialty",
+    "definition": "Specialty products are typically higher-margin, often brand or specialty-pharma items that require different handling, cold chain, or clinical support. In ratio context, specialty-by-brand ratio compares specialty product share to brand product share for an account or segment.",
+    "related_terms": ["specialty-by-brand ratio", "brand", "specialty oncology", "specialty margin"],
+    "org_id": "org_pricing_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "product_classification",
+    "term": "brand",
+    "definition": "Brand products are name-brand (non-generic) items. The specialty-by-brand ratio compares how much of an account's volume or revenue is specialty versus brand; used to understand account mix and compare to Tier 1 or segment averages.",
+    "related_terms": ["specialty", "specialty-by-brand ratio", "generic", "product mix"],
+    "org_id": "org_pricing_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "pricing_terms",
+    "term": "margin",
+    "definition": "Margin (or margin percent) is the difference between selling price and cost expressed as a percentage of selling price. Margin target is the desired margin for a product or category in a deal. For example, a 5.3% margin on generic analgesics means 5.3% of the negotiated price is profit after cost.",
+    "related_terms": ["margin target", "margin percent", "margin_pct", "gross margin", "margin floor"],
+    "org_id": "org_pricing_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "pricing_terms",
+    "term": "generic analgesic",
+    "definition": "Generic analgesic is a product category covering non-brand pain relief medications. Tier 1 accounts often negotiate aggressively on this category; margin targets above 5.5% on generic analgesics for Tier 1 have shown higher deal rejection rates in historical deals.",
+    "related_terms": ["generic", "analgesic", "OTC", "margin target", "Tier 1"],
+    "org_id": "org_pricing_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "pricing_terms",
+    "term": "discount",
+    "definition": "The percentage reduction from list price offered to the customer. For example, an 11% discount on generic analgesics means the customer pays 89% of list price. Discount and margin are related: higher discount generally means lower margin.",
+    "related_terms": ["list price", "negotiated price", "discount percent", "discount_pct"],
+    "org_id": "org_pricing_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "pricing_terms",
+    "term": "list price",
+    "definition": "The standard or catalog price before any discount. List price minus discount (as a percentage) gives the net or negotiated price the customer pays.",
+    "related_terms": ["discount", "negotiated price", "net price", "catalog price"],
+    "org_id": "org_pricing_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "pricing_terms",
+    "term": "negotiated price",
+    "definition": "The final price agreed with the customer after applying discounts to list price. Negotiated price is used to compute margin when combined with cost (COGS). Also referred to as net price.",
+    "related_terms": ["list price", "discount", "net price", "margin", "COGS"],
+    "org_id": "org_pricing_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "product_categories",
+    "term": "Generic Analgesic",
+    "definition": "Product category for generic pain relief medications. Often one of the top revenue categories for pharmacy and health-system accounts. Commonly negotiated with discounts in the 10-13% range for Tier 1 accounts; margin targets are often kept at or below 5.5% to reduce rejection risk.",
+    "related_terms": ["generic analgesic", "OTC", "analgesic", "top categories"],
+    "org_id": "org_pricing_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "product_categories",
+    "term": "Specialty Oncology",
+    "definition": "Product category for specialty oncology drugs. Higher-margin category where margins are typically held at 8.2-8.8%. Shipping and handling cost increases (e.g. YoY) may require adjusting margin targets upward to preserve margin. Often negotiated as a bundle with generic categories.",
+    "related_terms": ["specialty", "oncology", "specialty oncology", "margin", "top categories"],
+    "org_id": "org_pricing_demo",
+    "visibility": "org"
+  },
+  {
+    "domain": "product_categories",
+    "term": "OTC Respiratory",
+    "definition": "Over-the-counter respiratory products category. Often included in top three categories for pharmacy accounts alongside Generic Analgesic and Specialty Oncology. Used in deal drafting and renewal recommendations for multi-category contracts.",
+    "related_terms": ["OTC", "respiratory", "top categories", "generic analgesic", "specialty oncology"],
+    "org_id": "org_pricing_demo",
+    "visibility": "org"
+  }
+]

@@ -34,7 +34,7 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.state import CompiledStateGraph
 from langgraph.graph.message import add_messages
 from langgraph.prebuilt import ToolNode
-from atlasap_sdklanggraph import App
+from magenta_sdklanggraph import App
 from runner_shared.models import SuspendPayload
 
 from insurance_agent.policy_store import (

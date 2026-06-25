@@ -1,0 +1,272 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+  merge_group:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  pr-title-check:
+    name: PR Title Check
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request'
+    steps:
+      - name: Validate PR title format
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+        run: |
+          regex='^AP-[0-9]+(: | )'
+          if [[ ! "$PR_TITLE" =~ $regex ]]; then
+            echo "::error::PR title must start with 'AP-<num>: ' or 'AP-<num> ' (e.g., 'AP-127: My change')"
+            echo "Got: $PR_TITLE"
+            exit 1
+          fi
+          echo "PR title format is valid: $PR_TITLE"
+
+      - name: Validate Jira ticket
+        env:
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+        run: |
+          if [[ -z "$JIRA_API_TOKEN" ]]; then
+            echo "::warning::JIRA_API_TOKEN is not set — skipping Jira ticket validation."
+            exit 0
+          fi
+
+          # Extract ticket key from PR title
+          TICKET=$(echo "$PR_TITLE" | grep -oE '^AP-[0-9]+')
+          echo "Checking Jira ticket: $TICKET"
+
+          # Fetch ticket from Jira REST API
+          HTTP_RESPONSE=$(curl -s -w "\n%{http_code}" \
+            --connect-timeout 10 --max-time 30 \
+            -H "Authorization: Bearer $JIRA_API_TOKEN" \
+            -H "Content-Type: application/json" \
+            "https://jira.mongodb.org/rest/api/2/issue/${TICKET}?fields=issuetype,status")
+
+          HTTP_CODE=$(echo "$HTTP_RESPONSE" | tail -1)
+          BODY=$(echo "$HTTP_RESPONSE" | sed '$d')
+
+          # Check: ticket must exist
+          if [[ "$HTTP_CODE" == "404" ]]; then
+            echo "::error::Jira ticket $TICKET does not exist."
+            exit 1
+          fi
+
+          if [[ "$HTTP_CODE" != "200" ]]; then
+            echo "::error::Failed to fetch Jira ticket $TICKET (HTTP $HTTP_CODE)."
+            echo "$BODY"
+            exit 1
+          fi
+
+          # Check: ticket must not be an Epic
+          ISSUE_TYPE=$(echo "$BODY" | jq -r '.fields.issuetype.name')
+          if [[ "$ISSUE_TYPE" == "Epic" ]]; then
+            echo "::error::Jira ticket $TICKET is an Epic. PRs must reference a Story, Task, or Bug — not an Epic."
+            exit 1
+          fi
+
+          # Check: ticket must not be closed/done
+          STATUS_CATEGORY=$(echo "$BODY" | jq -r '.fields.status.statusCategory.key')
+          STATUS_NAME=$(echo "$BODY" | jq -r '.fields.status.name')
+          if [[ "$STATUS_CATEGORY" == "done" ]]; then
+            echo "::error::Jira ticket $TICKET is closed (status: $STATUS_NAME). PRs must reference an open ticket."
+            exit 1
+          fi
+
+          echo "Jira ticket $TICKET is valid (type: $ISSUE_TYPE, status: $STATUS_NAME)"
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Check dependency cooldown policy
+        run: scripts/lint-dependency-cooldowns.sh
+
+      - name: Setup SSH for private dependencies
+        id: dependency-auth
+        env:
+          CLIENT_LIBRARIES_DEPLOY_KEY: ${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          if [[ -z "$CLIENT_LIBRARIES_DEPLOY_KEY" ]]; then
+            echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using GitHub token for HTTPS Git dependencies."
+            BASIC_AUTH="$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)"
+            git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
+          else
+            mkdir -p ~/.ssh
+            printf '%s\n' "$CLIENT_LIBRARIES_DEPLOY_KEY" > ~/.ssh/client_libraries_deploy_key
+            chmod 600 ~/.ssh/client_libraries_deploy_key
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            git config --global core.sshCommand "ssh -i ~/.ssh/client_libraries_deploy_key -o IdentitiesOnly=yes"
+            git config --global url."ssh://git@github.com/".insteadOf "https://github.com/"
+          fi
+
+          if git ls-remote https://github.com/10gen/magenta-client-libraries HEAD >/dev/null 2>&1; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Skipping dependency-consuming lint steps because CI cannot access 10gen/magenta-client-libraries."
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@eac588ad8def6316056a12d4907a9d4d84ff7a3b # v7.3.0
+        with:
+          version: "0.11.8"
+          enable-cache: true
+          cache-dependency-glob: "agents/insurance-agent/{pyproject.toml,uv.lock}"
+
+      - name: Set up Python
+        run: uv python install 3.11
+
+      - name: Check uv lockfiles
+        run: scripts/check-uv-locks.sh
+
+      - name: Install dependencies
+        if: steps.dependency-auth.outputs.available == 'true'
+        working-directory: agents/insurance-agent
+        run: uv sync --locked --group dev
+
+      - name: Lint
+        if: steps.dependency-auth.outputs.available == 'true'
+        working-directory: agents/insurance-agent
+        run: |
+          uv run ruff check .
+          uv run ruff format --check .
+
+  type-check:
+    name: Type Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup SSH for private dependencies
+        id: dependency-auth
+        env:
+          CLIENT_LIBRARIES_DEPLOY_KEY: ${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          if [[ -z "$CLIENT_LIBRARIES_DEPLOY_KEY" ]]; then
+            echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using GitHub token for HTTPS Git dependencies."
+            BASIC_AUTH="$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)"
+            git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
+          else
+            mkdir -p ~/.ssh
+            printf '%s\n' "$CLIENT_LIBRARIES_DEPLOY_KEY" > ~/.ssh/client_libraries_deploy_key
+            chmod 600 ~/.ssh/client_libraries_deploy_key
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            git config --global core.sshCommand "ssh -i ~/.ssh/client_libraries_deploy_key -o IdentitiesOnly=yes"
+            git config --global url."ssh://git@github.com/".insteadOf "https://github.com/"
+          fi
+
+          if git ls-remote https://github.com/10gen/magenta-client-libraries HEAD >/dev/null 2>&1; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Skipping type check because CI cannot access 10gen/magenta-client-libraries."
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@eac588ad8def6316056a12d4907a9d4d84ff7a3b # v7.3.0
+        with:
+          version: "0.11.8"
+          enable-cache: true
+          cache-dependency-glob: "agents/insurance-agent/{pyproject.toml,uv.lock}"
+
+      - name: Set up Python
+        run: uv python install 3.11
+
+      - name: Install dependencies
+        if: steps.dependency-auth.outputs.available == 'true'
+        working-directory: agents/insurance-agent
+        run: uv sync --locked --group dev
+
+      - name: Type check
+        if: steps.dependency-auth.outputs.available == 'true'
+        working-directory: agents/insurance-agent
+        run: uv run pyright
+
+  example-smoke:
+    name: Example Smoke (${{ matrix.agent }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        agent:
+          - agents/pricing-analyst-agent
+          - agents/recruiting-assistant-agent
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Setup SSH for private dependencies
+        id: dependency-auth
+        env:
+          CLIENT_LIBRARIES_DEPLOY_KEY: ${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          if [[ -z "$CLIENT_LIBRARIES_DEPLOY_KEY" ]]; then
+            echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using GitHub token for HTTPS Git dependencies."
+            BASIC_AUTH="$(printf 'x-access-token:%s' "$GITHUB_TOKEN" | base64 -w0)"
+            git config --global http.https://github.com/.extraheader "AUTHORIZATION: basic $BASIC_AUTH"
+          else
+            mkdir -p ~/.ssh
+            printf '%s\n' "$CLIENT_LIBRARIES_DEPLOY_KEY" > ~/.ssh/client_libraries_deploy_key
+            chmod 600 ~/.ssh/client_libraries_deploy_key
+            ssh-keyscan github.com >> ~/.ssh/known_hosts
+            git config --global core.sshCommand "ssh -i ~/.ssh/client_libraries_deploy_key -o IdentitiesOnly=yes"
+            git config --global url."ssh://git@github.com/".insteadOf "https://github.com/"
+          fi
+
+          if git ls-remote https://github.com/10gen/magenta-client-libraries HEAD >/dev/null 2>&1; then
+            echo "available=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::warning::Skipping smoke tests because CI cannot access 10gen/magenta-client-libraries."
+            echo "available=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@eac588ad8def6316056a12d4907a9d4d84ff7a3b # v7.3.0
+        with:
+          version: "0.11.8"
+          enable-cache: true
+          cache-dependency-glob: "${{ matrix.agent }}/{pyproject.toml,uv.lock}"
+
+      - name: Set up Python
+        run: uv python install 3.11
+
+      - name: Run smoke tests
+        if: steps.dependency-auth.outputs.available == 'true'
+        run: uv run --directory "${{ matrix.agent }}" pytest tests/ -q --tb=short
+
+  ci-success:
+    name: CI Success
+    needs: [pr-title-check, lint, type-check, example-smoke]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    if: always()
+    steps:
+      - name: Check all jobs passed
+        run: |
+          if [[ "${{ needs.lint.result }}" != "success" ]] || \
+             [[ "${{ needs.type-check.result }}" != "success" ]] || \
+             [[ "${{ needs.example-smoke.result }}" != "success" ]] || \
+             { [[ "${{ needs.pr-title-check.result }}" != "success" ]] && \
+               [[ "${{ needs.pr-title-check.result }}" != "skipped" ]]; }; then
+            echo "One or more jobs failed"
+            exit 1
+          fi
+          echo "All CI checks passed!"

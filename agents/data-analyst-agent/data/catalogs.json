@@ -1,0 +1,434 @@
+[
+  {
+    "catalog_type": "control_strategies",
+    "version": "v1",
+    "default_strategy": "outlier_filter_v1",
+    "strategies": {
+      "outlier_filter_v1": {
+        "description": "Filter out documents with implausible or out-of-range values for each control variable before grouping. Not a true statistical control \u2014 treats controls as outlier thresholds.",
+        "thresholds": {
+          "customer.age": {
+            "op": "$gte",
+            "value": 18
+          },
+          "vehicle.annual_mileage": {
+            "op": "$gte",
+            "value": 1000
+          },
+          "customer.zip": {
+            "op": "$ne",
+            "value": ""
+          }
+        },
+        "stages_implied": [
+          "$match (outlier thresholds)"
+        ],
+        "supported_analysis_types": [
+          "cohort_comparison",
+          "trend_over_time"
+        ],
+        "notes": "Canonical default for the pedal-cohort demo. Produces one row per cohort; controls appear only as pre-group filters, not as bucketing dimensions."
+      },
+      "stratified_buckets_v1": {
+        "description": "Bucket control variables into bands, compute metrics per stratum, roll up with weighted averages. Opt-in only when the user explicitly asks for stratified / per-band results.",
+        "buckets": {
+          "customer.age": [
+            "18-25",
+            "26-35",
+            "36-45",
+            "46-55",
+            "56-65",
+            "65+"
+          ],
+          "vehicle.annual_mileage": [
+            "0-5000",
+            "5001-10000",
+            "10001-15000",
+            "15000+"
+          ],
+          "customer.zip": "regional_mapping"
+        },
+        "rollup": "weighted_average_by_stratum_size",
+        "supported_analysis_types": [
+          "cohort_comparison"
+        ],
+        "notes": "Heavier pipeline: multiple rows per cohort plus a rolled-up total. Use only when the user explicitly requests stratified results."
+      }
+    }
+  },
+  {
+    "catalog_type": "metrics",
+    "version": "v1",
+    "metrics": {
+      "loss_frequency_per_1000": {
+        "description": "Number of claims per 1,000 policies",
+        "formula": "(total_claims / policy_count) * 1000",
+        "required_fields": [
+          "loss_history"
+        ],
+        "derived_from": {
+          "total_claims": {
+            "op": "sum",
+            "field": "claim_count"
+          },
+          "claim_count": {
+            "op": "array_length",
+            "field": "loss_history"
+          },
+          "policy_count": {
+            "op": "count"
+          }
+        },
+        "output_type": "float",
+        "rounding": 1
+      },
+      "avg_lifetime_value": {
+        "description": "Average estimated lifetime value per policy",
+        "formula": "avg(ltv.estimated_lifetime_value)",
+        "required_fields": [
+          "ltv.estimated_lifetime_value"
+        ],
+        "derived_from": {},
+        "output_type": "float",
+        "rounding": 2
+      },
+      "avg_retention_probability": {
+        "description": "Average retention probability per policy",
+        "formula": "avg(ltv.retention_probability)",
+        "required_fields": [
+          "ltv.retention_probability"
+        ],
+        "derived_from": {},
+        "output_type": "float",
+        "rounding": 2
+      },
+      "overall_loss_ratio": {
+        "description": "Ratio of total claims paid to total premiums paid",
+        "formula": "sum(ltv.total_claims_paid) / sum(ltv.total_premiums_paid)",
+        "required_fields": [
+          "ltv.total_claims_paid",
+          "ltv.total_premiums_paid"
+        ],
+        "derived_from": {
+          "total_claims_paid": {
+            "op": "sum",
+            "field": "ltv.total_claims_paid"
+          },
+          "total_premiums": {
+            "op": "sum",
+            "field": "ltv.total_premiums_paid"
+          }
+        },
+        "output_type": "float",
+        "rounding": 4
+      },
+      "loss_to_premium_ratio": {
+        "description": "Per-document ratio of claims paid to premiums paid",
+        "formula": "ltv.total_claims_paid / ltv.total_premiums_paid",
+        "required_fields": [
+          "ltv.total_claims_paid",
+          "ltv.total_premiums_paid"
+        ],
+        "derived_from": {},
+        "output_type": "float",
+        "rounding": 4,
+        "safe_divide": true
+      },
+      "avg_tenure_years": {
+        "description": "Average policy tenure in years",
+        "formula": "avg(ltv.tenure_months) / 12",
+        "required_fields": [
+          "ltv.tenure_months"
+        ],
+        "derived_from": {},
+        "output_type": "float",
+        "rounding": 1
+      },
+      "avg_cross_sell_count": {
+        "description": "Average number of cross-sell products per policy",
+        "formula": "avg(array_length(ltv.cross_sell_products))",
+        "required_fields": [
+          "ltv.cross_sell_products"
+        ],
+        "derived_from": {},
+        "output_type": "float",
+        "rounding": 2
+      },
+      "cohort_share_pct": {
+        "description": "Percentage of total in-force book represented by a cohort in a given quarter",
+        "formula": "(cohort_count / total_count) * 100",
+        "required_fields": [
+          "book_quarters"
+        ],
+        "derived_from": {},
+        "output_type": "float",
+        "rounding": 1,
+        "notes": "For cohort-mix trends, unwind book_quarters and compare each cohort's policy_count to the quarter total"
+      }
+    }
+  },
+  {
+    "catalog_type": "schema",
+    "version": "v1",
+    "collection": "Customer",
+    "fields": {
+      "policy_id": {
+        "type": "string",
+        "indexed": true,
+        "unique": true
+      },
+      "customer.ID": {
+        "type": "string"
+      },
+      "customer.age": {
+        "type": "int",
+        "indexed": true,
+        "range": [
+          18,
+          80
+        ]
+      },
+      "customer.zip": {
+        "type": "string"
+      },
+      "policy_start_date": {
+        "type": "string",
+        "indexed": true,
+        "format": "YYYY-MM-DD"
+      },
+      "book_quarters": {
+        "type": "array<string>",
+        "indexed": true
+      },
+      "vehicle.make": {
+        "type": "string"
+      },
+      "vehicle.model": {
+        "type": "string"
+      },
+      "vehicle.year": {
+        "type": "int",
+        "range": [
+          2015,
+          2025
+        ]
+      },
+      "vehicle.transmission": {
+        "type": "string",
+        "values": [
+          "electric",
+          "automatic",
+          "manual"
+        ]
+      },
+      "vehicle.pedal_count": {
+        "type": "int",
+        "indexed": true,
+        "values": [
+          1,
+          2,
+          3
+        ]
+      },
+      "vehicle.annual_mileage": {
+        "type": "int",
+        "indexed": true,
+        "range": [
+          1000,
+          40000
+        ]
+      },
+      "telematics.arity_score": {
+        "type": "int",
+        "range": [
+          30,
+          100
+        ]
+      },
+      "telematics.hard_brakes_90d": {
+        "type": "int"
+      },
+      "telematics.night_driving_pct": {
+        "type": "float",
+        "range": [
+          0.0,
+          0.5
+        ]
+      },
+      "telematics.miles_90d": {
+        "type": "int"
+      },
+      "ltv.tenure_months": {
+        "type": "int"
+      },
+      "ltv.total_premiums_paid": {
+        "type": "float"
+      },
+      "ltv.total_claims_paid": {
+        "type": "float"
+      },
+      "ltv.estimated_lifetime_value": {
+        "type": "float"
+      },
+      "ltv.retention_probability": {
+        "type": "float",
+        "range": [
+          0.0,
+          1.0
+        ]
+      },
+      "ltv.cross_sell_products": {
+        "type": "array<string>"
+      },
+      "loss_history": {
+        "type": "array<object>",
+        "indexed": true,
+        "subfields": {
+          "date": {
+            "type": "string",
+            "format": "YYYY-MM-DD"
+          },
+          "type": {
+            "type": "string"
+          },
+          "amount": {
+            "type": "float"
+          },
+          "at_fault": {
+            "type": "bool"
+          },
+          "adjuster_narrative": {
+            "type": "string"
+          }
+        }
+      },
+      "narrative_summary": {
+        "type": "string"
+      },
+      "narrative_embedding": {
+        "type": "vector",
+        "dimensions": 1024,
+        "similarity": "cosine",
+        "indexed": true
+      },
+      "current_factors.base_rate": {
+        "type": "int"
+      },
+      "current_factors.risk_tier": {
+        "type": "string",
+        "values": [
+          "preferred",
+          "standard",
+          "high_risk"
+        ]
+      },
+      "current_factors.transmission_factor": {
+        "type": "null"
+      },
+      "agent_log": {
+        "type": "array<object>"
+      }
+    },
+    "indexes": {
+      "standard": [
+        "vehicle.pedal_count",
+        "customer.age",
+        "vehicle.annual_mileage",
+        "policy_start_date",
+        "book_quarters",
+        "loss_history.date",
+        "policy_id"
+      ],
+      "vector_search": {
+        "name": "narrative_vector_index",
+        "path": "narrative_embedding",
+        "num_dimensions": 1024,
+        "similarity": "cosine",
+        "filter_fields": [
+          "vehicle.pedal_count"
+        ]
+      }
+    }
+  },
+  {
+    "catalog_type": "validator_rules",
+    "version": "v1",
+    "allowed_stages": [
+      "$match",
+      "$addFields",
+      "$group",
+      "$project",
+      "$sort",
+      "$limit",
+      "$unwind",
+      "$bucket",
+      "$bucketAuto",
+      "$count",
+      "$facet"
+    ],
+    "banned_stages": [
+      "$out",
+      "$merge",
+      "$collStats",
+      "$indexStats",
+      "$planCacheStats",
+      "$currentOp",
+      "$listSessions",
+      "$changeStream"
+    ],
+    "banned_operators": [
+      "$where",
+      "$function",
+      "$accumulator"
+    ],
+    "max_pipeline_length": 12,
+    "max_group_fields": 5,
+    "field_allowlist": [
+      "policy_id",
+      "customer.ID",
+      "customer.age",
+      "customer.zip",
+      "policy_start_date",
+      "book_quarters",
+      "vehicle.make",
+      "vehicle.model",
+      "vehicle.year",
+      "vehicle.transmission",
+      "vehicle.pedal_count",
+      "vehicle.annual_mileage",
+      "telematics.arity_score",
+      "telematics.hard_brakes_90d",
+      "telematics.night_driving_pct",
+      "telematics.miles_90d",
+      "ltv.tenure_months",
+      "ltv.total_premiums_paid",
+      "ltv.total_claims_paid",
+      "ltv.estimated_lifetime_value",
+      "ltv.retention_probability",
+      "ltv.cross_sell_products",
+      "loss_history",
+      "loss_history.date",
+      "loss_history.type",
+      "loss_history.amount",
+      "loss_history.at_fault",
+      "loss_history.adjuster_narrative",
+      "narrative_summary",
+      "narrative_embedding",
+      "current_factors.base_rate",
+      "current_factors.risk_tier",
+      "current_factors.transmission_factor",
+      "agent_log"
+    ],
+    "structural_rules": [
+      "Pipeline must start with $match",
+      "Pipeline must end with $sort or $project",
+      "$group must reference only fields from field_allowlist or derived fields from prior $addFields",
+      "No unbounded $unwind without a preceding $match that limits the working set"
+    ],
+    "known_limitations": [
+      "Does not check operational cost (unbounded sorts, high-cardinality groups)",
+      "Does not validate that $group keys produce a reasonable number of buckets",
+      "No query plan analysis \u2014 structural validation only"
+    ]
+  }
+]

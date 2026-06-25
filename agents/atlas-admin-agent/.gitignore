@@ -1,0 +1,7 @@
+.agentic/
+.env.*
+.devcontainer/
+.coverage
+htmlcov/
+logs/
+.venv*/

@@ -1,5 +1,5 @@
 """
-Recruiting Assistant Agent — Runner SDK example for cross-session recruiting intelligence.
+Recruiting Assistant Agent — Runner SDK example for Indeed cross-session intelligence demo.
 
 Demonstrates:
 - @app.tool decorator for secure, logged tools
@@ -34,7 +34,7 @@ from langgraph.graph import END, START, StateGraph
 from langgraph.graph.message import add_messages
 from langgraph.graph.state import CompiledStateGraph
 from langgraph.prebuilt import ToolNode
-from atlasap_sdklanggraph import App
+from magenta_sdklanggraph import App
 from pydantic import SecretStr
 from runner_shared.context import (
     get_current_execution_id,

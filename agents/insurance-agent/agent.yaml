@@ -1,7 +1,7 @@
 # Human-readable app slug used by Agentic Platform tooling.
 name: insurance-agent
 
-# Python import path to the atlasap SDK App instance.
+# Python import path to the Magenta SDK App instance.
 # Format: <module path>:<variable name>. This example exposes `app` from
 # src/insurance_agent/main.py.
 entrypoint: insurance_agent.main:app

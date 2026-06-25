@@ -1,0 +1,30 @@
+.DS_Store
+
+# Python virtualenvs and caches
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.pyright/
+
+# Local environment files
+.env
+.env.*
+
+# Runtime artifacts
+logs/
+*.log
+
+# Observability / tracing (all agents)
+**/observability/
+executions.jsonl
+traces.jsonl
+*.jsonl
+
+# Agentic platform artifacts
+.agentic/
+.devcontainer/
+
+# eval
+transcripts/
