@@ -1,6 +1,6 @@
 # Data Analyst Agent
 
-Standalone AtlasAP example for the data-and-list analyst demo. It compares
+Standalone Magenta example for the data-and-list analyst demo. It compares
 synthetic `Customer` policy data by pedal cohort, emits Playground artifacts for
 MongoDB queries and charts, seeds semantic/taxonomic/episodic/procedural memory,
 and uses native LangGraph interrupts for the rating recommendation review loop.

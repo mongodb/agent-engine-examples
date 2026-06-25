@@ -1,7 +1,7 @@
 """Seed the travel-agent demo memories.
 
 This script mirrors what the upstream ``run.sh`` did, adapted to the
-``atlasap`` conventions. It does two things:
+``magenta-examples`` conventions. It does two things:
 
 1. Reset and reseed semantic, episodic, and taxonomic memories for the demo
    org so memory recall is meaningful from the very first session.

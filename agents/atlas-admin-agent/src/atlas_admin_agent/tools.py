@@ -118,7 +118,7 @@ def _single_get(path: str, params: dict[str, Any] | None = None) -> str:
 
 
 def register(app: Any) -> dict[str, Any]:
-    """Register all Atlas tools on the given atlasap ``App`` instance."""
+    """Register all Atlas tools on the given magenta ``App`` instance."""
 
     @app.tool(is_local=True)
     def list_organizations() -> str:

@@ -1,4 +1,4 @@
-"""Data Analyst Agent - standalone AtlasAP example."""
+"""Data Analyst Agent - standalone Magenta example."""
 
 from __future__ import annotations
 
@@ -8,7 +8,7 @@ import os
 from dotenv import load_dotenv
 from langchain_core.language_models import BaseChatModel
 from langgraph.graph.state import CompiledStateGraph
-from atlasap_sdklanggraph import App
+from magenta_sdklanggraph import App
 
 from data_analyst_agent.data_store import DEFAULT_DATABASE, DemoDataStore
 from data_analyst_agent.graph import build_data_analyst_graph

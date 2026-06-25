@@ -12,7 +12,7 @@ from langchain_core.messages import SystemMessage
 from langgraph.graph import END, START, StateGraph
 from langgraph.graph.state import CompiledStateGraph
 from langgraph.prebuilt import ToolNode
-from atlasap_sdklanggraph import App
+from magenta_sdklanggraph import App
 
 from atlas_admin_agent.llm import build_llm, patch_runtime_llm
 from atlas_admin_agent.state import AtlasAdminState

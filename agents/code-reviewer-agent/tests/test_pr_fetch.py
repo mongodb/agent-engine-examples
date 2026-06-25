@@ -214,7 +214,7 @@ class TestGitHubIntakeDiff:
         def handler(request: httpx.Request) -> httpx.Response:
             assert request.url.path == "/repos/o/r/pulls/1"
             assert request.headers["authorization"] == "Bearer tkn"
-            assert request.headers["user-agent"] == "atlasap-code-reviewer"
+            assert request.headers["user-agent"] == "magenta-code-reviewer"
             if request.headers["accept"] == "application/vnd.github+json":
                 return httpx.Response(200, json=_meta_response(title="Add feature"))
             assert request.headers["accept"] == "application/vnd.github.v3.diff"

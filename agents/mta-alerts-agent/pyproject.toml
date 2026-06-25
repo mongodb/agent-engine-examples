@@ -9,7 +9,7 @@ description = "MTA subway service alerts agent"
 requires-python = ">=3.11"
 dependencies = [
     "runner-shared",
-    "atlasap-sdklanggraph",
+    "magenta-sdklanggraph",
     "grpcio>=1.76.0",
     "grpcio-health-checking>=1.76.0",
     "langchain-openai>=0.2",
@@ -25,5 +25,5 @@ dependencies = [
 packages = ["src/mta_alerts_agent"]
 
 [tool.uv.sources]
-runner-shared = { git = "https://github.com/10gen/atlasap-client-libraries", subdirectory = "packages/runner-shared" }
-atlasap-sdklanggraph = { git = "https://github.com/10gen/atlasap-client-libraries", subdirectory = "packages/atlasap-sdklanggraph" }
+runner-shared = { git = "https://github.com/10gen/magenta-client-libraries", subdirectory = "packages/runner-shared" }
+magenta-sdklanggraph = { git = "https://github.com/10gen/magenta-client-libraries", subdirectory = "packages/magenta-sdklanggraph" }

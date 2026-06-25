@@ -1,7 +1,7 @@
-# Pricing Analyst Agent (AtlasAP SDK)
+# Pricing Analyst Agent (Magenta SDK)
 
-A pricing workflow demo built on the AtlasAP SDK. This example packages the
-pricing analyst scenario into `atlasap` with self-contained mock tools,
+A pricing workflow demo built on the Magenta SDK. This example packages the
+pricing analyst scenario into `magenta-examples` with self-contained mock tools,
 memory seeds, procedural replay, and contract-finalization guardrails.
 
 ## What It Shows

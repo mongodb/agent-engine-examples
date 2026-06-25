@@ -20,8 +20,8 @@ into a final Markdown review.
 - **Skills**: eight SKILL.md files, one per specialist, progressively disclosed
 
 For the skill-authoring guide (frontmatter rules, reserved tool names,
-sandbox pattern), see the SDK's `atlasap-sdklanggraph` README in
-[`10gen/atlasap-client-libraries`](https://github.com/10gen/atlasap-client-libraries/tree/main/packages/atlasap-sdklanggraph).
+sandbox pattern), see the SDK's `magenta-sdklanggraph` README in
+[`10gen/magenta-client-libraries`](https://github.com/10gen/magenta-client-libraries/tree/main/packages/magenta-sdklanggraph).
 
 ## Architecture
 
@@ -52,7 +52,7 @@ flat finding list, sorts by severity, and emits the final Markdown review.
 | `checkpointer` | _(omitted)_ | Uses MongoDB default |
 | `store` | `None` | Explicit — no shared store |
 | `skills` | `None` | Parent is a pure orchestrator |
-| `backend` | _(omitted)_ | Uses `default Tool Pod backend` default |
+| `backend` | _(omitted)_ | Uses `MagentaToolPodBackend` default |
 
 ## Sandbox Note
 
@@ -81,7 +81,7 @@ cp env.example .env
 
 ## Run
 
-From the atlasap repo root:
+From the magenta-examples repo root:
 
 ```bash
 agentic dev up --workspace code-reviewer-agent

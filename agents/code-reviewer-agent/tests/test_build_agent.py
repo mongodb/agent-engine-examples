@@ -28,7 +28,7 @@ from unittest.mock import MagicMock
 import pytest
 
 # The deep-agent built-ins we expect ``app.deep_agent()`` to wire into
-# the graph via the default Tool Pod backend + deepagents middleware.
+# the graph via the MagentaToolPodBackend + deepagents middleware.
 # (``write_todos`` and ``task`` come from deepagents' base middleware.)
 EXPECTED_BUILTIN_TOOLS = {
     "ls",
@@ -204,7 +204,7 @@ class TestSkillsWiring:
       1. Parent ``skills=[...]`` leaking back in (Phase A mandates parent=None).
       2. Wrong number of specialists or missing ones.
       3. Specialist with no skills= declared, or the wrong skill path.
-      4. ``backend=`` override bypassing the audited ``default Tool Pod backend``.
+      4. ``backend=`` override bypassing the audited ``MagentaToolPodBackend``.
       5. Middleware-bypass imports.
       6. Missing ``response_format`` on any specialist (breaks structured
          output aggregation by the parent).
@@ -294,14 +294,14 @@ class TestSkillsWiring:
             )
 
     def test_no_backend_override(self, monkeypatch):
-        """``backend=`` must NOT be passed (default default Tool Pod backend)."""
+        """``backend=`` must NOT be passed (default MagentaToolPodBackend)."""
         captured, agent_main = _capture_deep_agent_kwargs(monkeypatch)
 
         agent_main.build_agent()
 
         assert "backend" not in captured, (
             "build_agent() passed `backend=` to app.deep_agent — v0.3 "
-            "canonical path requires the default default Tool Pod backend. "
+            "canonical path requires the default MagentaToolPodBackend. "
             f"Captured kwargs: {list(captured.keys())}"
         )
 
@@ -311,7 +311,7 @@ class TestSkillsWiring:
         The v0.3 canonical path is ``skills=[...]`` with the default
         backend. Importing ``SkillsMiddleware``, ``FilesystemBackend``,
         or ``LocalShellBackend`` signals a middleware-bypass pattern
-        that skips the audited default Tool Pod backend I/O flow.
+        that skips the audited MagentaToolPodBackend I/O flow.
         """
         main_path = (
             Path(__file__).resolve().parent.parent / "src" / "code_reviewer_agent" / "main.py"
@@ -322,5 +322,5 @@ class TestSkillsWiring:
             assert forbidden not in source, (
                 f"main.py must not reference `{forbidden}` — v0.3 canonical "
                 f"skills wiring uses the `skills=[...]` kwarg with the default "
-                f"default Tool Pod backend (no middleware bypass)."
+                f"MagentaToolPodBackend (no middleware bypass)."
             )

@@ -290,7 +290,7 @@ def _suspend_for_cancellation(booking: dict[str, Any], reason: str) -> str:
 
 
 def register(app: Any) -> None:
-    """Attach hotel / transport / policy tools to the atlasap App."""
+    """Attach hotel / transport / policy tools to the magenta App."""
 
     # ── HOTELS ───────────────────────────────────────────────────────────────
 

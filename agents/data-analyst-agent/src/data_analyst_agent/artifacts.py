@@ -4,9 +4,9 @@ from __future__ import annotations
 
 from typing import Any
 
-import atlasap_sdk_core
+import magenta_sdk_core
 
-MessageArtifact: Any | None = getattr(atlasap_sdk_core, "MessageArtifact", None)
+MessageArtifact: Any | None = getattr(magenta_sdk_core, "MessageArtifact", None)
 Artifact = dict[str, Any]
 
 

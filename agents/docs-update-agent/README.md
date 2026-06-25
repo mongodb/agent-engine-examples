@@ -35,7 +35,7 @@ agents/docs-update-agent/
 ├── tests/
 │   └── test_build_agent.py   # Graph compilation + skills wiring tests
 ├── pyproject.toml            # Dependencies & build config
-├── agent.yaml                # Agent descriptor for atlasap
+├── agent.yaml                # Agent descriptor for magenta
 ├── dev.yaml                  # Local-dev service ports (playground pinned to 3000)
 ├── env.example               # Environment variable template
 └── README.md                 # This file

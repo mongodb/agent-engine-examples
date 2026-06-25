@@ -1,1 +1,1 @@
-"""Minimal weather agent example for atlasap-sdklanggraph."""
+"""Minimal weather agent example for magenta-sdklanggraph."""

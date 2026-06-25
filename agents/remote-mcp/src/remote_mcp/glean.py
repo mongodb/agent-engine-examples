@@ -5,7 +5,7 @@ from pathlib import Path
 from dotenv import load_dotenv
 from langchain_core.language_models import BaseChatModel
 from langgraph.graph.state import CompiledStateGraph
-from atlasap_sdklanggraph import App
+from magenta_sdklanggraph import App
 
 from remote_mcp.common import build_remote_mcp_agent
 

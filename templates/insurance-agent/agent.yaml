@@ -1,0 +1,25 @@
+# Human-readable app slug used by Agentic Platform tooling.
+# `agentic create` should rewrite this when generating a new app from the template.
+name: insurance-agent
+
+# Python import path to the Magenta SDK App instance.
+# Format: <module path>:<variable name>. This template exposes `app` from
+# src/insurance_agent/main.py.
+entrypoint: insurance_agent.main:app
+
+# Optional LLM hints for the sample app. When the runtime SDK exposes these
+# values as `app.llm_config`, your application code still constructs the provider
+# client and reads the matching API key from .env.
+# Supported providers in this template: anthropic, gemini, openai.
+# config:
+#   provider: openai
+#   model: gpt-5.4-mini
+
+# Runtime feature flags controlled by agent.yaml, not .env.
+# Set memory to true to enable long-term memory; VOYAGE_API_KEY must be present
+# in .env when memory is enabled.
+# Set guardrails to true to enable response validation; GUARDRAILS_SERVER_URL
+# must point at a running guardrails service when guardrails are enabled.
+features:
+  guardrails: false
+  memory: false

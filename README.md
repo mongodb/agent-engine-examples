@@ -1,3 +1,101 @@
+# Magenta Examples
+
+Standalone example agents built on top of
+[magenta-client-libraries](https://github.com/10gen/magenta-client-libraries).
+
+Each example agent lives in the `agents/` directory. Every agent is a
+**self-contained application** — it has its own `agent.yaml`, dependencies,
+tests, and deployment metadata, plus a `dev.yaml` for local-development settings
+such as service ports. You can copy any single agent directory out of this repo
+and run it on its own.
+
+The repo also contains starter templates in `templates/`. Those directories are
+clean scaffold sources intended for `agentic create`.
+
+The repository is structured as a **uv workspace** with a root `agent.yaml`
+monorepo manifest so agents can share workspace tooling and still be discovered
+as separate deployable apps. The monorepo layout is a convenience, not a
+requirement for any individual example.
+
+The examples depend on the SDK via git-based `uv` sources that point at the
+`10gen/magenta-client-libraries` repository.
+
+## Agents
+
+| Agent | Description |
+|-------|-------------|
+| [`agents/atlas-admin-agent/`](agents/atlas-admin-agent/) | MongoDB Atlas Administration API agent with human-in-the-loop approval |
+| [`agents/code-reviewer-agent/`](agents/code-reviewer-agent/) | DeepAgent code-review orchestrator with specialist review skills |
+| [`agents/data-analyst-agent/`](agents/data-analyst-agent/) | Data analyst demo with MongoDB query and chart artifacts |
+| [`agents/insurance-agent/`](agents/insurance-agent/) | Insurance assistant built on the Runner SDK |
+| [`agents/mta-alerts-agent/`](agents/mta-alerts-agent/) | MTA subway service alerts agent |
+| [`agents/recruiting-assistant-agent/`](agents/recruiting-assistant-agent/) | Recruiting assistant with cross-session memory and outreach review |
+| [`agents/remote-mcp/`](agents/remote-mcp/) | Remote MCP examples for GitHub, Glean, and Sentry |
+| [`agents/simple-agent/`](agents/simple-agent/) | Web search assistant migrated onto `magenta_sdklanggraph` |
+| [`agents/weather-agent/`](agents/weather-agent/) | Minimal LangGraph weather demo (single workspace) |
+
+## Templates
+
+| Template | Description |
+|----------|-------------|
+| [`templates/chatbot-client/`](templates/chatbot-client/) | Next.js chatbot UI that streams messages through the MongoDB Agentic Platform API |
+| [`templates/hello-world-agent/`](templates/hello-world-agent/) | Minimal Daily inspiration assistant with date and memory tools |
+| [`templates/insurance-agent/`](templates/insurance-agent/) | Clean starter version of the insurance assistant for the future `agentic create` flow |
+
+## Getting Started
+
+1. Install [uv](https://docs.astral.sh/uv/).
+2. Run `uv sync` at the root to set up the workspace.
+3. Use `uv run` inside any agent directory to run it.
+
+To use an agent standalone (outside this monorepo), copy its directory, ensure
+the `uv` sources in its `pyproject.toml` resolve correctly, and run `uv sync`
+from within that directory.
+
+## Interactive Demo Setup
+
+To set up and run one of the existing demos, use the interactive wizard:
+
+```bash
+scripts/setup-agent
+```
+
+The wizard updates the `agentic` CLI on a best-effort basis, tries to pull the
+latest version of this repo, lets you choose a demo from `agents/`, prompts for
+an LLM provider key and optional provider base URL, and can reuse matching
+values from existing `.env` files in other demos. For OpenAI-compatible setups,
+it also prompts for `AZURE_OPENAI_API_VERSION` when the selected demo supports
+that setting. It can enable memory by prompting for or reusing a
+`VOYAGE_API_KEY`. It writes the selected demo's `.env`, updates the relevant
+`agent.yaml` settings, and can start the demo with `agentic dev up`.
+
+## Archive filtering (`.agenticignore`)
+
+The root [`.agenticignore`](.agenticignore) controls which files `agentic build`
+packs into the source archive it uploads. It uses standard `.gitignore` syntax
+and `agentic init` seeds it with sensible defaults; edit it to fit your project.
+
+Because this repo is a uv workspace, `agentic build` reads `.agenticignore` from
+the **archive root — the workspace root** — not from an individual agent
+directory, so a single file at the repo root applies to every agent here.
+`.env` / `.env.*` files and the `.git` directory are always excluded and cannot
+be re-included.
+
+## Conventions
+
+- The `agents/` directory contains one sub-directory per example agent.
+- Each agent owns its own manifests, tests, and deployment metadata.
+- The `templates/` directory contains starter scaffolds intended to be copied
+  into new projects.
+- The root `agent.yaml` lists every deployable agent workspace in the repo.
+- The root `uv` workspace ties agents together for convenience but is not a
+  hard requirement — agents are designed to work independently.
+- Templates are starter scaffolds and are not part of the root `uv` workspace.
+- Shared SDK code stays in `magenta-client-libraries/`; app-specific behavior
+  belongs here.
+
+___
+
 # Quick Setup
 
 More detailed development instructions can be found [here](https://learn.mongodb.com/learn/article/docs-preview-mongodb-agentic-platform)
@@ -6,12 +104,12 @@ More detailed development instructions can be found [here](https://learn.mongodb
 
 Download and install one of the CLI binaries from the releases page.
 
-Depending on your OS, you will need to mark the binary as executable and put it on your path.
+Depending on your OS, you will need to mark the binary as executable and put it on your path. 
 
 For macOS or Linux (adjust paths to match your download):
 ```
 chmod +x ./agentic_<version>_darwin_arm64
-sudo mv ./agentic_<version>_darwin_arm64 /usr/local/bin/agentic
+sudo mv ./agentic_<version>_darwin_arm64 /usr/local/bin/agentic 
 ```
 
 For Windows
@@ -31,7 +129,7 @@ Then add `%USERPROFILE%\bin` to your user PATH if it is not already there:
 
 To run the CLI, either set the env variable `export AP_SOURCE=public` or create an alias like `alias agentic='AP_SOURCE=public agentic'`
 
-Then run `agentic` to get started.
+Then run `agentic` to get started. 
 
 ## Turn Off Sentry Reporting
 
@@ -69,17 +167,6 @@ Clone this repo and navigate to one of the examples. This repo includes:
 - `agents/simple-agent-example` — web search assistant
 - `agents/recruiting-assistant-agent` — recruiting assistant with local candidate data and memory seeds
 - `agents/insurance-agent` — insurance assistant for policy and claims workflows
-- `agents/atlas-admin-agent` — MongoDB Atlas Administration API assistant
-- `agents/code-reviewer-agent` — code review orchestrator with specialist review skills
-- `agents/data-analyst-agent` — data analysis assistant with MongoDB query and chart artifacts
-- `agents/docs-update-agent` — documentation update assistant
-- `agents/holiday-assistant-agent` — holiday planning assistant
-- `agents/memory-test-agent` — memory feature test assistant
-- `agents/mta-alerts-agent` — MTA subway service alerts assistant
-- `agents/pricing-analyst-agent` — pricing workflow analysis assistant
-- `agents/remote-mcp` — remote MCP configuration examples
-- `agents/travel-agent` — travel disruption and rebooking assistant
-- `agents/weather-agent` — minimal weather assistant
 
 Then copy the example env file so you can update the secrets.
 ```
@@ -103,9 +190,9 @@ ___
 
 ### License Agreement
 
-This License Agreement (the “**Agreement**”) establishes the terms on which MongoDB, Inc. (“**Company**”) grants a license to Company’s proprietary MongoDB Agentic Platform software solely in machine-readable, executable, object-code form and related documentation (the “**Software**”) to the licensee (“**You**” or “**Your**”) solely on the condition that You accept all of the terms in this Agreement. By clicking through any applicable acceptance screen, or otherwise accessing, installing, or using the Software, you are indicating your acceptance of this Agreement, and if you do not agree to the terms of this Agreement, you may not access, install, or use the Software. If You are an employee or agent of a company (the “**Customer**”), You hereby agree that You enter into this Agreement on behalf of the Customer and that You have the authority to bind the Customer to the terms and conditions of this Agreement.
+This License Agreement (the “**Agreement**”) establishes the terms on which MongoDB, Inc. (“**Company**”) grants a license to Company’s proprietary MongoDB Agentic Platform software solely in machine-readable, executable, object-code form and related documentation (the “**Software**”) to the licensee (“**You**” or “**Your**”) solely on the condition that You accept all of the terms in this Agreement. By clicking through any applicable acceptance screen, or otherwise accessing, installing, or using the Software, you are indicating your acceptance of this Agreement, and if you do not agree to the terms of this Agreement, you may not access, install, or use the Software. If You are an employee or agent of a company (the “**Customer**”), You hereby agree that You enter into this Agreement on behalf of the Customer and that You have the authority to bind the Customer to the terms and conditions of this Agreement. 
 
-1. **LICENSE**.  During the Period (as defined below), subject to Your full and ongoing compliance with all terms and conditions of this Agreement, Company hereby grants You a limited, revocable, non-exclusive, non-transferable, non-sublicensable license to install and use the Software in your internal non-production environment and solely for the intended purpose of the Software. For clarity, you may only install and use the Software for local development, evaluation and testing purposes and not for any production or commercial use case.
+1. **LICENSE**.  During the Period (as defined below), subject to Your full and ongoing compliance with all terms and conditions of this Agreement, Company hereby grants You a limited, revocable, non-exclusive, non-transferable, non-sublicensable license to install and use the Software in your internal non-production environment and solely for the intended purpose of the Software. For clarity, you may only install and use the Software for local development, evaluation and testing purposes and not for any production or commercial use case. 
 
 2. **RESTRICTIONS**.  You will not, and will not allow any third party to: (i) modify, alter, tamper with, repair, or otherwise create derivative works of the Software; (ii) sell, sublicense, rent, lease, distribute, market, or commercialize the Software; (iii) decompile, disassemble, translate, reverse engineer or otherwise attempt to derive source code from any portion of the Software, except and solely to the extent that the foregoing restriction is impermissible pursuant to applicable law or third party license; (iv) remove, alter or obscure any proprietary notices of Company, its licensors or suppliers included in the Software; or (v) publicly disseminate performance information about or analysis of the Software, including benchmarking or other test results; or (vi) use the Software to support products or services competitive to Company.  No third party may access, view or use the Software under this Agreement.
 
@@ -119,9 +206,9 @@ This License Agreement (the “**Agreement**”) establishes the terms on which 
 
 7. **TERM**.  This Agreement shall commence when you download or receive the Software and shall continue in force and effect until terminated by either party or, if earlier, the Software becomes generally available (“**Period**”).  Either party may terminate this Agreement, with or without cause, immediately upon written notice to the other party. Company may terminate this Agreement by posting a notice on its website. This Agreement will terminate immediately and without notice in the event that you breach any term or condition of this Agreement. Upon the expiration or any termination of this Agreement, the license and all rights granted to You under this Agreement will immediately terminate, and You shall promptly purge and destroy all copies of the Software in Your possession. Upon Company’s request, You will certify such deletion or destruction in writing. Provisions intended by their nature to survive termination of this Agreement survive termination.
 
-8. **USAGE DATA.**  The Software may include features that provide us metadata about usage of the Software, and you hereby consent to our collection of such data, and to our storage, processing, and analysis of such data for our own internal business purposes.
+8. **USAGE DATA.**  The Software may include features that provide us metadata about usage of the Software, and you hereby consent to our collection of such data, and to our storage, processing, and analysis of such data for our own internal business purposes. 
 
-9. **WARRANTY DISCLAIMER**.  THE SOFTWARE IS PROVIDED TO YOU “AS IS” AND WITH NO REPRESENTATION OR WARRANTY OF ANY KIND.  EXCEPT TO THE EXTENT PROHIBITED BY LAW, COMPANY AND LICENSORS EXPRESSLY DISCLAIM ANY AND ALL WARRANTIES AND REPRESENTATIONS OF ANY KIND WITH REGARD TO THE SOFTWARE OR THIS AGREEMENT, INCLUDING ANY WARRANTY OF NON-INFRINGEMENT, TITLE, FITNESS FOR A PARTICULAR PURPOSE, FUNCTIONALITY OR MERCHANTABILITY, WHETHER EXPRESS, IMPLIED OR STATUTORY.
+9. **WARRANTY DISCLAIMER**.  THE SOFTWARE IS PROVIDED TO YOU “AS IS” AND WITH NO REPRESENTATION OR WARRANTY OF ANY KIND.  EXCEPT TO THE EXTENT PROHIBITED BY LAW, COMPANY AND LICENSORS EXPRESSLY DISCLAIM ANY AND ALL WARRANTIES AND REPRESENTATIONS OF ANY KIND WITH REGARD TO THE SOFTWARE OR THIS AGREEMENT, INCLUDING ANY WARRANTY OF NON-INFRINGEMENT, TITLE, FITNESS FOR A PARTICULAR PURPOSE, FUNCTIONALITY OR MERCHANTABILITY, WHETHER EXPRESS, IMPLIED OR STATUTORY. 
 
 10. **LIMITATION OF REMEDIES**.  IN NO EVENT SHALL COMPANY BE LIABLE FOR ANY INCIDENTAL, INDIRECT, SPECIAL, CONSEQUENTIAL OR PUNITIVE DAMAGES IN CONNECTION WITH THIS AGREEMENT, REGARDLESS OF THE NATURE OF THE CLAIM OR THEORY OF LIABILITY, INCLUDING, WITHOUT LIMITATION, LOST PROFITS, COSTS OF DELAY, ANY FAILURE OF DELIVERY, BUSINESS INTERRUPTION, COSTS OF LOST OR DAMAGED DATA OR DOCUMENTATION OR LIABILITIES TO THIRD PARTIES ARISING FROM ANY SOURCE, REGARDLESS OF WHETHER THE COMPANY HAS BEEN NOTIFIED OF THE POSSIBILITY OF SUCH DAMAGES. WITHOUT LIMITING THE FOREGOING, COMPANY CUMULATIVE LIABILITY FOR ALL CLAIMS ARISING FROM OR RELATING TO THIS AGREEMENT, INCLUDING, WITHOUT LIMITATION, ANY CAUSE OF ACTION SOUNDING IN CONTRACT, TORT, OR STRICT LIABILITY, SHALL NOT EXCEED ONE HUNDRED DOLLARS (U.S. $100.00).  THE FOREGOING LIMITATIONS WILL APPLY NOTWITHSTANDING THE FAILURE OF ESSENTIAL PURPOSE OF ANY LIMITED REMEDY PROVIDED HEREIN.
 

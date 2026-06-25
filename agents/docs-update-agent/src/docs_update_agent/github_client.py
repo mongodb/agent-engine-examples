@@ -124,7 +124,7 @@ class GitHubClient:
     def _auth_headers(self) -> dict[str, str]:
         return {
             "Authorization": f"Bearer {self._token}",
-            "User-Agent": "atlasap-docs-update-agent",
+            "User-Agent": "magenta-docs-update-agent",
         }
 
     def _with_client(self, op: Callable[[httpx.Client], T]) -> T:

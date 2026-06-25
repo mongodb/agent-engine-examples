@@ -1,0 +1,9 @@
+overrides:
+  "@magenta/sdk-core-ts": "git+https://github.com/10gen/magenta-client-libraries#path:packages/sdk-core-ts"
+  "@magenta/runner-shared-ts": "git+https://github.com/10gen/magenta-client-libraries#path:packages/runner-shared-ts"
+  "@magenta/magenta-sdklanggraph-ts": "git+https://github.com/10gen/magenta-client-libraries#path:packages/magenta-sdklanggraph-ts"
+
+allowBuilds:
+  esbuild: true
+
+blockExoticSubdeps: false

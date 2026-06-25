@@ -1,0 +1,9 @@
+name: simple-agent
+entrypoint: simple_agent.main:app
+framework: langgraph
+build:
+  context: .
+
+defaults:
+  enabled_tools:
+    - web_search

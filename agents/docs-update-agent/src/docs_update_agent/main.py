@@ -1,4 +1,4 @@
-"""Docs Update Agent — Automated documentation updater on AtlasAP.
+"""Docs Update Agent — Automated documentation updater on Magenta.
 
 Uses a plain LangGraph ReAct agent with:
 - **GitHub read + write tools**: ``list_recent_commits``, ``get_commit_diff``,
@@ -20,7 +20,7 @@ from typing import Any, cast
 from dotenv import load_dotenv
 from langchain_core.language_models import BaseChatModel
 from langgraph.prebuilt import create_react_agent
-from atlasap_sdklanggraph import App
+from magenta_sdklanggraph import App
 
 from docs_update_agent.github_client import GitHubClient, from_env
 
@@ -535,7 +535,7 @@ def build_agent():
 def main():
     """Main entry point."""
     logger.info("=" * 60)
-    logger.info("Starting Docs Update Agent (AtlasAP SDK)")
+    logger.info("Starting Docs Update Agent (Magenta SDK)")
     logger.info("=" * 60)
     app.run()
 

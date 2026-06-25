@@ -49,7 +49,7 @@ mta-alerts-agent/
 
 - [uv](https://docs.astral.sh/uv/) for Python package management
 - Docker and Docker Compose
-- The `agentic` CLI (from the AtlasAP SDK)
+- The `agentic` CLI (from the Magenta SDK)
 - At least one LLM provider API key (see below)
 
 ## Setup
