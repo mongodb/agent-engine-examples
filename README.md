@@ -1,7 +1,6 @@
-# Magenta Examples
+# Agentic Platform Examples
 
-Standalone example agents built on top of
-[magenta-client-libraries](https://github.com/10gen/magenta-client-libraries).
+Standalone example agents built for MongoDB Agentic Platform.
 
 Each example agent lives in the `agents/` directory. Every agent is a
 **self-contained application** — it has its own `agent.yaml`, dependencies,
@@ -17,8 +16,7 @@ monorepo manifest so agents can share workspace tooling and still be discovered
 as separate deployable apps. The monorepo layout is a convenience, not a
 requirement for any individual example.
 
-The examples depend on the SDK via git-based `uv` sources that point at the
-`10gen/magenta-client-libraries` repository.
+The examples depend on Agentic Platform SDK packages via git-based `uv` sources.
 
 ## Agents
 
@@ -31,7 +29,7 @@ The examples depend on the SDK via git-based `uv` sources that point at the
 | [`agents/mta-alerts-agent/`](agents/mta-alerts-agent/) | MTA subway service alerts agent |
 | [`agents/recruiting-assistant-agent/`](agents/recruiting-assistant-agent/) | Recruiting assistant with cross-session memory and outreach review |
 | [`agents/remote-mcp/`](agents/remote-mcp/) | Remote MCP examples for GitHub, Glean, and Sentry |
-| [`agents/simple-agent/`](agents/simple-agent/) | Web search assistant migrated onto `magenta_sdklanggraph` |
+| [`agents/simple-agent/`](agents/simple-agent/) | Web search assistant built on the Agentic Platform LangGraph SDK |
 | [`agents/weather-agent/`](agents/weather-agent/) | Minimal LangGraph weather demo (single workspace) |
 
 ## Templates
@@ -91,7 +89,7 @@ be re-included.
 - The root `uv` workspace ties agents together for convenience but is not a
   hard requirement — agents are designed to work independently.
 - Templates are starter scaffolds and are not part of the root `uv` workspace.
-- Shared SDK code stays in `magenta-client-libraries/`; app-specific behavior
+- Shared SDK code belongs in the Agentic Platform SDK; app-specific behavior
   belongs here.
 
 ___
