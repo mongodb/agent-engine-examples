@@ -1,0 +1,38 @@
+[
+  {
+    "label": "weather-irrops-policy",
+    "text": "Weather cancellation policy: same-cabin protection is required for gold and platinum travelers when inventory exists. Partner-airline recovery above $650 requires supervisor review. Overnight disruptions may include hotel up to $220 and a $40 meal voucher.",
+    "source": "policy_portal",
+    "visibility": "org",
+    "contextual_metadata": {
+      "policy_type": "weather_cancellation"
+    }
+  },
+  {
+    "label": "partner-airline-rules",
+    "text": "Approved recovery partners for the transatlantic disruption demo: Partner Atlantic and North Harbor. Partner Atlantic offers same-day lift but any premium-cabin or high-cost recovery must be approved before ticket reissue.",
+    "source": "partner_inventory",
+    "visibility": "org",
+    "contextual_metadata": {
+      "market": "transatlantic"
+    }
+  },
+  {
+    "label": "airport-operations-lhr",
+    "text": "LHR disruption support notes: hotel desk remains staffed overnight, wheelchair desk needs manual coordination for reaccommodation, and family hotel blocks are normally available near Terminal 3.",
+    "source": "airport_ops",
+    "visibility": "org",
+    "contextual_metadata": {
+      "airport": "LHR"
+    }
+  },
+  {
+    "label": "traveler-notification-preferences",
+    "text": "Priority travelers and most corporate passengers in this demo prefer SMS before email. Family and special-assistance cases should receive a concise operational summary after itinerary protection is complete.",
+    "source": "traveler_service",
+    "visibility": "org",
+    "contextual_metadata": {
+      "channel_priority": "sms"
+    }
+  }
+]

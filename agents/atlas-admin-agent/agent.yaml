@@ -1,0 +1,24 @@
+name: atlas-admin-agent
+entrypoint: atlas_admin_agent.main:app
+framework: langgraph
+build:
+  context: .
+
+defaults:
+  enabled_tools:
+    - list_organizations
+    - list_projects
+    - get_project
+    - list_clusters
+    - get_cluster
+    - list_snapshots
+    - list_database_users
+    - list_network_access_entries
+    - list_alerts
+    - list_backup_restore_jobs
+    - atlas_describe_endpoint
+    - atlas_request
+    - atlas_execute
+    - run_snapshot_restore_test
+    - execute_snapshot_restore_test
+    - check_snapshot_restore_test

@@ -1,0 +1,23 @@
+name: remote-mcp
+entrypoint: remote_mcp.sentry:app
+framework: langgraph
+build:
+  context: .
+
+config:
+  provider: openai
+  model: gpt-5.4-mini
+
+features:
+  guardrails: false
+  memory: false
+
+mcp:
+  servers:
+    sentry:
+      transport: streamable_http
+      url: https://mcp.sentry.dev/mcp
+      auth:
+        type: oauth
+        scope: "org:read project:read team:read event:read"
+      timeout_seconds: 30

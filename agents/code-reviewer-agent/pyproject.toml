@@ -1,0 +1,42 @@
+[project]
+name = "code-reviewer-agent"
+version = "0.1.0"
+description = "Code reviewer agent demonstrating App.deep_agent() skills scaffold on Magenta"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+dependencies = [
+    "magenta-sdklanggraph",
+    # Pinned exactly: SkillsMiddleware + reserved tool-name contracts can
+    # shift between minor versions; SDK tests pin compatibility against this.
+    "deepagents==0.5.3",
+    "python-dotenv>=1.0.0",
+    "langchain-openai>=0.3.0",
+    "grpcio>=1.60.0",
+    "grpcio-health-checking>=1.60.0",
+    # GitHub PR fetch tool (fetch_pr_diff in main.py). Used to pull unified
+    # diffs for review when a user supplies a PR URL.
+    "httpx>=0.25.0",
+]
+
+[project.scripts]
+code-reviewer-agent = "code_reviewer_agent.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/code_reviewer_agent"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.uv.sources]
+magenta-sdklanggraph = { git = "https://github.com/10gen/magenta-client-libraries", subdirectory = "packages/magenta-sdklanggraph" }

@@ -1,0 +1,221 @@
+[
+  {
+    "label": "tier_1_account_definition",
+    "text": "Tier 1 accounts are high-value customers defined by revenue and volume thresholds. They receive priority pricing support and are used as a benchmark group when comparing specialty-by-brand ratios, margin targets, and deal outcomes. Tier 1 deal patterns inform recommendations for other Tier 1 accounts.",
+    "org_id": "org_pricing_demo",
+    "source": "data_ontology",
+    "visibility": "org",
+    "contextual_metadata": {
+      "tier_criteria": "revenue_and_volume_thresholds",
+      "use_case": "benchmark_comparison"
+    }
+  },
+  {
+    "label": "medpoint_past_pricing_context",
+    "text": "Prior MedPoint Pharmacies contracts have settled with generic analgesic discounts in the 10-12% range and specialty oncology margins held at 8.2-8.8%. Shipping cost increases have been factored into recent specialty margin targets. MedPoint historically negotiates hard on generic analgesics; offering room on generics has helped hold specialty margins.",
+    "org_id": "org_pricing_demo",
+    "source": "deal_history",
+    "visibility": "private",
+    "extraction_source": "session_medpoint_renewal_2026",
+    "contextual_metadata": {
+      "account_name": "MedPoint Pharmacies",
+      "generic_analgesic_discount_range": "10-12%",
+      "specialty_oncology_margin_range": "8.2-8.8%"
+    }
+  },
+  {
+    "label": "medpoint_category_performance",
+    "text": "For MedPoint Pharmacies, over the last 12 months, the top 5 product categories by revenue are: 1) Generic Analgesic ($2.84M), 2) Specialty Oncology ($2.12M), 3) OTC Respiratory ($1.56M), 4) Brand Cardiovascular ($1.18M), 5) Generic Diabetes ($0.94M). These figures are used for account reviews and renewal discussions.",
+    "org_id": "org_pricing_demo",
+    "source": "account_master",
+    "visibility": "private",
+    "contextual_metadata": {
+      "account_name": "MedPoint Pharmacies",
+      "period": "last_12_months",
+      "top_5_categories": ["Generic Analgesic", "Specialty Oncology", "OTC Respiratory", "Brand Cardiovascular", "Generic Diabetes"]
+    }
+  },
+  {
+    "label": "medpoint_product_mix",
+    "text": "MedPoint Pharmacies' specialty-by-brand ratio is 1.42, meaning specialty product revenue is 1.42 times brand product revenue. This ratio is used to compare account mix to Tier 1 benchmarks and inform pricing recommendations.",
+    "org_id": "org_pricing_demo",
+    "source": "account_master",
+    "visibility": "private",
+    "contextual_metadata": {
+      "account_name": "MedPoint Pharmacies",
+      "specialty_by_brand_ratio": 1.42
+    }
+  },
+  {
+    "label": "tier_1_product_mix_benchmarks",
+    "text": "The average specialty-by-brand ratio across all Tier 1 accounts is 1.38. This Tier 1 average is the standard benchmark when comparing an account's ratio; accounts above 1.38 have a higher specialty mix than the Tier 1 norm.",
+    "org_id": "org_pricing_demo",
+    "source": "data_ontology",
+    "visibility": "org",
+    "contextual_metadata": {
+      "tier": "Tier 1",
+      "specialty_by_brand_ratio_avg": 1.38,
+      "use_case": "benchmark_comparison"
+    }
+  },
+  {
+    "label": "medpoint_deal_2024q1",
+    "text": "MedPoint Pharmacies 1.5-year contract signed Q1 2024. Generic Analgesic: list $13.80, 10% discount, net $12.42, 5.1% margin. Specialty Oncology: list $338.00, 2.5% discount, net $329.55, 8.2% margin. OTC Respiratory: list $8.20, 7% discount, net $7.63, 4.2% margin. Used for vs. Last comparisons in renewal drafting.",
+    "org_id": "org_pricing_demo",
+    "source": "deal_history",
+    "visibility": "private",
+    "contextual_metadata": {
+      "account_name": "MedPoint Pharmacies",
+      "deal_period": "2024 Q1",
+      "contract_duration_years": 1.5
+    }
+  },
+  {
+    "label": "medpoint_deal_2024q3",
+    "text": "MedPoint Pharmacies 1-year contract signed Q3 2024. MedPoint pushed hard on generic analgesic discounts — final discount was 12%, 3% above standard. Offset by holding firm on specialty oncology margins at 8.2%. Generic Analgesic: list $14.00, 12% discount, net $12.32, 5.1% margin. Specialty Oncology: list $340.00, 3% discount, net $329.80, 8.2% margin. OTC Respiratory: list $8.40, 8.5% discount, net $7.69, 4.2% margin.",
+    "org_id": "org_pricing_demo",
+    "source": "deal_history",
+    "visibility": "private",
+    "contextual_metadata": {
+      "account_name": "MedPoint Pharmacies",
+      "deal_period": "2024 Q3",
+      "contract_duration_years": 1,
+      "negotiation_behavior": "aggressive_on_generics"
+    }
+  },
+  {
+    "label": "tier1_generic_rejection_rate",
+    "text": "Deals with margin targets above 5.5% on generic analgesics for Tier 1 accounts have a 40% higher rejection rate based on last 6 deals. Recommend keeping generic analgesic margin at or below 5.5% for Tier 1 to reduce deal rejection risk.",
+    "org_id": "org_pricing_demo",
+    "source": "deal_outcomes",
+    "visibility": "org",
+    "contextual_metadata": {
+      "tier": "Tier 1",
+      "category": "Generic Analgesic",
+      "margin_threshold": 5.5,
+      "rejection_rate_impact": "40% higher"
+    }
+  },
+  {
+    "label": "specialty_shipping_cost_analysis",
+    "text": "Shipping costs for specialty oncology have increased 6% YoY. Prior deal margin of 8.2% would compress to approximately 7.6% at same pricing. Recommend adjusting margin floor from 8.2% to 8.8% for specialty oncology to preserve margin.",
+    "org_id": "org_pricing_demo",
+    "source": "coupa_costs",
+    "visibility": "org",
+    "contextual_metadata": {
+      "category": "Specialty Oncology",
+      "yoy_shipping_change_pct": 6,
+      "prior_margin_pct": 8.2,
+      "recommended_margin_floor_pct": 8.8
+    }
+  },
+  {
+    "label": "mercy_health_account_profile",
+    "text": "Mercy Health is a Tier 1 hospital-system account. No prior deals or contract history exist in the system. Mercy Health operates across 3 regional markets and has expressed interest in Generic Analgesic, Specialty Oncology, and OTC Respiratory categories. As a Tier 1 account, standard Tier 1 benchmarks (e.g. margin ceilings, rejection rate patterns, specialty-by-brand ratios) apply.",
+    "org_id": "org_pricing_demo",
+    "source": "account_master",
+    "visibility": "org",
+    "contextual_metadata": {
+      "account_name": "Mercy Health",
+      "tier": "Tier 1",
+      "account_type": "hospital_system",
+      "prior_deals": 0
+    }
+  },
+  {
+    "label": "tier_1_pricing_benchmarks",
+    "text": "Based on the last 4 Tier 1 deals across multiple customers in Generic Analgesic, Specialty Oncology, and OTC Respiratory: Generic Analgesic discounts ranged 10-13%, Specialty Oncology margins held at 8.2-8.8%, and OTC Respiratory discounts ranged 7-9%. These ranges serve as starting benchmarks for new Tier 1 deals in these categories.",
+    "org_id": "org_pricing_demo",
+    "source": "deal_outcomes",
+    "visibility": "org",
+    "contextual_metadata": {
+      "tier": "Tier 1",
+      "categories": ["Generic Analgesic", "Specialty Oncology", "OTC Respiratory"],
+      "deal_count": 4,
+      "use_case": "new_deal_benchmark"
+    }
+  },
+  {
+    "label": "shipping_frequency_analysis",
+    "text": "Shipping frequency consolidation is a proven cost lever for Tier 1 accounts. Historical analysis shows that moving from bi-weekly to monthly shipments reduces per-unit shipping costs by 12-18% depending on the category. This consolidation has been successfully implemented with 3 Tier 1 accounts across all categories (including cold-chain specialty oncology) without inventory disruption. Recommend presenting consolidation options alongside discount and supplier levers in renewal proposals.",
+    "org_id": "org_pricing_demo",
+    "source": "logistics_analysis",
+    "visibility": "org",
+    "contextual_metadata": {
+      "lever_type": "shipping_frequency",
+      "categories": ["Generic Analgesic", "Specialty Oncology", "OTC Respiratory"],
+      "use_case": "cost_reduction"
+    }
+  },
+  {
+    "label": "hospital_system_pricing_patterns",
+    "text": "Hospital-system accounts (e.g. Mercy Health) typically have a higher specialty mix than pharmacy chains (e.g. MedPoint Pharmacies). Hospital systems prioritize specialty oncology pricing and tend to accept standard generic analgesic discounts more readily, whereas pharmacy chains negotiate aggressively on generics. For hospital-system Tier 1 accounts, recommend starting with tighter specialty oncology discounts (2-2.5%) and more competitive generic analgesic discounts (11-12%) to win the deal. Specialty margins should be defended more firmly for hospital systems given their higher specialty volume concentration.",
+    "org_id": "org_pricing_demo",
+    "source": "deal_outcomes",
+    "visibility": "org",
+    "contextual_metadata": {
+      "account_type": "hospital_system",
+      "pricing_strategy": "specialty_focused",
+      "use_case": "new_deal_recommendation"
+    }
+  },
+  {
+    "label": "mercy_health_estimated_volumes",
+    "text": "Mercy Health estimated annual volumes based on regional market analysis: Generic Analgesic: ~$1.9M (smaller share than pharmacy chains), Specialty Oncology: ~$3.1M (largest category — typical for hospital systems), OTC Respiratory: ~$1.2M. Total estimated annual: ~$6.2M. Specialty-by-brand ratio: estimated 1.55 (above Tier 1 average of 1.38 and above MedPoint's 1.42), reflecting hospital-system specialty concentration.",
+    "org_id": "org_pricing_demo",
+    "source": "account_master",
+    "visibility": "org",
+    "contextual_metadata": {
+      "account_name": "Mercy Health",
+      "estimated_annual_revenue": "$6.2M",
+      "specialty_by_brand_ratio": 1.55,
+      "top_categories": ["Specialty Oncology", "Generic Analgesic", "OTC Respiratory"]
+    }
+  },
+  {
+    "label": "mercy_health_gpo_membership",
+    "text": "Mercy Health is a member of the HealthTrust Group Purchasing Organization (GPO). Under this GPO contract, Mercy Health receives a pre-negotiated materials discount on Generic Analgesic products, reducing the effective per-unit materials cost from $7.80 to $7.40 (a $0.40/unit saving). This GPO discount is reflected in Coupa procurement data and should be factored into any pricing or margin analysis for Mercy Health. No GPO discounts apply to Specialty Oncology or OTC Respiratory categories for this account.",
+    "org_id": "org_pricing_demo",
+    "source": "account_master",
+    "visibility": "org",
+    "contextual_metadata": {
+      "account_name": "Mercy Health",
+      "gpo_name": "HealthTrust",
+      "affected_category": "Generic Analgesic",
+      "materials_cost_standard": 7.80,
+      "materials_cost_gpo": 7.40,
+      "savings_per_unit": 0.40
+    }
+  },
+  {
+    "label": "mercy_health_negotiation_intel",
+    "text": "Mercy Health's procurement team prioritizes competitive specialty oncology terms, as Specialty Oncology represents approximately 50% of their total estimated revenue ($3.1M of $6.2M). Unlike pharmacy chains that negotiate aggressively on generics, Mercy Health is expected to accept standard Tier 1 generic analgesic discounts (11-12%) without significant pushback. Internal margin targets for the Mercy Health deal: Specialty Oncology at 8.80% (defending against YoY shipping cost increases), Generic Analgesic at 5.5-6.0% (achievable with HealthTrust GPO materials discount and shipping consolidation; above 5.5% without cost offsets carries higher rejection risk per Tier 1 historical patterns), OTC Respiratory at 6.5-8.0% (standard Tier 1 range). Mercy Health benchmarks their pricing against other hospital-system deals, not pharmacy-chain contracts.",
+    "org_id": "org_pricing_demo",
+    "source": "account_master",
+    "visibility": "org",
+    "contextual_metadata": {
+      "account_name": "Mercy Health",
+      "account_type": "hospital_system",
+      "margin_targets": {
+        "specialty_oncology_pct": 8.80,
+        "generic_analgesic_pct_range": "5.5-6.0",
+        "otc_respiratory_pct_range": "6.5-8.0"
+      },
+      "negotiation_behavior": "specialty_focused"
+    }
+  },
+  {
+    "label": "mercy_health_logistics_profile",
+    "text": "Mercy Health currently receives bi-weekly shipments across all three product categories (Generic Analgesic, Specialty Oncology, OTC Respiratory) from regional distribution centers serving their 3 hospital-system markets. Volume analysis confirms that Mercy Health's order patterns support monthly batch scheduling without inventory disruption, making them eligible for the same shipping frequency consolidation program that has been successfully implemented with 3 other Tier 1 accounts. Consolidation is expected to reduce per-unit shipping costs by 12-18% depending on category, with the largest absolute savings on Specialty Oncology given its high per-unit shipping cost ($28.55).",
+    "org_id": "org_pricing_demo",
+    "source": "logistics_analysis",
+    "visibility": "org",
+    "contextual_metadata": {
+      "account_name": "Mercy Health",
+      "current_shipping_frequency": "bi-weekly",
+      "consolidation_eligible": true,
+      "regional_markets": 3,
+      "highest_impact_category": "Specialty Oncology"
+    }
+  }
+]

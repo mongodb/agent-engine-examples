@@ -1,0 +1,27 @@
+agents:
+  - name: atlas-admin-agent
+    path: agents/atlas-admin-agent
+  - name: code-reviewer-agent
+    path: agents/code-reviewer-agent
+  - name: data-analyst-agent
+    path: agents/data-analyst-agent
+  - name: docs-update-agent
+    path: agents/docs-update-agent
+  - name: holiday-assistant-agent
+    path: agents/holiday-assistant-agent
+  - name: insurance-agent
+    path: agents/insurance-agent
+  - name: mta-alerts-agent
+    path: agents/mta-alerts-agent
+  - name: recruiting-assistant-agent
+    path: agents/recruiting-assistant-agent
+  - name: remote-mcp
+    path: agents/remote-mcp
+  - name: simple-agent
+    path: agents/simple-agent
+  - name: travel-agent
+    path: agents/travel-agent
+  - name: weather-agent
+    path: agents/weather-agent
+  - name: memory-test-agent
+    path: agents/memory-test-agent

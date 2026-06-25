@@ -1,0 +1,10 @@
+.agentic/
+.env
+.venv/
+__pycache__/
+.pytest_cache/
+.ruff_cache/
+logs/
+observability/
+.devcontainer/
+.env.*

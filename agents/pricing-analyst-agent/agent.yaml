@@ -1,0 +1,2 @@
+name: pricing-analyst-agent
+entrypoint: pricing_analyst_agent.main:app

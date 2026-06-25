@@ -1,0 +1,4 @@
+interface:
+  display_name: "Magenta Agent Dev"
+  short_description: "Build, run, and debug local Magenta agents"
+  default_prompt: "Use $magenta-agent-dev to build, run, or debug a Magenta agent in this repo."

@@ -1,0 +1,70 @@
+[
+  {
+    "label": "plan-to-pipeline:cohort-comparison-by-pedal-count",
+    "text": "Analytical plan for cohort_comparison with control_strategy=outlier_filter_v1: Compare loss frequency, lifetime value, and retention across one-pedal, two-pedal, and three-pedal cohorts, controlling for age/zip/mileage as outlier filters (NOT stratified buckets). Filter to valid documents (pedal_count in [1,2,3], annual_mileage >= 1000, age >= 18). Derive claim_count from loss_history array length and loss_to_premium_ratio. Group directly by vehicle.pedal_count (no stratification, no rollup) and compute count, avg_claim_count, total_claims, avg_mileage, avg_age, avg_lifetime_value, avg_retention_probability, avg_tenure_months, avg_loss_to_premium_ratio, total_premiums, total_claims_paid, avg_cross_sell_count. Derive per-group: loss_frequency_per_1000, overall_loss_ratio, pedal_label. Project clean output with renamed fields. Sort by pedal_count ascending.\n\nMongoDB aggregation pipeline:\n[\n  {\"$match\": {\"vehicle.pedal_count\": {\"$in\": [1, 2, 3]}, \"vehicle.annual_mileage\": {\"$gte\": 1000}, \"customer.age\": {\"$gte\": 18}}},\n  {\"$addFields\": {\"claim_count\": {\"$size\": {\"$ifNull\": [\"$loss_history\", []]}}, \"loss_to_premium_ratio\": {\"$cond\": {\"if\": {\"$gt\": [\"$ltv.total_premiums_paid\", 0]}, \"then\": {\"$divide\": [\"$ltv.total_claims_paid\", \"$ltv.total_premiums_paid\"]}, \"else\": null}}}},\n  {\"$group\": {\"_id\": \"$vehicle.pedal_count\", \"count\": {\"$sum\": 1}, \"avg_claim_count\": {\"$avg\": \"$claim_count\"}, \"total_claims\": {\"$sum\": \"$claim_count\"}, \"avg_mileage\": {\"$avg\": \"$vehicle.annual_mileage\"}, \"avg_age\": {\"$avg\": \"$customer.age\"}, \"avg_lifetime_value\": {\"$avg\": \"$ltv.estimated_lifetime_value\"}, \"avg_retention_probability\": {\"$avg\": \"$ltv.retention_probability\"}, \"avg_tenure_months\": {\"$avg\": \"$ltv.tenure_months\"}, \"avg_loss_to_premium_ratio\": {\"$avg\": \"$loss_to_premium_ratio\"}, \"total_premiums\": {\"$sum\": \"$ltv.total_premiums_paid\"}, \"total_claims_paid\": {\"$sum\": \"$ltv.total_claims_paid\"}, \"avg_cross_sell_count\": {\"$avg\": {\"$size\": {\"$ifNull\": [\"$ltv.cross_sell_products\", []]}}}}},\n  {\"$addFields\": {\"loss_frequency_per_1000\": {\"$round\": [{\"$multiply\": [{\"$divide\": [\"$total_claims\", \"$count\"]}, 1000]}, 1]}, \"overall_loss_ratio\": {\"$round\": [{\"$divide\": [\"$total_claims_paid\", \"$total_premiums\"]}, 4]}, \"pedal_label\": {\"$switch\": {\"branches\": [{\"case\": {\"$eq\": [\"$_id\", 1]}, \"then\": \"One-pedal (EV)\"}, {\"case\": {\"$eq\": [\"$_id\", 2]}, \"then\": \"Two-pedal (automatic)\"}, {\"case\": {\"$eq\": [\"$_id\", 3]}, \"then\": \"Three-pedal (manual)\"}], \"default\": \"Unknown\"}}}},\n  {\"$project\": {\"_id\": 0, \"pedal_count\": \"$_id\", \"pedal_label\": 1, \"sample_size\": \"$count\", \"loss_frequency_per_1000\": 1, \"total_claims\": 1, \"avg_claim_count\": {\"$round\": [\"$avg_claim_count\", 3]}, \"avg_mileage\": {\"$round\": [\"$avg_mileage\", 0]}, \"avg_age\": {\"$round\": [\"$avg_age\", 1]}, \"avg_lifetime_value\": 1, \"avg_retention_probability\": {\"$round\": [\"$avg_retention_probability\", 2]}, \"avg_tenure_years\": {\"$round\": [{\"$divide\": [\"$avg_tenure_months\", 12]}, 1]}, \"overall_loss_ratio\": 1, \"avg_loss_to_premium_ratio\": {\"$round\": [\"$avg_loss_to_premium_ratio\", 4]}, \"avg_cross_sell_count\": {\"$round\": [\"$avg_cross_sell_count\", 2]}}},\n  {\"$sort\": {\"pedal_count\": 1}}\n]",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "source": "seed_example",
+    "visibility": "org",
+    "contextual_metadata": {
+      "analysis_type": "cohort_comparison",
+      "grouping_field": "vehicle.pedal_count",
+      "control_strategy": "outlier_filter_v1",
+      "control_dimensions": ["customer.age", "vehicle.annual_mileage"],
+      "pipeline_stages": 6,
+      "pattern": "filter_then_group",
+      "metrics": ["loss_frequency_per_1000", "avg_lifetime_value", "avg_retention_probability", "overall_loss_ratio"]
+    }
+  },
+  {
+    "label": "plan-to-pipeline:trend-by-pedal-count-and-quarter",
+    "text": "Analytical plan for trend_over_time with control_strategy=outlier_filter_v1: Show how quarterly loss frequency has changed over time for each pedal count group. This is a claim-frequency trend, not a cohort-mix trend. Filter to valid documents. Unwind loss_history using the valid object form with only `path` and `preserveNullAndEmptyArrays`. Compute quarter bucket from loss_history.date as YYYY-QN. Filter out null quarters. Group by pedal_count and quarter, count distinct policies and claims. Derive loss_frequency_per_1000 per quarter. Project clean output. Sort by pedal_count then quarter.\n\nMongoDB aggregation pipeline:\n[\n  {\"$match\": {\"vehicle.pedal_count\": {\"$in\": [1, 2, 3]}, \"vehicle.annual_mileage\": {\"$gte\": 1000}, \"customer.age\": {\"$gte\": 18}}},\n  {\"$unwind\": {\"path\": \"$loss_history\", \"preserveNullAndEmptyArrays\": true}},\n  {\"$addFields\": {\"claim_quarter\": {\"$cond\": {\"if\": {\"$ifNull\": [\"$loss_history.date\", false]}, \"then\": {\"$concat\": [{\"$toString\": {\"$year\": {\"$toDate\": \"$loss_history.date\"}}}, \"-Q\", {\"$toString\": {\"$ceil\": {\"$divide\": [{\"$month\": {\"$toDate\": \"$loss_history.date\"}}, 3]}}}]}, \"else\": null}}}},\n  {\"$match\": {\"claim_quarter\": {\"$ne\": null}}},\n  {\"$group\": {\"_id\": {\"pedal_count\": \"$vehicle.pedal_count\", \"quarter\": \"$claim_quarter\"}, \"policy_ids\": {\"$addToSet\": \"$policy_id\"}, \"claim_count\": {\"$sum\": 1}}},\n  {\"$addFields\": {\"cohort_size\": {\"$size\": \"$policy_ids\"}, \"loss_frequency_per_1000\": {\"$round\": [{\"$multiply\": [{\"$divide\": [\"$claim_count\", {\"$size\": \"$policy_ids\"}]}, 1000]}, 1]}}},\n  {\"$project\": {\"_id\": 0, \"pedal_count\": \"$_id.pedal_count\", \"quarter\": \"$_id.quarter\", \"cohort_size\": 1, \"claim_count\": 1, \"loss_frequency_per_1000\": 1}},\n  {\"$sort\": {\"pedal_count\": 1, \"quarter\": 1}}\n]",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "source": "seed_example",
+    "visibility": "org",
+    "contextual_metadata": {
+      "analysis_type": "trend_over_time",
+      "grouping_field": "vehicle.pedal_count",
+      "time_dimension": "quarter",
+      "control_strategy": "outlier_filter_v1",
+      "pipeline_stages": 8,
+      "metrics": ["loss_frequency_per_1000", "cohort_size", "claim_count"]
+    }
+  },
+  {
+    "label": "plan-to-pipeline:cohort-mix-share-by-quarter",
+    "text": "Analytical plan for trend_over_time with control_strategy=outlier_filter_v1: Compute each pedal cohort's share of the in-force book per quarter for the pedal-count demo. Use `book_quarters`, which is already seeded on each Customer document to represent the quarters the policy is in force. Filter to valid documents first. Unwind `book_quarters`. Group by `(vehicle.pedal_count, book_quarters)` to count policies per cohort per quarter. Then compute each cohort's share of that quarter's total policy count. Project flat rows with quarter, pedal_count, policy_count, and share_pct. Sort by quarter then pedal_count. This answers 'how has the cohort mix changed over time' directly from book membership, not claim activity.\n\nMongoDB aggregation pipeline:\n[\n  {\"$match\": {\"vehicle.pedal_count\": {\"$in\": [1, 2, 3]}, \"vehicle.annual_mileage\": {\"$gte\": 1000}, \"customer.age\": {\"$gte\": 18}}},\n  {\"$unwind\": \"$book_quarters\"},\n  {\"$group\": {\"_id\": {\"pedal_count\": \"$vehicle.pedal_count\", \"quarter\": \"$book_quarters\"}, \"policy_count\": {\"$sum\": 1}}},\n  {\"$group\": {\"_id\": \"$_id.quarter\", \"quarter_total\": {\"$sum\": \"$policy_count\"}, \"cohorts\": {\"$push\": {\"pedal_count\": \"$_id.pedal_count\", \"policy_count\": \"$policy_count\"}}}},\n  {\"$unwind\": \"$cohorts\"},\n  {\"$project\": {\"_id\": 0, \"quarter\": \"$_id\", \"pedal_count\": \"$cohorts.pedal_count\", \"policy_count\": \"$cohorts.policy_count\", \"share_pct\": {\"$round\": [{\"$multiply\": [{\"$divide\": [\"$cohorts.policy_count\", \"$quarter_total\"]}, 100]}, 1]}}},\n  {\"$sort\": {\"quarter\": 1, \"pedal_count\": 1}}\n]",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "source": "seed_example",
+    "visibility": "org",
+    "contextual_metadata": {
+      "analysis_type": "trend_over_time",
+      "grouping_field": "vehicle.pedal_count",
+      "time_dimension": "quarter",
+      "control_strategy": "outlier_filter_v1",
+      "pipeline_stages": 8,
+      "pattern": "unwind_bucket_share",
+      "metrics": ["share_pct", "claim_count"]
+    }
+  },
+  {
+    "label": "plan-to-pipeline:simple-count-by-risk-tier",
+    "text": "Analytical plan: Count the number of policies in each risk tier and compute the average base rate per tier. Filter to valid documents with pedal_count in [1,2,3]. Group by current_factors.risk_tier. Compute count and average base_rate. Sort by count descending.\n\nMongoDB aggregation pipeline:\n[\n  {\"$match\": {\"vehicle.pedal_count\": {\"$in\": [1, 2, 3]}}},\n  {\"$group\": {\"_id\": \"$current_factors.risk_tier\", \"count\": {\"$sum\": 1}, \"avg_base_rate\": {\"$avg\": \"$current_factors.base_rate\"}}},\n  {\"$project\": {\"_id\": 0, \"risk_tier\": \"$_id\", \"count\": 1, \"avg_base_rate\": {\"$round\": [\"$avg_base_rate\", 0]}}},\n  {\"$sort\": {\"count\": -1}}\n]",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "source": "seed_example",
+    "visibility": "org",
+    "contextual_metadata": {
+      "analysis_type": "simple_aggregation",
+      "grouping_field": "current_factors.risk_tier",
+      "pipeline_stages": 4,
+      "metrics": ["count", "avg_base_rate"]
+    }
+  }
+]

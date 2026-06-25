@@ -1,0 +1,2 @@
+name: mta-alerts-agent
+entrypoint: mta_alerts_agent.agent:app

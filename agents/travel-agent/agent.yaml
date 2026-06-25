@@ -1,0 +1,15 @@
+name: travel-agent
+entrypoint: travel_agent.main:app
+
+# LLM selection for the sample app. Application code constructs the provider
+# client from these values and reads only the matching API key from .env.
+# Supported providers in this example: cerebras, gemini, openai.
+config:
+  provider: openai
+  model: gpt-5.4-mini
+
+# Runtime feature flags controlled by agent.yaml, not .env.
+# Set memory to true to enable long-term memory; VOYAGE_API_KEY must be present
+# in .env when memory is enabled.
+features:
+  memory: true

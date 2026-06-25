@@ -1,0 +1,32 @@
+[
+  {
+    "code": "LHR",
+    "city": "LHR",
+    "default_hotel": "Heathrow Terminal Hotel",
+    "notes": "Hotel desk open 24/7, partner desk in Terminal 3."
+  },
+  {
+    "code": "JFK",
+    "city": "JFK",
+    "default_hotel": "JFK Airport Hotel",
+    "notes": "IRROPS arrival support available in Terminal 4."
+  },
+  {
+    "code": "BOS",
+    "city": "BOS",
+    "default_hotel": "Boston Airport Hotel",
+    "notes": "Tight baggage connections during evening bank."
+  },
+  {
+    "code": "ORD",
+    "city": "Chicago",
+    "default_hotel": "Chicago O'Hare Airport Hotel",
+    "notes": "Weather recovery desks available in Terminal 1 and Terminal 3."
+  },
+  {
+    "code": "LAX",
+    "city": "Los Angeles",
+    "default_hotel": "LAX Terminal Hotel",
+    "notes": "Partner recovery desk is shared across terminals during IRROPS."
+  }
+]

@@ -1,0 +1,30 @@
+# .agenticignore — files left out of the source archive uploaded by 'agentic build'.
+# Read from the archive root (the repo/workspace root for monorepos).
+# Uses standard .gitignore syntax (globs, **, !negation); edit to fit your project.
+# .env / .env.* files and the .git directory are always excluded and cannot be
+# re-included, even if you delete this file or add a negation for them here.
+
+# Version control
+.git
+
+# Python
+.venv
+__pycache__
+.pytest_cache
+.mypy_cache
+.ruff_cache
+*.pyc
+
+# Node
+node_modules
+
+# Build output
+dist
+build
+
+# Local env files
+.env
+.env.*
+
+# Agentic local state
+.agentic

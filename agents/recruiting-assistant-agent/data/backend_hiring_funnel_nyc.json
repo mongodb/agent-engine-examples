@@ -1,0 +1,50 @@
+[
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Applied",
+    "candidates_entered": 247,
+    "candidates_passed": 178,
+    "dropoff_pct": 27.9
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Recruiter Screen",
+    "candidates_entered": 178,
+    "candidates_passed": 118,
+    "dropoff_pct": 33.7
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Technical Screen",
+    "candidates_entered": 118,
+    "candidates_passed": 72,
+    "dropoff_pct": 39.0
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Onsite",
+    "candidates_entered": 72,
+    "candidates_passed": 29,
+    "dropoff_pct": 59.7
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Offer",
+    "candidates_entered": 29,
+    "candidates_passed": 22,
+    "dropoff_pct": 24.1
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Accepted",
+    "candidates_entered": 22,
+    "candidates_passed": 18,
+    "dropoff_pct": 18.2
+  }
+]

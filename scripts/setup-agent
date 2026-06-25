@@ -1,0 +1,16 @@
+#!/bin/sh
+set -eu
+
+SCRIPT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+
+if command -v uv >/dev/null 2>&1; then
+  exec uv run --no-project --with pyyaml --with ruamel.yaml python "$SCRIPT_DIR/setup_demo.py" "$@"
+fi
+
+if ! python3 -c 'import yaml' >/dev/null 2>&1; then
+  printf '%s\n' 'This setup wizard requires uv or Python with PyYAML installed.' >&2
+  printf '%s\n' 'Install uv, or install PyYAML for python3, then rerun scripts/setup-agent.' >&2
+  exit 1
+fi
+
+exec python3 "$SCRIPT_DIR/setup_demo.py" "$@"

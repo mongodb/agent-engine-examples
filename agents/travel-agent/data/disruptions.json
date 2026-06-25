@@ -1,0 +1,50 @@
+[
+  {
+    "disruption_id": "DISR-1001",
+    "flight_number": "TA217",
+    "carrier": "Travel Air",
+    "origin": "LHR",
+    "destination": "JFK",
+    "cause": "severe weather",
+    "disruption_type": "weather_cancellation",
+    "scheduled_departure": "2026-05-07T12:35:00Z",
+    "scheduled_arrival": "2026-05-07T20:10:00Z",
+    "impacted_passenger_count": 42
+  },
+  {
+    "disruption_id": "DISR-1002",
+    "flight_number": "TA332",
+    "carrier": "Travel Air",
+    "origin": "JFK",
+    "destination": "SFO",
+    "cause": "crew legality timeout",
+    "disruption_type": "crew_delay",
+    "scheduled_departure": "2026-05-08T16:15:00Z",
+    "scheduled_arrival": "2026-05-08T22:45:00Z",
+    "impacted_passenger_count": 19
+  },
+  {
+    "disruption_id": "DISR-1003",
+    "flight_number": "TA551",
+    "carrier": "Travel Air",
+    "origin": "BOM",
+    "destination": "DXB",
+    "cause": "aircraft swap",
+    "disruption_type": "equipment_change",
+    "scheduled_departure": "2026-05-09T05:50:00Z",
+    "scheduled_arrival": "2026-05-09T08:05:00Z",
+    "impacted_passenger_count": 27
+  },
+  {
+    "disruption_id": "DISR-1004",
+    "flight_number": "TA552",
+    "carrier": "Travel Air",
+    "origin": "LAX",
+    "destination": "ORD",
+    "cause": "severe weather",
+    "disruption_type": "weather_cancellation",
+    "scheduled_departure": "2026-05-10T14:20:00Z",
+    "scheduled_arrival": "2026-05-10T20:15:00Z",
+    "impacted_passenger_count": 14
+  }
+]

@@ -1,0 +1,112 @@
+[
+  {
+    "term": "loss frequency",
+    "definition": "The number of insurance claims per unit of exposure, typically expressed per 1,000 policies. It measures how often claims occur within a cohort, independent of claim severity.",
+    "related_terms": ["claim frequency", "frequency rate"],
+    "domain": "actuarial",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "visibility": "org"
+  },
+  {
+    "term": "loss ratio",
+    "definition": "The ratio of total claims paid to total premiums collected for a given cohort or time period. A loss ratio above 1.0 means claims exceed premiums. Used as a primary measure of underwriting profitability.",
+    "related_terms": ["claims ratio", "incurred loss ratio"],
+    "domain": "actuarial",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "visibility": "org"
+  },
+  {
+    "term": "lifetime value",
+    "definition": "The estimated total net revenue a customer will generate over their entire relationship with the insurer. Calculated from tenure, premiums paid, claims paid, retention probability, and cross-sell potential. Abbreviated as LTV.",
+    "related_terms": ["LTV", "customer lifetime value", "CLV"],
+    "domain": "actuarial",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "visibility": "org"
+  },
+  {
+    "term": "pedal count",
+    "definition": "A vehicle classification based on the number of driver-operated pedals. One-pedal vehicles are electric vehicles using regenerative braking. Two-pedal vehicles have automatic transmissions (gas and brake). Three-pedal vehicles have manual transmissions (clutch, brake, gas). Used as a candidate rating factor.",
+    "related_terms": ["pedal classification", "pedal cohort"],
+    "domain": "vehicle_classification",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "visibility": "org"
+  },
+  {
+    "term": "rating factor",
+    "definition": "A variable used in insurance pricing models to differentiate risk and set premium levels. Examples include age, zip code, vehicle type, and driving record. Adding a new rating factor requires actuarial justification and regulatory filing.",
+    "related_terms": ["pricing factor", "risk factor", "rate variable"],
+    "domain": "actuarial",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "visibility": "org"
+  },
+  {
+    "term": "regenerative braking",
+    "definition": "A braking mechanism in electric vehicles that converts kinetic energy back to battery charge when the driver lifts off the accelerator. In one-pedal driving mode, it can decelerate the vehicle significantly without using the friction brake, which may reduce rear-end collision frequency.",
+    "related_terms": ["regen braking", "one-pedal braking"],
+    "domain": "vehicle_technology",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "visibility": "org"
+  },
+  {
+    "term": "risk tier",
+    "definition": "A categorical classification of a policyholder's overall risk level. Common tiers include preferred, standard, and high-risk. Determines the base rate multiplier applied to premium calculation.",
+    "related_terms": ["risk class", "risk segment", "underwriting tier"],
+    "domain": "actuarial",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "visibility": "org"
+  },
+  {
+    "term": "retention probability",
+    "definition": "The estimated likelihood that a policyholder will renew their policy at the next renewal period. Higher retention correlates with higher lifetime value. Typically expressed as a decimal between 0 and 1.",
+    "related_terms": ["renewal probability", "retention rate"],
+    "domain": "actuarial",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "visibility": "org"
+  },
+  {
+    "term": "arity score",
+    "definition": "A telematics-based driving behavior score from the Arity platform. Ranges from 0 to 100, where higher scores indicate safer driving patterns. Incorporates metrics like hard braking frequency, night driving percentage, and trip distance patterns.",
+    "related_terms": ["telematics score", "driving score", "Arity driving score"],
+    "domain": "telematics",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "visibility": "org"
+  },
+  {
+    "term": "deviation band",
+    "definition": "The regulatory-approved range within which an insurer can adjust individual rates relative to the filed rate plan without requiring a new filing. Typically expressed as a percentage above and below the base rate. Rate changes within the band can be implemented immediately.",
+    "related_terms": ["rate deviation", "approved deviation range"],
+    "domain": "regulatory",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "visibility": "org"
+  },
+  {
+    "term": "cross-sell",
+    "definition": "The practice of offering additional insurance products to an existing customer. Common cross-sell products include renters, umbrella, and life insurance. Cross-sell count is a component of lifetime value calculation.",
+    "related_terms": ["cross-selling", "product cross-sell"],
+    "domain": "business",
+    "org_id": "507f1f77bcf86cd799439099",
+    "project_id": "507f1f77bcf86cd799439012",
+    "agent_id": "data-analyst-agent",
+    "visibility": "org"
+  }
+]

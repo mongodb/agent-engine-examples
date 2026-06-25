@@ -1,0 +1,90 @@
+[
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Onsite",
+    "reason": "Long scheduling delays — average 12 days from tech screen to onsite",
+    "count": 16,
+    "pct_of_stage_dropoff": 37.2
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Onsite",
+    "reason": "Unclear on-call expectations surprised candidates during onsite",
+    "count": 11,
+    "pct_of_stage_dropoff": 25.6
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Onsite",
+    "reason": "System design round difficulty mismatch — candidates felt under-prepared",
+    "count": 8,
+    "pct_of_stage_dropoff": 18.6
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Onsite",
+    "reason": "Candidate withdrew — accepted competing offer during wait",
+    "count": 8,
+    "pct_of_stage_dropoff": 18.6
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Offer",
+    "reason": "Compensation misalignment — candidates benchmarking against FAANG total comp",
+    "count": 4,
+    "pct_of_stage_dropoff": 57.1
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Offer",
+    "reason": "Candidate preferred remote-first company over hybrid NYC requirement",
+    "count": 3,
+    "pct_of_stage_dropoff": 42.9
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Technical Screen",
+    "reason": "Coding assessment performance below bar",
+    "count": 28,
+    "pct_of_stage_dropoff": 60.9
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Technical Screen",
+    "reason": "Insufficient distributed systems depth for senior-level roles",
+    "count": 18,
+    "pct_of_stage_dropoff": 39.1
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Recruiter Screen",
+    "reason": "Salary expectations above range",
+    "count": 32,
+    "pct_of_stage_dropoff": 53.3
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Recruiter Screen",
+    "reason": "Visa sponsorship required — not available for this req",
+    "count": 18,
+    "pct_of_stage_dropoff": 30.0
+  },
+  {
+    "role_family": "Backend",
+    "location": "New York, NY",
+    "stage": "Recruiter Screen",
+    "reason": "Candidate not interested after learning about on-call rotation",
+    "count": 10,
+    "pct_of_stage_dropoff": 16.7
+  }
+]

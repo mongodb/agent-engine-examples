@@ -1,0 +1,43 @@
+[project]
+name = "docs-update-agent"
+version = "0.1.0"
+description = "Automated documentation updater demonstrating App.deep_agent() with GitHub write tools"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "Apache-2.0" }
+dependencies = [
+    "magenta-sdklanggraph",
+    # Pinned exactly: SkillsMiddleware + reserved tool-name contracts can
+    # shift between minor versions; SDK tests pin compatibility against this.
+    "deepagents==0.5.3",
+    "python-dotenv>=1.0.0",
+    "langchain-openai>=0.3.0",
+    "langchain-anthropic>=0.3.0",
+    "langchain-google-genai>=2.1.0",
+    "langchain-cerebras>=0.8.2",
+    "grpcio>=1.60.0",
+    "grpcio-health-checking>=1.60.0",
+    "httpx>=0.25.0",
+]
+
+[project.scripts]
+docs-update-agent = "docs_update_agent.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/docs_update_agent"]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.uv.sources]
+magenta-sdklanggraph = { git = "https://github.com/10gen/magenta-client-libraries", subdirectory = "packages/magenta-sdklanggraph" }

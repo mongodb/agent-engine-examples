@@ -1,0 +1,37 @@
+[
+  {
+    "domain": "travel-disruption",
+    "term": "irrops",
+    "definition": "Irregular operations. A disruption event such as a cancellation, missed connection, delay, or aircraft swap that requires recovery handling.",
+    "related_terms": ["disruption", "recovery", "reaccommodation"],
+    "visibility": "org"
+  },
+  {
+    "domain": "travel-disruption",
+    "term": "reprotection",
+    "definition": "Moving a passenger from a disrupted itinerary to a new protected itinerary, often on the same carrier or an approved partner.",
+    "related_terms": ["reaccommodation", "ticket-reissue", "recovery"],
+    "visibility": "org"
+  },
+  {
+    "domain": "travel-disruption",
+    "term": "protected-connection",
+    "definition": "A connection that remains within allowed handling rules and minimum connection times for reaccommodation.",
+    "related_terms": ["minimum-connection-time", "connection"],
+    "visibility": "org"
+  },
+  {
+    "domain": "travel-disruption",
+    "term": "involuntary-downgrade",
+    "definition": "Reaccommodating a traveler into a lower cabin because the original cabin is unavailable on replacement inventory.",
+    "related_terms": ["same-cabin", "exception-approval"],
+    "visibility": "org"
+  },
+  {
+    "domain": "travel-disruption",
+    "term": "ssr",
+    "definition": "Special service request. Operational traveler needs such as wheelchair assistance, meal requirements, or unaccompanied minor handling.",
+    "related_terms": ["special-assistance", "umnr", "wchr"],
+    "visibility": "org"
+  }
+]

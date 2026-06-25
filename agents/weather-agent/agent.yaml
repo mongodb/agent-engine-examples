@@ -1,0 +1,3 @@
+name: weather-agent
+entrypoint: weather_agent.agent:app
+framework: langgraph

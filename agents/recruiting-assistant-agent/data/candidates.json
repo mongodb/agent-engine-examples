@@ -1,0 +1,1770 @@
+[
+  {
+    "candidate_id": "C001",
+    "name": "Dr. Anika Johansson",
+    "current_title": "Senior Robotics Researcher",
+    "current_company": "KTH Royal Institute of Technology",
+    "location": "Stockholm, Sweden",
+    "email": "a.johansson@email.com",
+    "linkedin": "linkedin.com/in/anikajohansson-robotics",
+    "years_experience": 9,
+    "skills": [
+      "SLAM",
+      "perception",
+      "ROS",
+      "C++",
+      "Python",
+      "LiDAR",
+      "point cloud processing",
+      "state estimation"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": false,
+      "production_deployment": false,
+      "publications_count": 22,
+      "research_focus": true
+    },
+    "summary": "Prolific robotics researcher with 22 peer-reviewed publications on visual SLAM and LiDAR-based perception. Strong theoretical foundation but no commercial product experience. Primarily academic career with postdoctoral fellowships.",
+    "resume_ref": "resumes/Anika_Johansson.html",
+    "education": [
+      {
+        "degree": "PhD in Robotics",
+        "institution": "ETH Zurich",
+        "year": 2018
+      },
+      {
+        "degree": "MSc in Computer Science",
+        "institution": "KTH Stockholm",
+        "year": 2014
+      }
+    ],
+    "experience": [
+      {
+        "title": "Senior Researcher",
+        "company": "KTH Royal Institute of Technology",
+        "duration": "2020 – Present",
+        "highlights": [
+          "Led a 4-person research group on visual-inertial SLAM for indoor environments",
+          "Published 8 papers at ICRA and IROS on LiDAR odometry improvements",
+          "Secured €1.2M in EU Horizon research funding for autonomous navigation project"
+        ]
+      },
+      {
+        "title": "Postdoctoral Researcher",
+        "company": "ETH Zurich — Autonomous Systems Lab",
+        "duration": "2018 – 2020",
+        "highlights": [
+          "Developed novel loop-closure detection method improving SLAM accuracy by 15%",
+          "Supervised 6 MSc thesis students in perception and mapping projects",
+          "Published 5 papers on multi-robot SLAM coordination"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C002",
+    "name": "Marcus Chen",
+    "current_title": "Lead Robotics Engineer",
+    "current_company": "Skydio",
+    "location": "San Mateo, CA",
+    "email": "marcus.chen@email.com",
+    "linkedin": "linkedin.com/in/marcuschen-robotics",
+    "years_experience": 8,
+    "skills": [
+      "SLAM",
+      "perception",
+      "ROS2",
+      "C++",
+      "Python",
+      "computer vision",
+      "sensor fusion",
+      "drone autonomy"
+    ],
+    "signals": {
+      "startup_experience": true,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 3,
+      "research_focus": false
+    },
+    "summary": "Hands-on robotics engineer who shipped Skydio's autonomous drone navigation stack. Deep expertise in real-time SLAM and visual perception for commercial products. Startup DNA with strong execution record.",
+    "resume_ref": "resumes/Marcus_Chen.html",
+    "education": [
+      {
+        "degree": "MSc in Robotics",
+        "institution": "Carnegie Mellon University",
+        "year": 2017
+      },
+      {
+        "degree": "BSc in Electrical Engineering",
+        "institution": "UC Berkeley",
+        "year": 2015
+      }
+    ],
+    "experience": [
+      {
+        "title": "Lead Robotics Engineer",
+        "company": "Skydio",
+        "duration": "2021 – Present",
+        "highlights": [
+          "Led 6-person team that shipped visual SLAM module for Skydio X10 autonomous drone",
+          "Reduced SLAM drift by 40% in GPS-denied environments through novel sensor fusion",
+          "Architected real-time perception pipeline processing 30fps on edge compute"
+        ]
+      },
+      {
+        "title": "Robotics Engineer",
+        "company": "Zipline (drone delivery startup)",
+        "duration": "2017 – 2021",
+        "highlights": [
+          "Built perception system for autonomous medical supply delivery drones in Rwanda",
+          "Shipped obstacle avoidance module deployed across 3 distribution centers",
+          "Worked on-call rotation for production flight systems — 99.7% uptime"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C003",
+    "name": "Priya Nair",
+    "current_title": "Staff Perception Engineer",
+    "current_company": "Boston Dynamics",
+    "location": "Waltham, MA",
+    "email": "priya.nair@email.com",
+    "linkedin": "linkedin.com/in/priyanair-perception",
+    "years_experience": 10,
+    "skills": [
+      "perception",
+      "computer vision",
+      "SLAM",
+      "C++",
+      "PyTorch",
+      "depth estimation",
+      "object detection",
+      "ROS"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 7,
+      "research_focus": false
+    },
+    "summary": "Staff-level perception engineer at Boston Dynamics who shipped perception stacks for Spot and Stretch robots. Strong production experience in commercial robotics with peer-reviewed publications bridging research and deployment.",
+    "resume_ref": "resumes/Priya_Nair.html",
+    "education": [
+      {
+        "degree": "PhD in Computer Vision",
+        "institution": "MIT",
+        "year": 2016
+      },
+      {
+        "degree": "BTech in CS",
+        "institution": "IIT Bombay",
+        "year": 2011
+      }
+    ],
+    "experience": [
+      {
+        "title": "Staff Perception Engineer",
+        "company": "Boston Dynamics",
+        "duration": "2019 – Present",
+        "highlights": [
+          "Led perception team for Stretch warehouse robot — shipped to 15+ distribution centers",
+          "Designed depth-estimation pipeline for Spot's autonomous inspection product",
+          "Reduced false-positive obstacle detection rate by 60% in production environments"
+        ]
+      },
+      {
+        "title": "Senior Engineer, Perception",
+        "company": "Boston Dynamics",
+        "duration": "2016 – 2019",
+        "highlights": [
+          "Built 3D mapping module for Spot robot used in construction site inspection",
+          "Integrated LiDAR + stereo camera fusion for robust outdoor navigation",
+          "Published 4 papers on real-time object detection for mobile robots"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C004",
+    "name": "Dr. Lars Hoffmann",
+    "current_title": "Research Scientist",
+    "current_company": "Max Planck Institute for Intelligent Systems",
+    "location": "Tübingen, Germany",
+    "email": "l.hoffmann@email.com",
+    "linkedin": "linkedin.com/in/larshoffmann-slam",
+    "years_experience": 7,
+    "skills": [
+      "SLAM",
+      "visual odometry",
+      "C++",
+      "ROS",
+      "factor graphs",
+      "Gaussian processes",
+      "state estimation"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": false,
+      "production_deployment": false,
+      "publications_count": 18,
+      "research_focus": true
+    },
+    "summary": "Pure research scientist focused on theoretical SLAM improvements using factor graph optimization. 18 publications but no commercial or production experience. Strong mathematical foundation, no startup background.",
+    "resume_ref": "resumes/Lars_Hoffmann.html",
+    "education": [
+      {
+        "degree": "PhD in Computer Science",
+        "institution": "TU Munich",
+        "year": 2019
+      },
+      {
+        "degree": "MSc in Mathematics",
+        "institution": "University of Bonn",
+        "year": 2015
+      }
+    ],
+    "experience": [
+      {
+        "title": "Research Scientist",
+        "company": "Max Planck Institute for Intelligent Systems",
+        "duration": "2019 – Present",
+        "highlights": [
+          "Developed Gaussian process-based SLAM achieving state-of-the-art on TUM benchmark",
+          "Published 10 papers on factor graph optimization for visual-inertial odometry",
+          "Organized workshops at RSS and ICRA on continuous-time SLAM"
+        ]
+      },
+      {
+        "title": "PhD Candidate",
+        "company": "TU Munich — Computer Vision Group",
+        "duration": "2015 – 2019",
+        "highlights": [
+          "Thesis: 'Continuous-Time Visual-Inertial Odometry via Factor Graph Optimization'",
+          "Published 8 papers in top-tier robotics and CV venues",
+          "Teaching assistant for Advanced Robotics course (3 semesters)"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C006",
+    "name": "Yuki Tanaka",
+    "current_title": "Senior Robotics Engineer",
+    "current_company": "Toyota Research Institute",
+    "location": "Los Altos, CA",
+    "email": "yuki.tanaka@email.com",
+    "linkedin": "linkedin.com/in/yukitanaka-robotics",
+    "years_experience": 8,
+    "skills": [
+      "perception",
+      "SLAM",
+      "C++",
+      "ROS",
+      "motion planning",
+      "simulation",
+      "sensor fusion"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": false,
+      "production_deployment": true,
+      "publications_count": 5,
+      "research_focus": true
+    },
+    "summary": "Strong robotics engineer at TRI with production-adjacent work on autonomous driving perception. Research-leaning role within a corporate lab — some deployment experience but no startup or shipped consumer product.",
+    "resume_ref": "resumes/Yuki_Tanaka.html",
+    "education": [
+      {
+        "degree": "MSc in Robotics",
+        "institution": "University of Tokyo",
+        "year": 2017
+      },
+      {
+        "degree": "BSc in Computer Science",
+        "institution": "Kyoto University",
+        "year": 2015
+      }
+    ],
+    "experience": [
+      {
+        "title": "Senior Robotics Engineer",
+        "company": "Toyota Research Institute",
+        "duration": "2020 – Present",
+        "highlights": [
+          "Developing perception modules for autonomous driving research platform",
+          "Built simulation framework for testing SLAM algorithms in diverse environments",
+          "Published 3 papers on sensor fusion for challenging weather conditions"
+        ]
+      },
+      {
+        "title": "Robotics Engineer",
+        "company": "Toyota Research Institute",
+        "duration": "2017 – 2020",
+        "highlights": [
+          "Implemented LiDAR-based SLAM for indoor robot navigation prototype",
+          "Deployed perception stack to test fleet of 5 vehicles for internal validation",
+          "Collaborated with Stanford on joint perception-planning research"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C007",
+    "name": "Elena Vasquez",
+    "current_title": "Robotics Engineer",
+    "current_company": "Nuro (autonomous delivery startup)",
+    "location": "Mountain View, CA",
+    "email": "elena.v@email.com",
+    "linkedin": "linkedin.com/in/elenavasquez-robotics",
+    "years_experience": 4,
+    "skills": [
+      "perception",
+      "SLAM",
+      "Python",
+      "C++",
+      "ROS2",
+      "deep learning",
+      "camera calibration",
+      "edge inference"
+    ],
+    "signals": {
+      "startup_experience": true,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 1,
+      "research_focus": false
+    },
+    "summary": "Early-career robotics engineer at an autonomous delivery startup. Fresh PhD who immediately joined industry and shipped perception features for production delivery robots. Strong execution despite fewer years of experience.",
+    "resume_ref": "resumes/Elena_Vasquez.html",
+    "education": [
+      {
+        "degree": "PhD in Robotics",
+        "institution": "University of Michigan",
+        "year": 2021
+      },
+      {
+        "degree": "BSc in ECE",
+        "institution": "Purdue University",
+        "year": 2017
+      }
+    ],
+    "experience": [
+      {
+        "title": "Robotics Engineer",
+        "company": "Nuro",
+        "duration": "2021 – Present",
+        "highlights": [
+          "Shipped camera-based perception module for R3 autonomous delivery vehicle",
+          "Reduced false-positive pedestrian detection by 45% using improved training data pipeline",
+          "Deployed edge inference models achieving 20ms latency on NVIDIA Jetson platform"
+        ]
+      },
+      {
+        "title": "Graduate Research Assistant",
+        "company": "University of Michigan — APRIL Lab",
+        "duration": "2017 – 2021",
+        "highlights": [
+          "PhD thesis on real-time visual SLAM for resource-constrained platforms",
+          "Published 1 paper at ICRA on lightweight SLAM for micro aerial vehicles"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C008",
+    "name": "Raj Patel",
+    "current_title": "Principal Robotics Engineer",
+    "current_company": "iRobot",
+    "location": "Bedford, MA",
+    "email": "raj.patel@email.com",
+    "linkedin": "linkedin.com/in/rajpatel-robotics",
+    "years_experience": 12,
+    "skills": [
+      "SLAM",
+      "perception",
+      "navigation",
+      "C++",
+      "Python",
+      "ROS",
+      "embedded Linux",
+      "product development"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 4,
+      "research_focus": false
+    },
+    "summary": "Principal engineer who shipped navigation systems for multiple generations of Roomba and Terra robots. Deep product development experience with millions of units in the field. No startup experience but exceptional shipping track record.",
+    "resume_ref": "resumes/Raj_Patel.html",
+    "education": [
+      {
+        "degree": "MSc in Electrical Engineering",
+        "institution": "MIT",
+        "year": 2013
+      },
+      {
+        "degree": "BSc in ECE",
+        "institution": "University of Michigan",
+        "year": 2011
+      }
+    ],
+    "experience": [
+      {
+        "title": "Principal Robotics Engineer",
+        "company": "iRobot",
+        "duration": "2019 – Present",
+        "highlights": [
+          "Led SLAM and navigation team for Roomba j9+ — shipped to millions of customers",
+          "Architected visual SLAM system running on custom ASIC with 50ms loop closure",
+          "Reduced navigation failure rate by 70% across product line through sensor fusion redesign"
+        ]
+      },
+      {
+        "title": "Senior Robotics Engineer",
+        "company": "iRobot",
+        "duration": "2013 – 2019",
+        "highlights": [
+          "Shipped navigation stack for Roomba i7 — first vSLAM-based consumer robot at scale",
+          "Built automated testing infrastructure for SLAM validation (10,000+ test runs)",
+          "Patented multi-floor mapping system (US Patent #10,234,567)"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C009",
+    "name": "Dr. Fatima Al-Rashidi",
+    "current_title": "Senior Research Scientist",
+    "current_company": "DeepMind",
+    "location": "London, UK",
+    "email": "f.alrashidi@email.com",
+    "linkedin": "linkedin.com/in/fatimaalrashidi-ml",
+    "years_experience": 8,
+    "skills": [
+      "machine learning",
+      "deep learning",
+      "PyTorch",
+      "Python",
+      "NLP",
+      "reinforcement learning",
+      "statistics"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": false,
+      "production_deployment": false,
+      "publications_count": 25,
+      "research_focus": true
+    },
+    "summary": "Prolific ML researcher at DeepMind with 25 publications on reinforcement learning and NLP. No production deployment or product shipping experience. Pure research career path.",
+    "resume_ref": "resumes/Fatima_Al-Rashidi.html",
+    "education": [
+      {
+        "degree": "PhD in Machine Learning",
+        "institution": "University of Oxford",
+        "year": 2018
+      },
+      {
+        "degree": "MSc in Statistics",
+        "institution": "Imperial College London",
+        "year": 2014
+      }
+    ],
+    "experience": [
+      {
+        "title": "Senior Research Scientist",
+        "company": "DeepMind",
+        "duration": "2018 – Present",
+        "highlights": [
+          "Published 15 papers on multi-agent reinforcement learning at NeurIPS and ICML",
+          "Led research on language model alignment — 3 papers at ACL",
+          "Mentored 8 research interns across 4 cohorts"
+        ]
+      },
+      {
+        "title": "PhD Researcher",
+        "company": "University of Oxford — ML Group",
+        "duration": "2014 – 2018",
+        "highlights": [
+          "Thesis: 'Sample-Efficient Reinforcement Learning with Structured Priors'",
+          "Published 10 papers during PhD including 2 oral presentations at NeurIPS"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C010",
+    "name": "Sasha Kim",
+    "current_title": "Head of Data Science",
+    "current_company": "Loom (video startup)",
+    "location": "San Francisco, CA",
+    "email": "sasha.kim@email.com",
+    "linkedin": "linkedin.com/in/sashakim-ds",
+    "years_experience": 9,
+    "skills": [
+      "machine learning",
+      "Python",
+      "SQL",
+      "A/B testing",
+      "recommendation systems",
+      "NLP",
+      "product analytics",
+      "TensorFlow"
+    ],
+    "signals": {
+      "startup_experience": true,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 2,
+      "research_focus": false
+    },
+    "summary": "Startup data science leader who shipped ML-powered features at two high-growth startups. Built recommendation and search systems from scratch. Strong product intuition with hands-on deployment experience.",
+    "resume_ref": "resumes/Sasha_Kim.html",
+    "education": [
+      {
+        "degree": "MSc in Data Science",
+        "institution": "Stanford University",
+        "year": 2016
+      },
+      {
+        "degree": "BSc in Mathematics",
+        "institution": "UCLA",
+        "year": 2014
+      }
+    ],
+    "experience": [
+      {
+        "title": "Head of Data Science",
+        "company": "Loom",
+        "duration": "2021 – Present",
+        "highlights": [
+          "Built and shipped video recommendation system increasing engagement by 25%",
+          "Deployed NLP-based auto-titling feature used by 2M+ users",
+          "Grew data science team from 1 to 6, establishing experimentation framework"
+        ]
+      },
+      {
+        "title": "Senior Data Scientist",
+        "company": "Notion",
+        "duration": "2016 – 2021",
+        "highlights": [
+          "Shipped search ranking model improving relevance by 35%",
+          "Built user churn prediction pipeline deployed to production",
+          "Led A/B testing framework adoption across product org"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C011",
+    "name": "David Okonkwo",
+    "current_title": "Senior Data Scientist",
+    "current_company": "Google — Search Quality",
+    "location": "Mountain View, CA",
+    "email": "d.okonkwo@email.com",
+    "linkedin": "linkedin.com/in/davidokonkwo-ds",
+    "years_experience": 7,
+    "skills": [
+      "machine learning",
+      "deep learning",
+      "Python",
+      "TensorFlow",
+      "recommendation systems",
+      "information retrieval",
+      "SQL",
+      "Spark"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 6,
+      "research_focus": false
+    },
+    "summary": "Google data scientist who shipped recommendation and ranking models at massive scale. Production ML expert with experience deploying models serving billions of queries. No startup experience but strong shipping record.",
+    "resume_ref": "resumes/David_Okonkwo.html",
+    "education": [
+      {
+        "degree": "MSc in Computer Science",
+        "institution": "University of Washington",
+        "year": 2018
+      },
+      {
+        "degree": "BSc in Statistics",
+        "institution": "University of Toronto",
+        "year": 2016
+      }
+    ],
+    "experience": [
+      {
+        "title": "Senior Data Scientist",
+        "company": "Google — Search Quality",
+        "duration": "2020 – Present",
+        "highlights": [
+          "Shipped ranking model update improving search relevance by 3.2% (significant at Google scale)",
+          "Built real-time feature pipeline processing 100K+ queries/sec for personalization",
+          "Published 3 papers on neural information retrieval at SIGIR"
+        ]
+      },
+      {
+        "title": "Data Scientist",
+        "company": "Google — YouTube Recommendations",
+        "duration": "2018 – 2020",
+        "highlights": [
+          "Deployed video recommendation model serving 2B+ daily active users",
+          "Reduced model latency by 40% through architecture optimization",
+          "Built offline evaluation framework for recommendation quality"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C012",
+    "name": "Claire Dubois",
+    "current_title": "Data Science Consultant",
+    "current_company": "McKinsey — QuantumBlack",
+    "location": "Paris, France",
+    "email": "claire.dubois@email.com",
+    "linkedin": "linkedin.com/in/clairedubois-ds",
+    "years_experience": 6,
+    "skills": [
+      "machine learning",
+      "Python",
+      "R",
+      "SQL",
+      "data visualization",
+      "statistical modeling",
+      "client management"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": false,
+      "production_deployment": false,
+      "publications_count": 0,
+      "research_focus": false
+    },
+    "summary": "Consulting data scientist delivering analytics projects for enterprise clients. Strong communication and statistical modeling skills but no production ML deployments or product shipping experience. Analysis-focused rather than engineering-focused.",
+    "resume_ref": "resumes/Claire_Dubois.html",
+    "education": [
+      {
+        "degree": "MSc in Applied Mathematics",
+        "institution": "École Polytechnique",
+        "year": 2019
+      },
+      {
+        "degree": "BSc in Mathematics",
+        "institution": "Université Paris-Saclay",
+        "year": 2017
+      }
+    ],
+    "experience": [
+      {
+        "title": "Data Science Consultant",
+        "company": "McKinsey — QuantumBlack",
+        "duration": "2019 – Present",
+        "highlights": [
+          "Delivered 12+ analytics engagements for Fortune 500 clients across retail, pharma, and finance",
+          "Built demand forecasting models reducing inventory waste by 15% for retail client",
+          "Led team of 4 analysts on pricing optimization project for major airline"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C013",
+    "name": "Andre Santos",
+    "current_title": "ML Lead",
+    "current_company": "Nubank (fintech startup)",
+    "location": "São Paulo, Brazil",
+    "email": "andre.santos@email.com",
+    "linkedin": "linkedin.com/in/andresantos-ml",
+    "years_experience": 8,
+    "skills": [
+      "machine learning",
+      "Python",
+      "fraud detection",
+      "real-time systems",
+      "Kafka",
+      "Spark",
+      "SQL",
+      "feature engineering"
+    ],
+    "signals": {
+      "startup_experience": true,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 1,
+      "research_focus": false
+    },
+    "summary": "ML lead at Latin America's largest fintech who shipped real-time fraud detection serving 80M+ customers. Deep production ML experience in a fast-moving startup environment. Built systems handling millions of transactions daily.",
+    "resume_ref": "resumes/Andre_Santos.html",
+    "education": [
+      {
+        "degree": "MSc in Computer Science",
+        "institution": "Universidade de São Paulo",
+        "year": 2017
+      },
+      {
+        "degree": "BSc in Computer Engineering",
+        "institution": "UNICAMP",
+        "year": 2015
+      }
+    ],
+    "experience": [
+      {
+        "title": "ML Lead",
+        "company": "Nubank",
+        "duration": "2020 – Present",
+        "highlights": [
+          "Shipped real-time fraud detection model processing 5M+ transactions/day with <50ms latency",
+          "Reduced fraud losses by 40% through ensemble model redesign",
+          "Built feature store serving 200+ ML features across 6 product teams"
+        ]
+      },
+      {
+        "title": "Senior ML Engineer",
+        "company": "iFood (food delivery startup)",
+        "duration": "2017 – 2020",
+        "highlights": [
+          "Deployed delivery time prediction model improving accuracy by 20%",
+          "Built recommendation system increasing average order value by 8%",
+          "Shipped driver-order matching algorithm optimizing fleet utilization"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C014",
+    "name": "Dr. Wei Zhang",
+    "current_title": "Research Scientist",
+    "current_company": "Meta AI — FAIR",
+    "location": "Menlo Park, CA",
+    "email": "wei.zhang@email.com",
+    "linkedin": "linkedin.com/in/weizhang-nlp",
+    "years_experience": 6,
+    "skills": [
+      "NLP",
+      "deep learning",
+      "PyTorch",
+      "transformers",
+      "Python",
+      "language models",
+      "information extraction"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": false,
+      "production_deployment": false,
+      "publications_count": 20,
+      "research_focus": true
+    },
+    "summary": "NLP researcher at Meta AI with 20 publications on large language models and information extraction. Focused exclusively on research with no production deployment experience. Strong technical depth but academic career trajectory.",
+    "resume_ref": "resumes/Wei_Zhang.html",
+    "education": [
+      {
+        "degree": "PhD in NLP",
+        "institution": "Stanford University",
+        "year": 2020
+      },
+      {
+        "degree": "BSc in Computer Science",
+        "institution": "Tsinghua University",
+        "year": 2015
+      }
+    ],
+    "experience": [
+      {
+        "title": "Research Scientist",
+        "company": "Meta AI — FAIR",
+        "duration": "2020 – Present",
+        "highlights": [
+          "Published 12 papers on few-shot learning and information extraction at ACL and EMNLP",
+          "Contributed to LLaMA model pre-training research",
+          "Organized 2 workshops on efficient NLP at major conferences"
+        ]
+      },
+      {
+        "title": "PhD Researcher",
+        "company": "Stanford NLP Group",
+        "duration": "2015 – 2020",
+        "highlights": [
+          "Thesis: 'Neural Information Extraction with Minimal Supervision'",
+          "Published 8 papers, including best paper nomination at NAACL 2019"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C015",
+    "name": "Nina Kowalski",
+    "current_title": "Senior Data Scientist, Product",
+    "current_company": "Stripe",
+    "location": "Seattle, WA",
+    "email": "nina.k@email.com",
+    "linkedin": "linkedin.com/in/ninakowalski-ds",
+    "years_experience": 7,
+    "skills": [
+      "machine learning",
+      "Python",
+      "SQL",
+      "experimentation",
+      "causal inference",
+      "product analytics",
+      "risk modeling",
+      "dbt"
+    ],
+    "signals": {
+      "startup_experience": true,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 0,
+      "research_focus": false
+    },
+    "summary": "Product-focused data scientist who shipped ML features at Stripe and an earlier-stage fintech startup. Expertise in experimentation, causal inference, and risk modeling deployed to production. Strong bridge between data and product.",
+    "resume_ref": "resumes/Nina_Kowalski.html",
+    "education": [
+      {
+        "degree": "MSc in Statistics",
+        "institution": "Columbia University",
+        "year": 2018
+      },
+      {
+        "degree": "BSc in Economics",
+        "institution": "University of Chicago",
+        "year": 2016
+      }
+    ],
+    "experience": [
+      {
+        "title": "Senior Data Scientist, Product",
+        "company": "Stripe",
+        "duration": "2021 – Present",
+        "highlights": [
+          "Shipped risk scoring model reducing payment fraud by 30% across merchant base",
+          "Built experimentation platform enabling 50+ monthly A/B tests",
+          "Deployed causal inference framework for measuring feature impact on revenue"
+        ]
+      },
+      {
+        "title": "Data Scientist",
+        "company": "Plaid (fintech startup)",
+        "duration": "2018 – 2021",
+        "highlights": [
+          "Built and deployed transaction categorization model with 92% accuracy",
+          "Shipped anomaly detection system for bank connection health monitoring",
+          "Led data science efforts during Series C growth phase (50 → 250 employees)"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C016",
+    "name": "James Morrison",
+    "current_title": "Senior Data Scientist",
+    "current_company": "Capital One",
+    "location": "McLean, VA",
+    "email": "james.m@email.com",
+    "linkedin": "linkedin.com/in/jamesmorrison-ds",
+    "years_experience": 9,
+    "skills": [
+      "machine learning",
+      "Python",
+      "SQL",
+      "Spark",
+      "credit modeling",
+      "feature engineering",
+      "MLOps",
+      "Kubernetes"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 1,
+      "research_focus": false
+    },
+    "summary": "Enterprise data scientist with strong production ML experience at Capital One. Shipped credit risk models and built MLOps infrastructure. No startup experience but solid engineering and deployment skills.",
+    "resume_ref": "resumes/James_Morrison.html",
+    "education": [
+      {
+        "degree": "MSc in Data Science",
+        "institution": "NYU",
+        "year": 2016
+      },
+      {
+        "degree": "BSc in Computer Science",
+        "institution": "Virginia Tech",
+        "year": 2014
+      }
+    ],
+    "experience": [
+      {
+        "title": "Senior Data Scientist",
+        "company": "Capital One",
+        "duration": "2019 – Present",
+        "highlights": [
+          "Shipped credit risk model serving 40M+ card applications per year",
+          "Built MLOps pipeline reducing model deployment time from weeks to hours",
+          "Deployed real-time feature computation serving <10ms latency requirements"
+        ]
+      },
+      {
+        "title": "Data Scientist",
+        "company": "Capital One",
+        "duration": "2016 – 2019",
+        "highlights": [
+          "Built customer segmentation model for targeted marketing campaigns",
+          "Developed fraud detection ensemble reducing false positives by 25%",
+          "Migrated legacy SAS models to Python/Spark production pipeline"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C017",
+    "name": "Alex Petrov",
+    "current_title": "Senior Backend Engineer",
+    "current_company": "Datadog",
+    "location": "New York, NY",
+    "email": "alex.p@email.com",
+    "linkedin": "linkedin.com/in/alexpetrov-backend",
+    "years_experience": 7,
+    "skills": [
+      "Go",
+      "Python",
+      "distributed systems",
+      "Kafka",
+      "PostgreSQL",
+      "Kubernetes",
+      "microservices",
+      "observability"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 0,
+      "research_focus": false
+    },
+    "summary": "Senior backend engineer at Datadog working on high-throughput distributed systems. Strong production experience with observability and microservices. Located in NYC — relevant for funnel analytics.",
+    "resume_ref": "resumes/Alex_Petrov.html",
+    "education": [
+      {
+        "degree": "MSc in Computer Science",
+        "institution": "Columbia University",
+        "year": 2018
+      },
+      {
+        "degree": "BSc in Computer Science",
+        "institution": "University of Waterloo",
+        "year": 2016
+      }
+    ],
+    "experience": [
+      {
+        "title": "Senior Backend Engineer",
+        "company": "Datadog",
+        "duration": "2021 – Present",
+        "highlights": [
+          "Built metrics ingestion pipeline processing 10M+ data points/sec",
+          "Shipped custom query engine for time-series data with sub-second latency",
+          "Led migration from monolith to microservices architecture for alerting service"
+        ]
+      },
+      {
+        "title": "Backend Engineer",
+        "company": "MongoDB",
+        "duration": "2018 – 2021",
+        "highlights": [
+          "Contributed to Atlas serverless instance backend architecture",
+          "Built automated scaling engine for shared-tier clusters",
+          "Shipped connection pooling improvements reducing latency by 30%"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C018",
+    "name": "Maya Williams",
+    "current_title": "Backend Engineer",
+    "current_company": "Cockroach Labs (distributed DB startup)",
+    "location": "New York, NY",
+    "email": "maya.w@email.com",
+    "linkedin": "linkedin.com/in/mayawilliams-backend",
+    "years_experience": 5,
+    "skills": [
+      "Go",
+      "distributed systems",
+      "SQL",
+      "Raft consensus",
+      "API design",
+      "gRPC",
+      "testing",
+      "performance tuning"
+    ],
+    "signals": {
+      "startup_experience": true,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 0,
+      "research_focus": false
+    },
+    "summary": "Backend engineer at a distributed database startup with hands-on experience shipping consensus and storage engine features. Startup environment, strong systems skills. Located in NYC.",
+    "resume_ref": "resumes/Maya_Williams.html",
+    "education": [
+      {
+        "degree": "BSc in Computer Science",
+        "institution": "Cornell University",
+        "year": 2020
+      }
+    ],
+    "experience": [
+      {
+        "title": "Backend Engineer",
+        "company": "Cockroach Labs",
+        "duration": "2020 – Present",
+        "highlights": [
+          "Shipped multi-region database features for CockroachDB Cloud",
+          "Built transaction retry logic reducing user-facing errors by 60%",
+          "Implemented gRPC-based inter-node communication layer for new replication protocol"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C019",
+    "name": "Robert Kim",
+    "current_title": "Staff Backend Engineer",
+    "current_company": "Goldman Sachs — Platform Engineering",
+    "location": "New York, NY",
+    "email": "robert.kim@email.com",
+    "linkedin": "linkedin.com/in/robertkim-backend",
+    "years_experience": 11,
+    "skills": [
+      "Java",
+      "Python",
+      "microservices",
+      "Kafka",
+      "PostgreSQL",
+      "Redis",
+      "Spring Boot",
+      "event-driven architecture"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 0,
+      "research_focus": false
+    },
+    "summary": "Staff backend engineer at Goldman Sachs with deep experience in high-frequency trading and platform infrastructure. Strong production skills in a demanding environment. No startup experience. Located in NYC.",
+    "resume_ref": "resumes/Robert_Kim.html",
+    "education": [
+      {
+        "degree": "MSc in Computer Science",
+        "institution": "Georgia Tech",
+        "year": 2014
+      },
+      {
+        "degree": "BSc in Computer Science",
+        "institution": "KAIST",
+        "year": 2012
+      }
+    ],
+    "experience": [
+      {
+        "title": "Staff Backend Engineer",
+        "company": "Goldman Sachs — Platform Engineering",
+        "duration": "2019 – Present",
+        "highlights": [
+          "Architected event-driven platform processing 500K+ financial events/sec",
+          "Shipped real-time risk calculation engine for derivatives trading desk",
+          "Led migration from legacy monolith to microservices — 40% latency improvement"
+        ]
+      },
+      {
+        "title": "Senior Backend Engineer",
+        "company": "Goldman Sachs",
+        "duration": "2014 – 2019",
+        "highlights": [
+          "Built order management system handling $2B+ daily trading volume",
+          "Implemented Kafka-based data pipeline for trade reconciliation",
+          "Shipped regulatory reporting system for MiFID II compliance"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C020",
+    "name": "Tanya Osei",
+    "current_title": "Engineering Lead, Backend",
+    "current_company": "Faire (B2B marketplace startup)",
+    "location": "New York, NY",
+    "email": "tanya.o@email.com",
+    "linkedin": "linkedin.com/in/tanyaosei-backend",
+    "years_experience": 8,
+    "skills": [
+      "Python",
+      "Go",
+      "PostgreSQL",
+      "Redis",
+      "Kubernetes",
+      "API design",
+      "system design",
+      "team leadership"
+    ],
+    "signals": {
+      "startup_experience": true,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 0,
+      "research_focus": false
+    },
+    "summary": "Engineering lead at a high-growth B2B startup who shipped core marketplace backend from Series A to Series F. Strong startup execution with team leadership experience. Located in NYC.",
+    "resume_ref": "resumes/Tanya_Osei.html",
+    "education": [
+      {
+        "degree": "BSc in Computer Science",
+        "institution": "Howard University",
+        "year": 2017
+      }
+    ],
+    "experience": [
+      {
+        "title": "Engineering Lead, Backend",
+        "company": "Faire",
+        "duration": "2020 – Present",
+        "highlights": [
+          "Led 8-person team that shipped core order management and fulfillment backend",
+          "Architected inventory sync system handling 500K+ SKUs across 100K+ retailers",
+          "Reduced API latency by 55% through caching and query optimization"
+        ]
+      },
+      {
+        "title": "Backend Engineer",
+        "company": "Etsy",
+        "duration": "2017 – 2020",
+        "highlights": [
+          "Shipped search ranking backend improvements increasing conversion by 4%",
+          "Built payments processing pipeline for international marketplace expansion",
+          "Contributed to API platform serving 500M+ requests/day"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C021",
+    "name": "Sam Nakamura",
+    "current_title": "Senior Backend Engineer",
+    "current_company": "Shopify",
+    "location": "Toronto, ON",
+    "email": "sam.n@email.com",
+    "linkedin": "linkedin.com/in/samnakamura-backend",
+    "years_experience": 6,
+    "skills": [
+      "Ruby",
+      "Go",
+      "MySQL",
+      "Redis",
+      "GraphQL",
+      "Kubernetes",
+      "event sourcing",
+      "performance optimization"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 0,
+      "research_focus": false
+    },
+    "summary": "Senior backend engineer at Shopify working on checkout infrastructure at massive scale. Strong production experience but based in Toronto (not NYC). Solid shipping record in e-commerce domain.",
+    "resume_ref": "resumes/Sam_Nakamura.html",
+    "education": [
+      {
+        "degree": "BSc in Software Engineering",
+        "institution": "University of Toronto",
+        "year": 2019
+      }
+    ],
+    "experience": [
+      {
+        "title": "Senior Backend Engineer",
+        "company": "Shopify",
+        "duration": "2021 – Present",
+        "highlights": [
+          "Shipped checkout backend handling $50B+ annual GMV during peak events",
+          "Built event sourcing system for order state management with 99.99% consistency",
+          "Led performance optimization reducing checkout latency from 800ms to 200ms"
+        ]
+      },
+      {
+        "title": "Backend Engineer",
+        "company": "Shopify",
+        "duration": "2019 – 2021",
+        "highlights": [
+          "Shipped storefront API v2 serving 1M+ merchant storefronts",
+          "Built webhook delivery system processing 100M+ events/day"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C022",
+    "name": "Diana Reyes",
+    "current_title": "Platform Engineer",
+    "current_company": "HashiCorp",
+    "location": "New York, NY",
+    "email": "diana.r@email.com",
+    "linkedin": "linkedin.com/in/dianareyes-platform",
+    "years_experience": 6,
+    "skills": [
+      "Go",
+      "Terraform",
+      "Kubernetes",
+      "distributed systems",
+      "service mesh",
+      "observability",
+      "CI/CD",
+      "infrastructure"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 1,
+      "research_focus": false
+    },
+    "summary": "Platform engineer at HashiCorp working on infrastructure tooling. Strong DevOps and distributed systems skills. Located in NYC. More infra-focused than pure backend application development.",
+    "resume_ref": "resumes/Diana_Reyes.html",
+    "education": [
+      {
+        "degree": "MSc in Computer Science",
+        "institution": "NYU",
+        "year": 2019
+      },
+      {
+        "degree": "BSc in Computer Science",
+        "institution": "UNAM Mexico",
+        "year": 2017
+      }
+    ],
+    "experience": [
+      {
+        "title": "Platform Engineer",
+        "company": "HashiCorp",
+        "duration": "2021 – Present",
+        "highlights": [
+          "Shipped multi-cloud networking features for Consul service mesh",
+          "Built Terraform provider testing framework used by 50+ community providers",
+          "Contributed to Nomad job scheduler performance improvements (3x throughput)"
+        ]
+      },
+      {
+        "title": "Software Engineer",
+        "company": "DigitalOcean",
+        "duration": "2019 – 2021",
+        "highlights": [
+          "Built Kubernetes control plane for managed K8s service",
+          "Shipped load balancer backend handling 100K+ active connections"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C023",
+    "name": "Viktor Lindgren",
+    "current_title": "Senior MLOps Engineer",
+    "current_company": "Spotify",
+    "location": "Stockholm, Sweden",
+    "email": "viktor.l@email.com",
+    "linkedin": "linkedin.com/in/viktorlindgren-mlops",
+    "years_experience": 7,
+    "skills": [
+      "Python",
+      "Kubernetes",
+      "MLflow",
+      "Kubeflow",
+      "Airflow",
+      "TensorFlow",
+      "model serving",
+      "CI/CD for ML"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 2,
+      "research_focus": false
+    },
+    "summary": "MLOps engineer at Spotify who built and shipped ML infrastructure serving recommendation models at scale. Strong bridge between data science and production systems. Deployed pipelines processing billions of events.",
+    "resume_ref": "resumes/Viktor_Lindgren.html",
+    "education": [
+      {
+        "degree": "MSc in Computer Science",
+        "institution": "KTH Stockholm",
+        "year": 2018
+      },
+      {
+        "degree": "BSc in Software Engineering",
+        "institution": "Chalmers University",
+        "year": 2016
+      }
+    ],
+    "experience": [
+      {
+        "title": "Senior MLOps Engineer",
+        "company": "Spotify",
+        "duration": "2020 – Present",
+        "highlights": [
+          "Built ML model serving platform handling 10K+ predictions/sec for personalization",
+          "Shipped automated retraining pipeline reducing model staleness from weeks to hours",
+          "Designed A/B testing infrastructure for ML model evaluation across 500M+ users"
+        ]
+      },
+      {
+        "title": "ML Engineer",
+        "company": "Klarna (fintech)",
+        "duration": "2018 – 2020",
+        "highlights": [
+          "Deployed credit risk models to production serving real-time lending decisions",
+          "Built feature store for 100+ ML features across fraud and credit teams"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C024",
+    "name": "Lisa Park",
+    "current_title": "ML Engineer, Computer Vision",
+    "current_company": "Scale AI (data startup)",
+    "location": "San Francisco, CA",
+    "email": "lisa.park@email.com",
+    "linkedin": "linkedin.com/in/lisapark-cv",
+    "years_experience": 5,
+    "skills": [
+      "computer vision",
+      "PyTorch",
+      "Python",
+      "object detection",
+      "image segmentation",
+      "CUDA",
+      "model optimization",
+      "edge deployment"
+    ],
+    "signals": {
+      "startup_experience": true,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 3,
+      "research_focus": false
+    },
+    "summary": "ML engineer at a high-growth AI startup specialising in computer vision. Shipped production CV models for autonomous driving annotation and quality assurance. Startup experience with fast iteration and deployment cycles.",
+    "resume_ref": "resumes/Lisa_Park.html",
+    "education": [
+      {
+        "degree": "MSc in Computer Vision",
+        "institution": "CMU",
+        "year": 2020
+      },
+      {
+        "degree": "BSc in Computer Science",
+        "institution": "UC San Diego",
+        "year": 2018
+      }
+    ],
+    "experience": [
+      {
+        "title": "ML Engineer, Computer Vision",
+        "company": "Scale AI",
+        "duration": "2020 – Present",
+        "highlights": [
+          "Shipped automated labeling models reducing annotation cost by 40% for AV customers",
+          "Built real-time quality assurance CV pipeline processing 1M+ images/day",
+          "Deployed edge-optimized detection models achieving 15ms inference on NVIDIA Jetson"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C025",
+    "name": "Michael Torres",
+    "current_title": "Staff ML Infrastructure Engineer",
+    "current_company": "Netflix",
+    "location": "Los Gatos, CA",
+    "email": "michael.t@email.com",
+    "linkedin": "linkedin.com/in/michaeltorres-mlinfra",
+    "years_experience": 10,
+    "skills": [
+      "Python",
+      "Java",
+      "Spark",
+      "Flink",
+      "ML pipelines",
+      "feature engineering",
+      "real-time inference",
+      "AWS"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 3,
+      "research_focus": false
+    },
+    "summary": "Staff ML infrastructure engineer at Netflix who built and shipped the ML platform powering personalisation for 250M+ subscribers. Deep production systems experience at massive scale. No startup background.",
+    "resume_ref": "resumes/Michael_Torres.html",
+    "education": [
+      {
+        "degree": "MSc in Computer Science",
+        "institution": "UC Berkeley",
+        "year": 2015
+      },
+      {
+        "degree": "BSc in Computer Engineering",
+        "institution": "University of Illinois",
+        "year": 2013
+      }
+    ],
+    "experience": [
+      {
+        "title": "Staff ML Infrastructure Engineer",
+        "company": "Netflix",
+        "duration": "2019 – Present",
+        "highlights": [
+          "Architected real-time feature computation platform serving 500K+ features/sec",
+          "Shipped model serving infrastructure reducing inference latency from 100ms to 15ms",
+          "Built automated model validation pipeline catching 95% of regressions before deployment"
+        ]
+      },
+      {
+        "title": "Senior ML Engineer",
+        "company": "Netflix",
+        "duration": "2015 – 2019",
+        "highlights": [
+          "Deployed recommendation model updates serving 200M+ subscribers",
+          "Built Spark-based feature engineering pipeline processing 1PB+ of user interaction data",
+          "Published 2 papers on production ML at KDD"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C026",
+    "name": "Rachel Huang",
+    "current_title": "Full-Stack ML Engineer",
+    "current_company": "Hugging Face (AI startup)",
+    "location": "New York, NY",
+    "email": "rachel.h@email.com",
+    "linkedin": "linkedin.com/in/rachelhuang-ml",
+    "years_experience": 5,
+    "skills": [
+      "Python",
+      "TypeScript",
+      "React",
+      "PyTorch",
+      "transformers",
+      "FastAPI",
+      "Docker",
+      "model deployment"
+    ],
+    "signals": {
+      "startup_experience": true,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 1,
+      "research_focus": false
+    },
+    "summary": "Full-stack ML engineer at an open-source AI startup. Bridges frontend and model deployment — shipped multiple user-facing ML features end-to-end. Startup DNA with rapid iteration and customer-facing delivery. Located in NYC.",
+    "resume_ref": "resumes/Rachel_Huang.html",
+    "education": [
+      {
+        "degree": "MSc in Computer Science",
+        "institution": "MIT",
+        "year": 2020
+      },
+      {
+        "degree": "BSc in Computer Science",
+        "institution": "University of Michigan",
+        "year": 2018
+      }
+    ],
+    "experience": [
+      {
+        "title": "Full-Stack ML Engineer",
+        "company": "Hugging Face",
+        "duration": "2021 – Present",
+        "highlights": [
+          "Shipped Inference Endpoints product — end-to-end from model serving to billing UI",
+          "Built model evaluation dashboard used by 10K+ researchers monthly",
+          "Deployed auto-scaling inference infrastructure handling 100K+ API calls/day"
+        ]
+      },
+      {
+        "title": "ML Engineer Intern → Full-time",
+        "company": "Weights & Biases (MLOps startup)",
+        "duration": "2020 – 2021",
+        "highlights": [
+          "Shipped experiment comparison feature used by 50K+ ML practitioners",
+          "Built data versioning integration with major cloud storage providers"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C027",
+    "name": "Carlos Mendez",
+    "current_title": "Senior SRE / ML Reliability",
+    "current_company": "Uber",
+    "location": "San Francisco, CA",
+    "email": "carlos.m@email.com",
+    "linkedin": "linkedin.com/in/carlosmendez-sre",
+    "years_experience": 8,
+    "skills": [
+      "Python",
+      "Go",
+      "Kubernetes",
+      "Prometheus",
+      "ML monitoring",
+      "incident response",
+      "capacity planning",
+      "chaos engineering"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 0,
+      "research_focus": false
+    },
+    "summary": "SRE specialising in ML system reliability at Uber. Ensures ML models serving pricing and ETA predictions maintain 99.99% uptime. Unique niche between DevOps and data science. Production-first mindset.",
+    "resume_ref": "resumes/Carlos_Mendez.html",
+    "education": [
+      {
+        "degree": "BSc in Computer Science",
+        "institution": "Stanford University",
+        "year": 2017
+      }
+    ],
+    "experience": [
+      {
+        "title": "Senior SRE — ML Reliability",
+        "company": "Uber",
+        "duration": "2020 – Present",
+        "highlights": [
+          "Maintained 99.99% uptime for ML models serving 100M+ daily ride pricing predictions",
+          "Built ML model monitoring system detecting data drift and performance degradation",
+          "Shipped automated rollback system for failed ML model deployments"
+        ]
+      },
+      {
+        "title": "Site Reliability Engineer",
+        "company": "Uber",
+        "duration": "2017 – 2020",
+        "highlights": [
+          "Built capacity planning system for Uber's surge pricing infrastructure",
+          "Led incident response for 5 P0 outages, reducing MTTR from 45min to 15min",
+          "Deployed chaos engineering framework for microservices resilience testing"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C028",
+    "name": "Dr. Sophie Laurent",
+    "current_title": "Research Scientist",
+    "current_company": "INRIA — Robotics & AI Lab",
+    "location": "Grenoble, France",
+    "email": "sophie.l@email.com",
+    "linkedin": "linkedin.com/in/sophielaurent-robotics",
+    "years_experience": 7,
+    "skills": [
+      "robotics",
+      "reinforcement learning",
+      "Python",
+      "ROS",
+      "simulation",
+      "manipulation",
+      "PyTorch",
+      "MuJoCo"
+    ],
+    "signals": {
+      "startup_experience": false,
+      "shipped_product": false,
+      "production_deployment": false,
+      "publications_count": 16,
+      "research_focus": true
+    },
+    "summary": "Robotics and RL researcher at France's top CS research institute. 16 publications on robot manipulation and sim-to-real transfer. No industry or product experience — purely academic focus.",
+    "resume_ref": "resumes/Sophie_Laurent.html",
+    "education": [
+      {
+        "degree": "PhD in Robotics",
+        "institution": "EPFL",
+        "year": 2019
+      },
+      {
+        "degree": "MSc in Computer Science",
+        "institution": "ENS Paris",
+        "year": 2015
+      }
+    ],
+    "experience": [
+      {
+        "title": "Research Scientist",
+        "company": "INRIA — Robotics & AI Lab",
+        "duration": "2019 – Present",
+        "highlights": [
+          "Published 10 papers on sim-to-real transfer for dexterous manipulation at CoRL and RSS",
+          "Led 3-person team on EU-funded project for robotic assembly in manufacturing",
+          "Developed simulation benchmarks adopted by 20+ research groups worldwide"
+        ]
+      },
+      {
+        "title": "PhD Candidate",
+        "company": "EPFL — Learning Algorithms and Systems Lab",
+        "duration": "2015 – 2019",
+        "highlights": [
+          "Thesis: 'Learning Dexterous Manipulation from Demonstration and Simulation'",
+          "Published 6 papers on imitation learning for robotic manipulation"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C029",
+    "name": "Taylor Brooks",
+    "current_title": "ML Product Engineer",
+    "current_company": "Vercel (developer tools startup)",
+    "location": "San Francisco, CA",
+    "email": "taylor.b@email.com",
+    "linkedin": "linkedin.com/in/taylorbrooks-ml",
+    "years_experience": 5,
+    "skills": [
+      "Python",
+      "TypeScript",
+      "machine learning",
+      "LLMs",
+      "RAG",
+      "product development",
+      "API design",
+      "user research"
+    ],
+    "signals": {
+      "startup_experience": true,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 0,
+      "research_focus": false
+    },
+    "summary": "ML product engineer who transitioned from product management to engineering. Unique combination of product intuition and technical execution. Shipped AI-powered developer tools at a fast-growing startup.",
+    "resume_ref": "resumes/Taylor_Brooks.html",
+    "education": [
+      {
+        "degree": "MSc in Computer Science (ML focus)",
+        "institution": "Georgia Tech (OMSCS)",
+        "year": 2022
+      },
+      {
+        "degree": "MBA",
+        "institution": "Wharton School",
+        "year": 2019
+      },
+      {
+        "degree": "BSc in Information Systems",
+        "institution": "University of Texas at Austin",
+        "year": 2017
+      }
+    ],
+    "experience": [
+      {
+        "title": "ML Product Engineer",
+        "company": "Vercel",
+        "duration": "2022 – Present",
+        "highlights": [
+          "Shipped v0.dev AI code generation product from prototype to 100K+ users",
+          "Built RAG-based documentation search improving developer onboarding by 40%",
+          "Designed and deployed LLM-powered error explanation feature for Next.js"
+        ]
+      },
+      {
+        "title": "Product Manager → Software Engineer",
+        "company": "Retool (developer tools startup)",
+        "duration": "2019 – 2022",
+        "highlights": [
+          "Transitioned from PM to engineering role to build ML features",
+          "Shipped intelligent form builder using classification models",
+          "Led user research informing AI assistant product direction"
+        ]
+      }
+    ]
+  },
+  {
+    "candidate_id": "C030",
+    "name": "Omar Hassan",
+    "current_title": "Robotics Engineer",
+    "current_company": "Covariant (warehouse robotics startup)",
+    "location": "Emeryville, CA",
+    "email": "omar.h@email.com",
+    "linkedin": "linkedin.com/in/omarhassan-robotics",
+    "years_experience": 3,
+    "skills": [
+      "robotics",
+      "perception",
+      "Python",
+      "ROS2",
+      "computer vision",
+      "grasping",
+      "deep learning",
+      "simulation"
+    ],
+    "signals": {
+      "startup_experience": true,
+      "shipped_product": true,
+      "production_deployment": true,
+      "publications_count": 1,
+      "research_focus": false
+    },
+    "summary": "Junior robotics engineer at a warehouse robotics startup who shipped their first perception-to-grasping pipeline deployed in production fulfillment centers. Early career but already has real shipping experience in a startup environment.",
+    "resume_ref": "resumes/Omar_Hassan.html",
+    "education": [
+      {
+        "degree": "MSc in Robotics",
+        "institution": "University of Pennsylvania",
+        "year": 2022
+      },
+      {
+        "degree": "BSc in Mechanical Engineering",
+        "institution": "American University of Beirut",
+        "year": 2020
+      }
+    ],
+    "experience": [
+      {
+        "title": "Robotics Engineer",
+        "company": "Covariant",
+        "duration": "2022 – Present",
+        "highlights": [
+          "Shipped bin-picking perception module deployed in 3 customer fulfillment centers",
+          "Built grasp quality prediction model achieving 95% success rate on novel objects",
+          "Reduced perception pipeline latency by 30% through model distillation"
+        ]
+      },
+      {
+        "title": "Research Assistant",
+        "company": "UPenn GRASP Lab",
+        "duration": "2020 – 2022",
+        "highlights": [
+          "Thesis: 'Learning to Grasp in Clutter using Depth-based Perception'",
+          "Published 1 paper at CoRL on sim-to-real transfer for grasping"
+        ]
+      }
+    ]
+  }
+]

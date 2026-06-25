@@ -1,0 +1,15 @@
+name: data-analyst-agent
+entrypoint: data_analyst_agent.main:app
+framework: langgraph
+build:
+  context: .
+
+# Optional LLM hints. Application code reads these via app.llm_config when
+# building provider clients; tests and deterministic demo paths do not require
+# an API key.
+config:
+  provider: openai
+  model: gpt-5.4-mini
+
+features:
+  memory: true

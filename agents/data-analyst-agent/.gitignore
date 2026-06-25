@@ -1,0 +1,14 @@
+.env
+.env.dev
+.pytest_cache/
+.ruff_cache/
+.venv/
+uv.lock
+__pycache__/
+*.pyc
+logs/
+observability/
+.agentic/
+.env.*
+.devcontainer/
+data/customer.jsonl

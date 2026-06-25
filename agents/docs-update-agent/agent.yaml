@@ -1,0 +1,6 @@
+name: docs-update-agent
+entrypoint: docs_update_agent.main:app
+framework: langgraph
+description: Automated documentation updater using a LangGraph ReAct agent with GitHub write tools
+build:
+  context: .

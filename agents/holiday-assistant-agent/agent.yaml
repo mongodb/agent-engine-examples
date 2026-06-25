@@ -1,0 +1,11 @@
+name: holiday-assistant-agent
+entrypoint: holiday_assistant_agent.main:app
+framework: langgraph
+build:
+  context: .
+
+# Long-term memory keeps preferences, prior bookings, and conversation
+# summaries across sessions. Requires VOYAGE_API_KEY in .env.
+features:
+  guardrails: false
+  memory: true
