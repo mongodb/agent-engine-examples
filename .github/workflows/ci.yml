@@ -96,9 +96,15 @@ jobs:
         run: scripts/lint-dependency-cooldowns.sh
 
       - name: Setup SSH for private dependencies
+        env:
+          CLIENT_LIBRARIES_DEPLOY_KEY: ${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}
         run: |
+          if [[ -z "$CLIENT_LIBRARIES_DEPLOY_KEY" ]]; then
+            echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using HTTPS for Git dependencies."
+            exit 0
+          fi
           mkdir -p ~/.ssh
-          echo "${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}" > ~/.ssh/client_libraries_deploy_key
+          printf '%s\n' "$CLIENT_LIBRARIES_DEPLOY_KEY" > ~/.ssh/client_libraries_deploy_key
           chmod 600 ~/.ssh/client_libraries_deploy_key
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --global core.sshCommand "ssh -i ~/.ssh/client_libraries_deploy_key -o IdentitiesOnly=yes"
@@ -119,7 +125,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: agents/insurance-agent
-        run: uv sync --group dev
+        run: uv sync --locked --group dev
 
       - name: Lint
         working-directory: agents/insurance-agent
@@ -135,9 +141,15 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Setup SSH for private dependencies
+        env:
+          CLIENT_LIBRARIES_DEPLOY_KEY: ${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}
         run: |
+          if [[ -z "$CLIENT_LIBRARIES_DEPLOY_KEY" ]]; then
+            echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using HTTPS for Git dependencies."
+            exit 0
+          fi
           mkdir -p ~/.ssh
-          echo "${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}" > ~/.ssh/client_libraries_deploy_key
+          printf '%s\n' "$CLIENT_LIBRARIES_DEPLOY_KEY" > ~/.ssh/client_libraries_deploy_key
           chmod 600 ~/.ssh/client_libraries_deploy_key
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --global core.sshCommand "ssh -i ~/.ssh/client_libraries_deploy_key -o IdentitiesOnly=yes"
@@ -155,7 +167,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: agents/insurance-agent
-        run: uv sync --group dev
+        run: uv sync --locked --group dev
 
       - name: Type check
         working-directory: agents/insurance-agent
@@ -175,9 +187,15 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
       - name: Setup SSH for private dependencies
+        env:
+          CLIENT_LIBRARIES_DEPLOY_KEY: ${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}
         run: |
+          if [[ -z "$CLIENT_LIBRARIES_DEPLOY_KEY" ]]; then
+            echo "CLIENT_LIBRARIES_DEPLOY_KEY is not set; using HTTPS for Git dependencies."
+            exit 0
+          fi
           mkdir -p ~/.ssh
-          echo "${{ secrets.CLIENT_LIBRARIES_DEPLOY_KEY }}" > ~/.ssh/client_libraries_deploy_key
+          printf '%s\n' "$CLIENT_LIBRARIES_DEPLOY_KEY" > ~/.ssh/client_libraries_deploy_key
           chmod 600 ~/.ssh/client_libraries_deploy_key
           ssh-keyscan github.com >> ~/.ssh/known_hosts
           git config --global core.sshCommand "ssh -i ~/.ssh/client_libraries_deploy_key -o IdentitiesOnly=yes"
