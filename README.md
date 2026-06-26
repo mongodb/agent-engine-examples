@@ -96,7 +96,12 @@ ___
 
 # Quick Setup
 
-More detailed development instructions can be found [here](https://learn.mongodb.com/learn/article/docs-preview-mongodb-agentic-platform)
+More detailed development instructions can be found [here](https://feature-agentic-plat--docs-on-nextjs.netlify.app/docs/agentic-platform/).
+
+The documentation preview is protected with a username and password. These credentials are not meant to be secret; they are intended only to prevent unauthorized access.
+
+Username: `agentic-platform`
+Password: `atlasap-preview`
 
 ## Install CLI
 
