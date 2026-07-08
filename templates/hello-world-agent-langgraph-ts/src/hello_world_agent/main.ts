@@ -29,11 +29,8 @@ function log(level: "INFO" | "WARN" | "ERROR", msg: string): void {
   console.log(`${hh}:${mm}:${ss} | ${level.padEnd(8)} | ${msg}`);
 }
 
-const ORG_ID = process.env.ORG_ID ?? "f2c4f6f50202354ad2257e1e";
-
 export const app = new App({
   appName: "hello-world-agent",
-  orgId: ORG_ID,
 });
 
 registerTools(app);

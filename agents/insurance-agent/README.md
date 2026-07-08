@@ -128,7 +128,6 @@ agentic dev down
 | `MONGODB_URI` | MongoDB connection string (provided automatically by `agentic dev`; set manually for Atlas) | - |
 | `MONGODB_DATABASE` | Database name for policies/claims | `insurance_agent` |
 | `MDB_AGENTIC_STORE_DB` | Database name for runtime checkpoints, memory, and traces | `mdb_agentic_store_insurance_agent` |
-| `ORG_ID` | Organization ID for multi-tenant isolation | `123456789012345678901234` |
 | `ANTHROPIC_API_KEY` | Anthropic API key | - |
 | `ANTHROPIC_BASE_URL` | Optional Anthropic-compatible API base URL, including Grove Foundry routes | - |
 | `GEMINI_API_KEY` | Google Gemini API key | - |

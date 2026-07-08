@@ -21,13 +21,11 @@ load_dotenv(".env.dev", override=False)
 load_dotenv(override=False)
 
 APP_NAME = "data-analyst-agent"
-ORG_ID = os.environ.get("ORG_ID", "653700000000000000000101")
 MONGODB_URI = os.environ.get("MONGODB_URI", "")
 MONGODB_DATABASE = os.environ.get("MONGODB_DATABASE", DEFAULT_DATABASE)
 
 app = App(
     app_name=APP_NAME,
-    org_id=ORG_ID or None,
     mongodb_uri=MONGODB_URI,
     database_name=MONGODB_DATABASE,
 )

@@ -19,6 +19,8 @@ agents:
     path: agents/remote-mcp
   - name: simple-agent
     path: agents/simple-agent
+  - name: store-manager-agent
+    path: agents/store-manager-agent
   - name: travel-agent
     path: agents/travel-agent
   - name: weather-agent

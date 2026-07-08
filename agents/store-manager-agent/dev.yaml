@@ -1,0 +1,4 @@
+# Local services exposed by the app during `agentic dev`.
+services:
+  playground:
+    port: 3000

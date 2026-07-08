@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import logging
-import os
 from typing import Literal
 
 from dotenv import load_dotenv
@@ -22,9 +21,7 @@ logging.basicConfig(level=logging.INFO, format="%(asctime)s | %(levelname)-8s | 
 logger = logging.getLogger(__name__)
 load_dotenv()
 
-ORG_ID = os.environ.get("ORG_ID", "local-dev")
-
-app = App(app_name="hello-world-agent", org_id=ORG_ID)
+app = App(app_name="hello-world-agent")
 
 register(app)
 

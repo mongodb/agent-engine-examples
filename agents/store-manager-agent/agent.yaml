@@ -1,0 +1,22 @@
+name: store-manager-agent
+entrypoint: store_manager_agent.main:app
+framework: langgraph
+build:
+  context: .
+
+# Long-term memory keeps store facts, domain definitions, standard operating
+# procedures, and the history of past decisions across sessions. Requires
+# VOYAGE_API_KEY in .env for the semantic / episodic vector search.
+features:
+  guardrails: false
+  memory: true
+
+required_secrets:
+  aer:
+    - "<YOUR LLM API KEY HERE>"
+  tools:
+    # invoke_llm is a reserved tool name: the platform runs model calls in a
+    # tool pod, so the provider key the LLM needs is declared here, not under a
+    # user-defined tool.
+    invoke_llm:
+      - "<YOUR LLM API KEY HERE>"

@@ -11,6 +11,7 @@ members = [
     "agents/recruiting-assistant-agent",
     "agents/remote-mcp",
     "agents/simple-agent",
+    "agents/store-manager-agent",
     "agents/travel-agent",
     "agents/weather-agent",
     "agents/memory-test-agent",
@@ -19,7 +20,7 @@ members = [
 [tool.ruff]
 line-length = 100
 target-version = "py311"
-src = ["agents/atlas-admin-agent/src", "agents/code-reviewer-agent/src", "agents/data-analyst-agent/src", "agents/docs-update-agent/src", "agents/insurance-agent/src", "agents/memory-test-agent/src", "agents/mta-alerts-agent/src", "agents/recruiting-assistant-agent/src", "agents/remote-mcp/src", "agents/simple-agent/src", "agents/travel-agent/src", "agents/weather-agent/src"]
+src = ["agents/atlas-admin-agent/src", "agents/code-reviewer-agent/src", "agents/data-analyst-agent/src", "agents/docs-update-agent/src", "agents/insurance-agent/src", "agents/memory-test-agent/src", "agents/mta-alerts-agent/src", "agents/recruiting-assistant-agent/src", "agents/remote-mcp/src", "agents/simple-agent/src", "agents/store-manager-agent/src", "agents/travel-agent/src", "agents/weather-agent/src"]
 
 [tool.ruff.lint]
 select = ["E", "F", "I", "UP"]

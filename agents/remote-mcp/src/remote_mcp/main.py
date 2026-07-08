@@ -15,7 +15,6 @@ load_dotenv(APP_DIR / ".env.atlas")
 
 app = App(
     app_name="Remote MCP Multi-Server Agent",
-    org_id="org_remote_mcp_multi_server_agent",
 )
 
 SYSTEM_PROMPT = """You are a remote MCP operations assistant with access to

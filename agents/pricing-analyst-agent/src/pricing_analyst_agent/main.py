@@ -64,7 +64,6 @@ ORG_ID = "org_pricing_demo"
 
 app = App(
     app_name=APP_NAME,
-    org_id=ORG_ID,
     enable_tracing=ENABLE_TRACING,
     enable_memory=ENABLE_MEMORY,
     enable_guardrails=ENABLE_GUARDRAILS,

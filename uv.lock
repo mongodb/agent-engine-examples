@@ -8,7 +8,7 @@ resolution-markers = [
 ]
 
 [options]
-exclude-newer = "2026-06-02T18:06:48.512501Z"
+exclude-newer = "2026-06-18T02:29:41.31628Z"
 exclude-newer-span = "P7D"
 
 [manifest]
@@ -25,6 +25,7 @@ members = [
     "recruiting-assistant-agent",
     "remote-mcp",
     "simple-agent",
+    "store-manager-agent",
     "travel-agent",
     "weather-agent",
 ]
@@ -4853,6 +4854,37 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/81/69/17425771797c36cded50b7fe44e850315d039f28b15901ab44839e70b593/starlette-1.0.0.tar.gz", hash = "sha256:6a4beaf1f81bb472fd19ea9b918b50dc3a77a6f2e190a12954b25e6ed5eea149", size = 2655289, upload-time = "2026-03-22T18:29:46.779Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/0b/c9/584bc9651441b4ba60cc4d557d8a547b5aff901af35bda3a4ee30c819b82/starlette-1.0.0-py3-none-any.whl", hash = "sha256:d3ec55e0bb321692d275455ddfd3df75fff145d009685eb40dc91fc66b03d38b", size = 72651, upload-time = "2026-03-22T18:29:45.111Z" },
+]
+
+[[package]]
+name = "store-manager-agent"
+version = "0.1.0"
+source = { editable = "agents/store-manager-agent" }
+dependencies = [
+    { name = "grpcio" },
+    { name = "grpcio-health-checking" },
+    { name = "langchain-anthropic" },
+    { name = "langchain-cerebras" },
+    { name = "langchain-google-genai" },
+    { name = "langchain-openai" },
+    { name = "magenta-sdklanggraph" },
+    { name = "pymongo" },
+    { name = "python-dotenv" },
+    { name = "runner-shared" },
+]
+
+[package.metadata]
+requires-dist = [
+    { name = "grpcio", specifier = ">=1.76.0" },
+    { name = "grpcio-health-checking", specifier = ">=1.76.0" },
+    { name = "langchain-anthropic", specifier = ">=0.3.0" },
+    { name = "langchain-cerebras", specifier = ">=0.8.2" },
+    { name = "langchain-google-genai", specifier = ">=2.1.0" },
+    { name = "langchain-openai", specifier = ">=1.1.12" },
+    { name = "magenta-sdklanggraph", git = "https://github.com/10gen/magenta-client-libraries?subdirectory=packages%2Fmagenta-sdklanggraph" },
+    { name = "pymongo", specifier = ">=4.6.0" },
+    { name = "python-dotenv", specifier = ">=1.0.0" },
+    { name = "runner-shared", git = "https://github.com/10gen/magenta-client-libraries?subdirectory=packages%2Frunner-shared" },
 ]
 
 [[package]]

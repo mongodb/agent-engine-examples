@@ -4,3 +4,14 @@ framework: langgraph
 description: Automated documentation updater using a LangGraph ReAct agent with GitHub write tools
 build:
   context: .
+
+required_secrets:
+  aer:
+    - "<YOUR LLM API KEY HERE>"
+    - GITHUB_TOKEN
+  tools:
+    # invoke_llm is a reserved tool name: the platform runs model calls in a
+    # tool pod, so the provider key the LLM needs is declared here, not under a
+    # user-defined tool.
+    invoke_llm:
+      - "<YOUR LLM API KEY HERE>"
