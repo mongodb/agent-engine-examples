@@ -56,7 +56,6 @@ ORG_ID = os.environ.get("ORG_ID")
 
 app = App(
     app_name=APP_NAME,
-    org_id=ORG_ID or None,
 )
 logger.info("TenantRuntime created")
 

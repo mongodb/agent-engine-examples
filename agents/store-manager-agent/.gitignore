@@ -1,0 +1,10 @@
+.agentic/
+.env
+.env.*
+.devcontainer/
+.coverage
+htmlcov/
+logs/
+.venv*/
+__pycache__/
+*.pyc

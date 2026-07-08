@@ -153,11 +153,9 @@ def _build_runtime_llm() -> BaseChatModel:
 # Runtime Setup
 # =============================================================================
 APP_NAME = "insurance-agent"
-ORG_ID = os.environ.get("ORG_ID", "123456789012345678901234")
 
 app = App(
     app_name=APP_NAME,
-    org_id=ORG_ID,
 )
 logger.info("✅ App created")
 

@@ -24,7 +24,6 @@ cp env.example .env
 Before you start the app, edit `.env` and:
 
 - Set one LLM provider key
-- Leave `ORG_ID=local-dev` for local development
 - Leave `MONGODB_URI` empty for `agentic dev`; set it only when running against
   your own MongoDB deployment
 - If you want to pin a provider or model, set `config.provider` and/or

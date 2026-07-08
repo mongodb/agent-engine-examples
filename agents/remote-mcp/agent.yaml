@@ -12,6 +12,19 @@ features:
   guardrails: false
   memory: false
 
+required_secrets:
+  aer:
+    - "<YOUR LLM API KEY HERE>"
+    - GITHUB_MCP_TOKEN
+    - MCP_GROUP_SA_ID_DEV
+    - MCP_GROUP_SA_SECRET_DEV
+  tools:
+    # invoke_llm is a reserved tool name: the platform runs model calls in a
+    # tool pod, so the provider key the LLM needs is declared here, not under a
+    # user-defined tool.
+    invoke_llm:
+      - "<YOUR LLM API KEY HERE>"
+
 mcp:
   servers:
     github:

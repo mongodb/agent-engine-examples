@@ -21,3 +21,15 @@ framework: langgraph
 # present in .env when memory is enabled.
 features:
   memory: false
+
+# Declare which secrets each workload may access. Platform-required secrets
+# (MONGODB_URI, VOYAGE_API_KEY) are always injected and do not need to be listed.
+# invoke_llm is a reserved tool name: the platform runs model calls in a tool
+# pod, so the LLM provider key must also be declared under tools.invoke_llm.
+# Replace the placeholder with your provider's key name (e.g. OPENAI_API_KEY).
+required_secrets:
+  aer:
+    - "<YOUR LLM API KEY HERE>"
+  tools:
+    invoke_llm:
+      - "<YOUR LLM API KEY HERE>"

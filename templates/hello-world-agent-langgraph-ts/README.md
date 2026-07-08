@@ -54,7 +54,6 @@ npm install
 Before you start the app, review `agent.yaml` and `.env` if you need to customize model or provider-specific settings:
 
 - Set one LLM provider key
-- Leave `ORG_ID=f2c4f6f50202354ad2257e1e` for local development
 - Leave `MONGODB_URI` empty for `agentic dev`; set it only when running against
   your own MongoDB deployment
 - If you want to pin a provider or model, set `config.provider` and/or

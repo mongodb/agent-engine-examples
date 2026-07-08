@@ -4,6 +4,9 @@ overrides:
   "@magenta/magenta-sdklanggraph-ts": "git+https://github.com/10gen/magenta-client-libraries#path:packages/magenta-sdklanggraph-ts"
 
 allowBuilds:
+  "@magenta/sdk-core-ts": true
+  "@magenta/runner-shared-ts": true
+  "@magenta/magenta-sdklanggraph-ts": true
   esbuild: true
 
 blockExoticSubdeps: false
