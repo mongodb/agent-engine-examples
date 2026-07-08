@@ -3,6 +3,7 @@ set -e
 
 # Run CI for the workspace
 uv sync --group dev
+scripts/check-customer-names.sh
 uv run ruff check .
 uv run ruff format --check .
 

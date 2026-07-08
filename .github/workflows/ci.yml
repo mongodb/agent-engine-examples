@@ -85,6 +85,15 @@ jobs:
 
           echo "Jira ticket $TICKET is valid (type: $ISSUE_TYPE, status: $STATUS_NAME)"
 
+  customer-names:
+    name: Customer Name Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Check for customer names
+        run: scripts/check-customer-names.sh
+
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -254,14 +263,15 @@ jobs:
 
   ci-success:
     name: CI Success
-    needs: [pr-title-check, lint, type-check, example-smoke]
+    needs: [pr-title-check, customer-names, lint, type-check, example-smoke]
     runs-on: ubuntu-latest
     timeout-minutes: 5
     if: always()
     steps:
       - name: Check all jobs passed
         run: |
-          if [[ "${{ needs.lint.result }}" != "success" ]] || \
+          if [[ "${{ needs.customer-names.result }}" != "success" ]] || \
+             [[ "${{ needs.lint.result }}" != "success" ]] || \
              [[ "${{ needs.type-check.result }}" != "success" ]] || \
              [[ "${{ needs.example-smoke.result }}" != "success" ]] || \
              { [[ "${{ needs.pr-title-check.result }}" != "success" ]] && \
