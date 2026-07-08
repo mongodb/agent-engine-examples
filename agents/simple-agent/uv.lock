@@ -1749,7 +1749,7 @@ wheels = [
 [[package]]
 name = "magenta-sdk-core"
 version = "0.1.0"
-source = { git = "https://github.com/10gen/magenta-client-libraries?subdirectory=packages%2Fsdk-core#a85006330f9e049ad53ffb676fc9c41bbfa1f6a2" }
+source = { git = "https://github.com/10gen/magenta-client-libraries?subdirectory=packages%2Fsdk-core#f12651ed735a055f82b4961992e40b866c46765b" }
 dependencies = [
     { name = "httpx" },
     { name = "pydantic" },
@@ -1758,7 +1758,7 @@ dependencies = [
 [[package]]
 name = "magenta-sdklanggraph"
 version = "0.1.0"
-source = { git = "https://github.com/10gen/magenta-client-libraries?subdirectory=packages%2Fmagenta-sdklanggraph#a85006330f9e049ad53ffb676fc9c41bbfa1f6a2" }
+source = { git = "https://github.com/10gen/magenta-client-libraries?subdirectory=packages%2Fmagenta-sdklanggraph#f12651ed735a055f82b4961992e40b866c46765b" }
 dependencies = [
     { name = "langgraph" },
     { name = "langgraph-checkpoint-mongodb" },
@@ -1890,7 +1890,7 @@ wheels = [
 [[package]]
 name = "mongomem"
 version = "0.1.0"
-source = { git = "https://github.com/10gen/magenta-client-libraries?subdirectory=packages%2Fmongomem#a85006330f9e049ad53ffb676fc9c41bbfa1f6a2" }
+source = { git = "https://github.com/10gen/magenta-client-libraries?subdirectory=packages%2Fmongomem#f12651ed735a055f82b4961992e40b866c46765b" }
 dependencies = [
     { name = "langchain-text-splitters" },
     { name = "litellm" },
@@ -3557,7 +3557,7 @@ wheels = [
 [[package]]
 name = "runner-shared"
 version = "0.1.0"
-source = { git = "https://github.com/10gen/magenta-client-libraries?subdirectory=packages%2Frunner-shared#a85006330f9e049ad53ffb676fc9c41bbfa1f6a2" }
+source = { git = "https://github.com/10gen/magenta-client-libraries?subdirectory=packages%2Frunner-shared#f12651ed735a055f82b4961992e40b866c46765b" }
 dependencies = [
     { name = "fastapi" },
     { name = "httpx" },
