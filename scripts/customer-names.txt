@@ -2,4 +2,3 @@
 # Blank lines and lines starting with '#' are ignored.
 # Matching is case-insensitive and whole-word.
 # Add real customer/company names here to prevent them leaking into examples.
-Globex
