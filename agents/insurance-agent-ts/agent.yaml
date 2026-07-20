@@ -1,0 +1,36 @@
+# Human-readable app slug used by Agentic Platform tooling.
+name: insurance-agent-ts
+
+# Node entry point for the Magenta SDK App instance.
+# Format: <module path>:<export name>. This app exposes `app` from
+# src/insurance_agent_ts/main.ts (compiled to dist/insurance_agent_ts/main.js).
+entrypoint: insurance_agent_ts.main:app
+framework: langgraph
+
+# Programming language for this agent.
+language: typescript
+
+# Optional LLM hints. Application code still constructs the provider client and
+# reads the matching API key from .env. Supported: anthropic, gemini, openai, cerebras.
+config:
+  provider: anthropic
+  model: claude-sonnet-4-6
+
+# Runtime feature flags controlled by agent.yaml, not .env.
+#   memory:     long-term memory (semantic/episodic/taxonomic). VOYAGE_API_KEY must be in .env.
+#   deep_agent: registers the Tool Pod's built-in filesystem + shell handlers that
+#               deep agents rely on. Required for App.deepAgent().
+features:
+  memory: true
+  deep_agent: true
+
+# Declare which secrets each workload may access. Platform-required secrets
+# (MONGODB_URI, VOYAGE_API_KEY) are always injected and do not need to be listed.
+# invoke_llm is a reserved tool name: the platform runs model calls in a tool
+# pod, so the LLM provider key must also be declared under tools.invoke_llm.
+required_secrets:
+  aer:
+    - "<YOUR LLM API KEY HERE>"
+  tools:
+    invoke_llm:
+      - "<YOUR LLM API KEY HERE>"

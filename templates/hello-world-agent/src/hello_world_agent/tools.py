@@ -33,14 +33,14 @@ def register(app: App) -> None:
             info_value: The value to store.
         """
         user_id = app.get_current_user_id()
-        success = app.memory.save_semantic(
+        result = app.memory.save_semantic(
             text=f"User {info_key}: {info_value}",
             label=f"{user_id}_{info_key}",
             source="hello_world_agent",
             metadata={"type": "user_info", "info_key": info_key},
-            user_id=user_id,  # type: ignore[arg-type]
+            user_id=user_id,
         )
-        if success:
+        if result.acknowledged:
             return json.dumps({"status": "saved", "info_key": info_key})
         return json.dumps({"status": "error", "error": "Memory is not enabled"})
 
@@ -48,9 +48,12 @@ def register(app: App) -> None:
     def recall_user_info() -> str:
         """Recall stored information about the current user from long-term memory."""
         user_id = app.get_current_user_id()
-        memory_context = app.memory.build_context(
+        context = app.memory.build_context(
             query=f"user profile and information for user {user_id}",
-            user_id=user_id,  # type: ignore[arg-type]
+            user_id=user_id,
+        )
+        memory_context = (
+            context.formatted_context if isinstance(context.formatted_context, str) else ""
         )
         if not memory_context:
             return json.dumps({"found": False, "message": "No stored information found"})

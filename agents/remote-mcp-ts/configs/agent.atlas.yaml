@@ -1,0 +1,41 @@
+name: remote-mcp-ts
+entrypoint: remote_mcp_ts.atlas:app
+framework: langgraph
+language: typescript
+build:
+  context: .
+
+config:
+  provider: openai
+  model: gpt-5.4-mini
+
+features:
+  guardrails: false
+  memory: false
+
+required_secrets:
+  aer:
+    - OPENAI_API_KEY
+    - OPENAI_BASE_URL
+    - MCP_GROUP_SA_ID_DEV
+    - MCP_GROUP_SA_SECRET_DEV
+  tools:
+    invoke_llm:
+      - OPENAI_API_KEY
+      - OPENAI_BASE_URL
+    "*":
+      - MCP_GROUP_SA_ID_DEV
+      - MCP_GROUP_SA_SECRET_DEV
+
+mcp:
+  servers:
+    atlas:
+      transport: streamable_http
+      # Atlas Remote MCP currently supports cloud-dev only.
+      url: https://cloud-dev.mongodb.com/api/private/mcp
+      auth:
+        type: client_credentials
+        token_url: https://cloud-dev.mongodb.com/api/oauth/token
+        client_id_env: MCP_GROUP_SA_ID_DEV
+        client_secret_env: MCP_GROUP_SA_SECRET_DEV
+      timeout_seconds: 30

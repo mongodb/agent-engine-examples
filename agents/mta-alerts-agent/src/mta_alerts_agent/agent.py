@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import time
+import logging
 from datetime import UTC, datetime
 from typing import Annotated
 
@@ -14,6 +15,7 @@ from magenta_sdklanggraph import App
 
 app = App(app_name="MTA Alerts Agent")
 
+logger = logging.getLogger(__name__)
 
 # MTA GTFS-RT subway alerts endpoint
 _MTA_ALERTS_URL = (
@@ -1206,6 +1208,10 @@ def _build_llm():
 
         openai_key = os.environ["OPENAI_API_KEY"]
         openai_base_url = os.environ.get("OPENAI_BASE_URL")
+        if not openai_base_url:
+            logger.info("OPENAI_BASE_URL unset - falling back to Grove default OpenAI base URL.")
+            openai_base_url = "https://grove-gateway-prod.azure-api.net/grove-foundry-prod/openai/v1"
+            
         kwargs: dict = {
             "api_key": openai_key,
             "model": os.environ.get("OPENAI_MODEL", "gpt-5.4-mini"),
@@ -1222,6 +1228,10 @@ def _build_llm():
 
         anthropic_key = os.environ["ANTHROPIC_API_KEY"]
         anthropic_base_url = os.environ.get("ANTHROPIC_BASE_URL")
+        if not anthropic_base_url:
+            logger.info("ANTHROPIC_BASE_URL unset - falling back to Grove default Anthropic base URL.")
+            anthropic_base_url = "https://grove-gateway-prod.azure-api.net/grove-foundry-prod/anthropic/v1"
+            
         kwargs: dict = {
             "api_key": anthropic_key,
             "model_name": os.environ.get("ANTHROPIC_MODEL", "claude-sonnet-4-6"),

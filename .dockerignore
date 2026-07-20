@@ -29,4 +29,7 @@ observability/
 **/.agentic/
 !**/.agentic/entrypoint.py
 !**/.agentic/dev-entrypoint.py
+!**/.agentic/Dockerfile.dev
+!**/.agentic/entrypoint.mjs
+!**/.agentic/dev-entrypoint.mjs
 **/.devcontainer/

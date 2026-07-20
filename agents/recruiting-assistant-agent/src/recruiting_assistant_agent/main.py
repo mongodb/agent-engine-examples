@@ -360,7 +360,7 @@ def save_conversation_summary(title: str, summary: str, tags: str = "") -> str:
     session_id = get_current_session_id()
     tag_list = [t.strip() for t in tags.split(",") if t.strip()] if tags else []
 
-    episode_id = app.memory.save_episode(
+    episode = app.memory.save_episode(
         title=title,
         content=summary,
         summary=summary,
@@ -371,11 +371,11 @@ def save_conversation_summary(title: str, summary: str, tags: str = "") -> str:
         visibility="private",
     )
 
-    if episode_id:
+    if episode.acknowledged:
         return json.dumps(
             {
                 "status": "saved",
-                "episode_id": episode_id,
+                "episode_id": episode.id,
                 "title": title,
                 "tags": tag_list,
                 "message": "Conversation summary saved for future reference.",
@@ -410,7 +410,7 @@ def save_learned_insight(insight_text: str, tags: list[str], visibility: str = "
             indent=2,
         )
 
-    saved = app.memory.save_semantic(
+    result = app.memory.save_semantic(
         text=insight_text,
         label="learned_recruiter_insight",
         source="recruiter_feedback",
@@ -419,7 +419,7 @@ def save_learned_insight(insight_text: str, tags: list[str], visibility: str = "
         metadata={"tags": tags, "created_at": datetime.now(timezone.utc).isoformat()},
     )
 
-    if saved:
+    if result.acknowledged:
         return json.dumps({"status": "saved", "visibility": visibility}, indent=2)
     return json.dumps({"status": "error", "message": "Failed to save insight."}, indent=2)
 

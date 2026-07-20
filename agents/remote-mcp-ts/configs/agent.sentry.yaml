@@ -1,0 +1,33 @@
+name: remote-mcp-ts
+entrypoint: remote_mcp_ts.sentry:app
+framework: langgraph
+language: typescript
+build:
+  context: .
+
+config:
+  provider: openai
+  model: gpt-5.4-mini
+
+features:
+  guardrails: false
+  memory: false
+
+required_secrets:
+  aer:
+    - OPENAI_API_KEY
+    - OPENAI_BASE_URL
+  tools:
+    invoke_llm:
+      - OPENAI_API_KEY
+      - OPENAI_BASE_URL
+
+mcp:
+  servers:
+    sentry:
+      transport: streamable_http
+      url: https://mcp.sentry.dev/mcp
+      auth:
+        type: oauth
+        scope: "org:read project:read team:read event:read"
+      timeout_seconds: 30

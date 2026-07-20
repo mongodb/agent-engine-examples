@@ -133,7 +133,7 @@ def risky_action(params: str) -> str:
 
 ### Optional features
 
-- **Memory**: `App(..., enable_memory=True)` then use `app.memory.save_semantic()`, `.search_semantic()`, `.build_context()`, etc. See SDK API docs for full memory interface (semantic, episodic, taxonomic).
+- **Memory**: `App(..., enable_memory=True)` then use `app.memory.save_semantic()`, `.search_semantic()`, `.build_context()`, etc. Methods return typed results — writes expose `.acknowledged`, `build_context` returns a response with `.formatted_context`, searches return chunks with `.content`/`.metadata`. See SDK API docs for the full memory interface (semantic, episodic, taxonomic).
 - **Guardrails**: `App(..., enable_guardrails=True)` then use `app.validate_llm_response(response)` or `app.validate_output(text)`.
 - **Tracing**: `App(..., enable_tracing=True)` — no code changes needed beyond the flag.
 - **Current user**: `app.get_current_user_id()` returns the user_id from the current execution context.

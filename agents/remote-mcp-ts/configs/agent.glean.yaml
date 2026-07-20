@@ -1,0 +1,34 @@
+name: remote-mcp-ts
+entrypoint: remote_mcp_ts.glean:app
+framework: langgraph
+language: typescript
+build:
+  context: .
+
+config:
+  provider: openai
+  model: gpt-5.4-mini
+
+features:
+  guardrails: false
+  memory: false
+
+required_secrets:
+  aer:
+    - OPENAI_API_KEY
+    - OPENAI_BASE_URL
+  tools:
+    invoke_llm:
+      - OPENAI_API_KEY
+      - OPENAI_BASE_URL
+
+mcp:
+  servers:
+    glean:
+      transport: streamable_http
+      url: https://mongodb-be.glean.com/mcp/default
+      auth:
+        type: oauth
+        scope: "mcp search documents entities"
+        client_name: Magenta Glean Remote MCP Agent (TS)
+      timeout_seconds: 30

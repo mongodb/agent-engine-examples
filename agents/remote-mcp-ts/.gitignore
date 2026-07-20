@@ -1,0 +1,14 @@
+.agentic/
+.devcontainer/
+.env
+.env.*
+
+node_modules/
+dist/
+observability/
+*.tsbuildinfo
+npm-debug.log*
+yarn-error.log*
+.DS_Store
+docker-compose.yml
+.dockerignore

@@ -241,27 +241,30 @@ Semantic memory:
 
 ```python
 user_id = app.get_current_user_id()
-app.memory.save_semantic(
+result = app.memory.save_semantic(
     text="Customer prefers comprehensive coverage",
     label=f"{user_id}_coverage_preference",
     source="insurance_agent",
     metadata={"type": "customer_info", "info_key": "coverage_preference"},
     user_id=user_id,
 )
+# result.acknowledged is True when the write landed
 
 context = app.memory.build_context(query="coverage preference", user_id=user_id)
+memory_text = context.formatted_context or ""
 ```
 
 Episodic memory:
 
 ```python
-app.memory.save_episode(
+episode = app.memory.save_episode(
     title="Policy created for customer",
     content="Customer purchased comprehensive auto policy.",
     summary="Policy created with comprehensive coverage.",
     participants=["Customer", "Agent"],
     user_id=user_id,
 )
+# episode.acknowledged / episode.id
 ```
 
 Taxonomic memory is used by the insurance template for domain knowledge like insurance terms and coverage options.

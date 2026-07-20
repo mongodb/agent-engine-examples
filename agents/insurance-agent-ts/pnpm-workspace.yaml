@@ -1,0 +1,14 @@
+overrides:
+  "@magenta/sdk-core-ts": "git+https://github.com/10gen/magenta-client-libraries#3175b5d2132fb6e44c4eb643435d048e0109ee8c&path:packages/sdk-core-ts"
+  "@magenta/agentic-platform-memory-ts": "git+https://github.com/10gen/magenta-client-libraries#3175b5d2132fb6e44c4eb643435d048e0109ee8c&path:packages/agentic-platform-memory-ts"
+  "@magenta/runner-shared-ts": "git+https://github.com/10gen/magenta-client-libraries#3175b5d2132fb6e44c4eb643435d048e0109ee8c&path:packages/runner-shared-ts"
+  "@magenta/magenta-sdklanggraph-ts": "git+https://github.com/10gen/magenta-client-libraries#3175b5d2132fb6e44c4eb643435d048e0109ee8c&path:packages/magenta-sdklanggraph-ts"
+
+allowBuilds:
+  "@magenta/sdk-core-ts": true
+  "@magenta/agentic-platform-memory-ts": true
+  "@magenta/runner-shared-ts": true
+  "@magenta/magenta-sdklanggraph-ts": true
+  esbuild: true
+
+blockExoticSubdeps: false

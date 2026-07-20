@@ -35,6 +35,7 @@ from langgraph.graph.state import CompiledStateGraph
 from langgraph.graph.message import add_messages
 from langgraph.prebuilt import ToolNode
 from magenta_sdklanggraph import App
+from runner_shared.context import get_current_session_id
 from runner_shared.models import SuspendPayload
 
 from insurance_agent.policy_store import (
@@ -91,34 +92,46 @@ def _build_runtime_llm() -> BaseChatModel:
         from langchain_openai import ChatOpenAI
 
         model_name = configured_model or "gpt-5.4-mini"
+        base_url = openai_base_url
+        if not base_url:
+            logger.info(
+                "OPENAI_BASE_URL unset - falling back to Grove default OpenAI base URL."
+            )
+            base_url = "https://grove-gateway-prod.azure-api.net/grove-foundry-prod/openai/v1"
         kwargs: dict[str, Any] = {
             "api_key": openai_key,
             "model": model_name,
             "temperature": 0,
         }
-        if openai_base_url:
-            if "grove-foundry" in openai_base_url:
-                kwargs["base_url"] = openai_base_url.split("/v1")[0] + "/v1"
+        if base_url:
+            if "grove-foundry" in base_url:
+                kwargs["base_url"] = base_url.split("/v1")[0] + "/v1"
                 kwargs["default_headers"] = {"api-key": openai_key}
             else:
-                kwargs["base_url"] = openai_base_url.rstrip("/")
+                kwargs["base_url"] = base_url.rstrip("/")
         return cast(Any, ChatOpenAI)(**kwargs)
 
     def _build_anthropic() -> BaseChatModel:
         from langchain_anthropic import ChatAnthropic
 
         model_name = configured_model or "claude-sonnet-4-6"
+        base_url = anthropic_base_url
+        if not base_url:
+            logger.info(
+                "ANTHROPIC_BASE_URL unset - falling back to Grove default Anthropic base URL."
+            )
+            base_url = "https://grove-gateway-prod.azure-api.net/grove-foundry-prod/anthropic/v1"
         kwargs = {
             "api_key": anthropic_key,
             "model_name": model_name,
             "temperature": 0,
         }
-        if anthropic_base_url:
-            if "grove-foundry" in anthropic_base_url:
-                kwargs["base_url"] = anthropic_base_url.split("/v1")[0].rstrip("/")
+        if base_url:
+            if "grove-foundry" in base_url:
+                kwargs["base_url"] = base_url.split("/v1")[0].rstrip("/")
                 kwargs["default_headers"] = {"api-key": anthropic_key}
             else:
-                kwargs["base_url"] = anthropic_base_url.rstrip("/")
+                kwargs["base_url"] = base_url.rstrip("/")
         return cast(Any, ChatAnthropic)(**kwargs)
 
     builders = {
@@ -254,9 +267,12 @@ def get_quote(
         loyalty_discount = 0.10
 
         # Check semantic memory for good driving record
-        memory_context = app.memory.build_context(
+        context = app.memory.build_context(
             query="driving history record accidents",
-            user_id=user_id,  # type: ignore[arg-type]  # user_id is str at runtime
+            user_id=user_id,
+        )
+        memory_context = (
+            context.formatted_context if isinstance(context.formatted_context, str) else ""
         )
         if memory_context:
             if (
@@ -747,7 +763,7 @@ def save_customer_info(info_key: str, info_value: str) -> str:
     # Build descriptive text for semantic search
     profile_text = f"Customer {info_key}: {info_value}"
 
-    success = app.memory.save_semantic(
+    result = app.memory.save_semantic(
         text=profile_text,
         label=f"{user_id}_{info_key}",
         source="insurance_agent",
@@ -755,10 +771,10 @@ def save_customer_info(info_key: str, info_value: str) -> str:
             "type": "customer_info",
             "info_key": info_key,
         },
-        user_id=user_id,  # type: ignore[arg-type]  # user_id is str at runtime
+        user_id=user_id,
     )
 
-    if success:
+    if result.acknowledged:
         return json.dumps({"status": "saved", "info_key": info_key, "user_id": user_id})
     return json.dumps({"status": "error", "error": "Memory not enabled"})
 
@@ -771,10 +787,11 @@ def recall_customer_info() -> str:
     """
     user_id = app.get_current_user_id()
 
-    memory_context = app.memory.build_context(
+    context = app.memory.build_context(
         query=f"customer profile and information for user {user_id}",
-        user_id=user_id,  # type: ignore[arg-type]  # user_id is str at runtime
+        user_id=user_id,
     )
+    memory_context = context.formatted_context if isinstance(context.formatted_context, str) else ""
 
     if not memory_context:
         return json.dumps(
@@ -819,27 +836,41 @@ def save_conversation_summary(
         summary: Summary of what was discussed and any outcomes
         tags: Comma-separated tags for categorization (e.g., "quote,auto_insurance,new_customer")
     """
+    from agentic_platform_memory.errors import MemoryIdentityError
+
     user_id = app.get_current_user_id()
+    session_id = get_current_session_id()
 
     # Parse tags
     tag_list = [t.strip() for t in tags.split(",") if t.strip()] if tags else []
 
     # Use episodic memory for conversation summaries
-    episode_id = app.memory.save_episode(
-        title=title,
-        content=summary,
-        summary=summary,
-        participants=["Customer", "Alex (AI Assistant)"],
-        tags=tag_list,
-        user_id=user_id,  # type: ignore[arg-type]  # user_id is str at runtime
-        visibility="private",
-    )
+    try:
+        episode = app.memory.save_episode(
+            title=title,
+            content=summary,
+            summary=summary,
+            participants=["Customer", "Alex (AI Assistant)"],
+            tags=tag_list,
+            user_id=user_id,
+            session_id=session_id,
+            visibility="private",
+        )
+    except MemoryIdentityError:
+        return json.dumps(
+            {
+                "status": "error",
+                "message": (
+                    "Cannot save conversation summary without a resolved user_id and session_id."
+                ),
+            }
+        )
 
-    if episode_id:
+    if episode.acknowledged:
         return json.dumps(
             {
                 "status": "saved",
-                "episode_id": episode_id,
+                "episode_id": episode.id,
                 "title": title,
                 "tags": tag_list,
                 "message": "Conversation summary saved for future reference.",
@@ -890,11 +921,12 @@ def recall_past_conversations(query: str = "") -> str:
     # Format episodes for display
     formatted = []
     for ep in episodes:
+        ep_meta = ep.metadata or {}
         formatted.append(
             {
-                "title": ep.get("title", ""),
-                "summary": ep.get("summary", ep.get("content", "")[:200]),
-                "tags": ep.get("tags", []),
+                "title": ep_meta.get("title", ""),
+                "summary": ep_meta.get("summary", ep.content[:200]),
+                "tags": ep_meta.get("tags", []),
             }
         )
 
@@ -942,22 +974,23 @@ def explain_insurance_term(term: str) -> str:
 
     # Find the best match
     best_match = results[0]
+    best_match_meta = best_match.metadata or {}
 
     response = {
         "found": True,
-        "term": best_match.get("term", term),
-        "domain": best_match.get("domain", "insurance"),
-        "definition": best_match.get("definition", ""),
-        "related_terms": best_match.get("related_terms", []),
+        "term": best_match_meta.get("term", term),
+        "domain": best_match_meta.get("domain", "insurance"),
+        "definition": best_match_meta.get("definition", ""),
+        "related_terms": best_match_meta.get("related_terms", []),
     }
 
     # Include other matches if they're relevant
     if len(results) > 1:
         response["related_concepts"] = [
             {
-                "term": r.get("term", ""),
-                "domain": r.get("domain", ""),
-                "definition": r.get("definition", "")[:100] + "...",
+                "term": (r.metadata or {}).get("term", ""),
+                "domain": (r.metadata or {}).get("domain", ""),
+                "definition": (r.metadata or {}).get("definition", "")[:100] + "...",
             }
             for r in results[1:3]
         ]
@@ -978,11 +1011,12 @@ def get_coverage_options() -> str:
     for term in coverage_terms:
         results = app.memory.search_taxonomic(query=term, domain="coverage_types", top_k=1)
         if results:
+            top_meta = results[0].metadata or {}
             coverages.append(
                 {
-                    "level": results[0].get("term", term),
-                    "description": results[0].get("definition", ""),
-                    "related": results[0].get("related_terms", []),
+                    "level": top_meta.get("term", term),
+                    "description": top_meta.get("definition", ""),
+                    "related": top_meta.get("related_terms", []),
                 }
             )
 
@@ -1254,15 +1288,15 @@ def build_agent(llm: Optional[BaseChatModel] = None) -> CompiledStateGraph:
         # Build memory context.
         memory_context = ""
         if user_id and latest_user_query:
-            memory_context = app.memory.build_context(
+            context = app.memory.build_context(
                 query=latest_user_query,
                 user_id=user_id,
-                thread_id=session_id,
+            )
+            memory_context = (
+                context.formatted_context if isinstance(context.formatted_context, str) else ""
             )
             if memory_context:
-                logger.info(
-                    f"Built memory context (length={len(memory_context)}) for query: {latest_user_query[:50]}...\n{memory_context}"
-                )
+                logger.info(f"Built memory context for query: {latest_user_query[:50]}...")
             else:
                 logger.info("No memory context available")
 

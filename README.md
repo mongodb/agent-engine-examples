@@ -20,6 +20,15 @@ requirement for any individual example.
 The examples depend on the SDK via git-based `uv` sources that point at the
 `10gen/magenta-client-libraries` repository.
 
+## Contributing
+
+**New to this repository?** Start with the [**RUNBOOK.md**](RUNBOOK.md) — it covers:
+- How to create a new agent from templates
+- Modifying existing agents
+- Testing and deployment
+- Contribution workflow
+- Troubleshooting and best practices
+
 ## Agents
 
 | Agent | Description |
@@ -28,9 +37,11 @@ The examples depend on the SDK via git-based `uv` sources that point at the
 | [`agents/code-reviewer-agent/`](agents/code-reviewer-agent/) | DeepAgent code-review orchestrator with specialist review skills |
 | [`agents/data-analyst-agent/`](agents/data-analyst-agent/) | Data analyst demo with MongoDB query and chart artifacts |
 | [`agents/insurance-agent/`](agents/insurance-agent/) | Insurance assistant built on the Runner SDK |
+| [`agents/insurance-agent-ts/`](agents/insurance-agent-ts/) | TypeScript insurance assistant (deep agent + long-term memory) |
 | [`agents/mta-alerts-agent/`](agents/mta-alerts-agent/) | MTA subway service alerts agent |
 | [`agents/recruiting-assistant-agent/`](agents/recruiting-assistant-agent/) | Recruiting assistant with cross-session memory and outreach review |
-| [`agents/remote-mcp/`](agents/remote-mcp/) | Remote MCP examples for GitHub, Glean, and Sentry |
+| [`agents/remote-mcp/`](agents/remote-mcp/) | Remote MCP examples for GitHub, Glean, and Sentry (Python) |
+| [`agents/remote-mcp-ts/`](agents/remote-mcp-ts/) | Remote MCP examples for GitHub, Glean, and Sentry (TypeScript; GitHub-only default) |
 | [`agents/simple-agent/`](agents/simple-agent/) | Web search assistant migrated onto `magenta_sdklanggraph` |
 | [`agents/weather-agent/`](agents/weather-agent/) | Minimal LangGraph weather demo (single workspace) |
 

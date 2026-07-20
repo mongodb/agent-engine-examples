@@ -11,12 +11,16 @@ agents:
     path: agents/holiday-assistant-agent
   - name: insurance-agent
     path: agents/insurance-agent
+  - name: insurance-agent-ts
+    path: agents/insurance-agent-ts
   - name: mta-alerts-agent
     path: agents/mta-alerts-agent
   - name: recruiting-assistant-agent
     path: agents/recruiting-assistant-agent
   - name: remote-mcp
     path: agents/remote-mcp
+  - name: remote-mcp-ts
+    path: agents/remote-mcp-ts
   - name: simple-agent
     path: agents/simple-agent
   - name: store-manager-agent
