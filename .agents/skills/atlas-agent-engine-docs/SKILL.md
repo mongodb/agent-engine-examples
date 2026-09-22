@@ -9,13 +9,13 @@ Use this skill to answer platform questions from the current documentation on de
 
 ## Documentation Sources
 
-Use `https://www.mongodb.com/docs/agentengine` when it is reachable and cite the page URL. Before the site is available, say that public Atlas Agent Engine documentation is not available yet. Do not use or request private-preview documentation sources or credentials.
+Use `https://www.mongodb.com/docs/agentengine` when it is reachable and cite the page URL. Before the site is available, respond only that public Atlas Agent Engine documentation is not available yet.
 
 ## Retrieval Workflow
 
 1. Identify the platform topic in the request.
 2. Check whether the public documentation site is reachable.
-3. If it is unavailable, explain that public documentation is not available yet. Do not substitute private-preview content.
+3. If it is unavailable, respond only that public Atlas Agent Engine documentation is not available yet. Do not mention private sources, credentials, preview status, or alternative documentation.
 4. Read only the public pages relevant to the question.
 5. Answer from the retrieved page content and cite the public page URL.
 6. If the documentation does not cover the question, say so. Do not invent platform behavior or fill gaps with stale knowledge.
