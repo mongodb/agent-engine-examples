@@ -1,0 +1,42 @@
+# Human-readable app slug used by Agentic Platform tooling.
+# `agentic create` should rewrite this when generating a new app from the template.
+name: insurance-agent
+
+# Python import path to the SDK App instance.
+# Format: <module path>:<variable name>. This template exposes `app` from
+# src/insurance_agent/main.py.
+entrypoint: insurance_agent.main:app
+framework: langgraph
+
+# Runtime feature flags controlled by agent.yaml, not .env.
+# Set memory to true to enable long-term memory; VOYAGE_API_KEY must be present
+# in .env when memory is enabled.
+features:
+  durable_workflow: true
+  memory: false
+
+# Tool placement and pass-through secrets. Interrupt tools must stay on the agent.
+sandboxes:
+  agent:
+    secrets: ["*"]
+    tools:
+      - human_review
+      - send_notification
+  tool:
+    secrets: ["*"]
+    tools:
+      - lookup_policy
+      - get_quote
+      - create_policy
+      - list_customer_policies
+      - file_claim
+      - analyze_claim_risk
+      - check_claim_status
+      - list_customer_claims
+      - resolve_claim
+      - save_customer_info
+      - recall_customer_info
+      - save_conversation_summary
+      - recall_past_conversations
+      - explain_insurance_term
+      - get_coverage_options

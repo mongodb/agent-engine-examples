@@ -1,0 +1,19 @@
+# Local services exposed by the app during `agentic dev`.
+# Most host ports are assigned randomly so multiple agents can run at once.
+# The playground stays pinned to 3000 because it is the primary browser UI.
+# To pin another service, uncomment its block, change the port, and restart
+# the local stack.
+services:
+  playground:
+    port: 3000
+  # oe:
+  #   port: 8000  # Orchestration Engine HTTP API.
+  # aer:
+  #   port: 8001  # Agent Execution Runtime.
+  # tool:
+  #   port: 8002  # Tool execution runtime.
+  # memory-server:
+  #   port: 8081  # Long-term memory service.
+  # mongodb:
+  #   local: true  # Default true. Set false to use a remote Atlas cluster in local dev.
+  #   port: 27017  # Local Atlas host port; ignored when local is false.

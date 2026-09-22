@@ -1,0 +1,43 @@
+[project]
+name = "insurance-agent-adk"
+version = "0.1.0"
+description = "Insurance agent starter template for Agentic Platform using Google ADK"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+dependencies = [
+    "agent-engine-runner-shared[mongodb,tracing]",
+    "agent-engine-sdk-adk",
+    "google-adk[extensions]>=2.6.2,<3",
+    "pydantic>=2.0",
+    "pymongo>=4.0",
+    "python-dotenv>=1.0.0",
+]
+
+[project.scripts]
+insurance-agent-adk = "insurance_agent.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/insurance_agent"]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.390",
+    "ruff>=0.1.0",
+]
+
+[tool.uv.sources]
+# Keep standalone templates on the tested SDK layout during the upstream package rename.
+agent-engine-runner-shared = { git = "https://github.com/10gen/magenta-client-libraries", rev = "55a847994b20f8ef4bf9dcae551941e6a2cb70de", subdirectory = "packages/python/packages/agent-engine-runner-shared" }
+agent-engine-sdk-adk = { git = "https://github.com/10gen/magenta-client-libraries", rev = "55a847994b20f8ef4bf9dcae551941e6a2cb70de", subdirectory = "packages/python/packages/agent-engine-sdk-adk" }
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]
