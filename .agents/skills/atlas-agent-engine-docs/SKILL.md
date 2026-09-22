@@ -9,27 +9,20 @@ Use this skill to answer platform questions from the current documentation on de
 
 ## Documentation Sources
 
-Use one source for each answer, in this order:
-
-1. **Public preview:** when `https://www.mongodb.com/docs/agentengine` is reachable, use the public site and cite the page URL.
-2. **Private preview:** before the public site is available, read an authorized local documentation checkout. If it is not already present, clone the configured private source on demand using the developer's existing Git authentication.
-
-Set `AGENT_ENGINE_DOCS_REPO_URL` to the authorized private documentation repository URL outside the project and skill. Set `AGENT_ENGINE_DOCS_DIR` to the local checkout path; when unset, use `$HOME/.cache/atlas-agent-engine-docs`.
-
-Never use, request, store, print, or commit shared credentials for the password-protected preview docs site. Never add the private repository URL to the project or this skill. The checkout must be obtained through the developer's own authorized access. If the developer cannot access the checkout or configure `AGENT_ENGINE_DOCS_REPO_URL`, say that private-preview documentation is unavailable to them rather than attempting to bypass access controls.
+Use `https://www.mongodb.com/docs/agentengine` when it is reachable and cite the page URL. Before the site is available, say that public Atlas Agent Engine documentation is not available yet. Do not use or request private-preview documentation sources or credentials.
 
 ## Retrieval Workflow
 
 1. Identify the platform topic in the request.
-2. Choose the public site when it is reachable; otherwise use the local private-preview checkout.
-3. If the private-preview checkout does not exist and `AGENT_ENGINE_DOCS_REPO_URL` is configured, clone it into `AGENT_ENGINE_DOCS_DIR` with `git clone "$AGENT_ENGINE_DOCS_REPO_URL" "$AGENT_ENGINE_DOCS_DIR"`. Let Git use the developer's existing credentials; never prompt for or persist credentials yourself.
-4. For the local checkout, start with `README.md`, which contains the documentation index, then read only the relevant Markdown pages.
-5. Answer from the retrieved page content. Include the page title and either the public URL or the local repository-relative file path.
+2. Check whether the public documentation site is reachable.
+3. If it is unavailable, explain that public documentation is not available yet. Do not substitute private-preview content.
+4. Read only the public pages relevant to the question.
+5. Answer from the retrieved page content and cite the public page URL.
 6. If the documentation does not cover the question, say so. Do not invent platform behavior or fill gaps with stale knowledge.
 
-## Private-Preview Page Map
+## Documentation Page Map
 
-Use these paths to narrow a private-preview lookup:
+Use these paths to narrow a public documentation lookup:
 
 | Topic | Documentation path |
 | --- | --- |
@@ -46,19 +39,8 @@ Use these paths to narrow a private-preview lookup:
 | Network egress | `network-egress/` |
 | Agent manifest contract | `reference/agent-contract.md` |
 
-## Freshness
-
-Before relying on a local checkout for a time-sensitive answer, check its latest commit. The mirror is regenerated daily. If the checkout is stale and has no local changes, update it with:
-
-```bash
-git -C "$AGENT_ENGINE_DOCS_DIR" pull --ff-only
-```
-
-Do not modify files in the checkout. It is generated from the documentation source and local edits will be overwritten.
-
 ## Answer Format
 
 - State the answer first.
 - Cite the retrieved documentation page at the end.
 - Call out preview-only behavior, prerequisites, or access requirements when the source documents them.
-- Keep private-preview content within the developer's authorized environment. Do not copy it into public issues, repositories, or external channels.
