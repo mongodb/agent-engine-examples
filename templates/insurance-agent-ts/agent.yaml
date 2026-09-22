@@ -1,0 +1,48 @@
+# Human-readable app slug used by Agentic Platform tooling.
+# `agentic create` should rewrite this when generating a new app from the template.
+name: insurance-agent-ts
+
+# Node entry point for the SDK App instance.
+# Format: <module path>:<export name>. This template exposes `app` from
+# src/insurance_agent_ts/main.ts (compiled to dist/insurance_agent_ts/main.js).
+entrypoint: insurance_agent_ts.main:app
+framework: langgraph
+
+# Programming language for this agent.
+language: typescript
+
+# Runtime feature flags controlled by agent.yaml, not .env.
+#   memory:     long-term memory (semantic/episodic/taxonomic). VOYAGE_API_KEY must be in .env.
+#               `agentic create --memory` enables this and prompts for the Voyage key.
+#   deep_agent: registers the tool sandbox's built-in filesystem + shell handlers that
+#               deep agents rely on. Required for App.deepAgent().
+features:
+  memory: false
+  deep_agent: true
+  durable_workflow: true
+
+# Tool placement and pass-through secrets. Interrupt tools must stay on the agent.
+sandboxes:
+  agent:
+    secrets: ["*"]
+    tools:
+      - human_review
+      - send_notification
+  tool:
+    secrets: ["*"]
+    tools:
+      - lookup_policy
+      - get_quote
+      - create_policy
+      - list_customer_policies
+      - file_claim
+      - analyze_claim_risk
+      - check_claim_status
+      - list_customer_claims
+      - resolve_claim
+      - save_customer_info
+      - recall_customer_info
+      - save_conversation_summary
+      - recall_past_conversations
+      - explain_insurance_term
+      - get_coverage_options

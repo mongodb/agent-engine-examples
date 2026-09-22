@@ -1,0 +1,47 @@
+[project]
+name = "insurance-agent"
+version = "0.1.0"
+description = "Insurance agent starter template for Agentic Platform"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+dependencies = [
+    "agent-engine-runner-shared[mongodb,tracing]",
+    "agent-engine-sdk-langgraph",
+    "python-dotenv>=1.0.0",
+    "langchain-google-genai>=2.1.0",
+    "grpcio>=1.76.0",
+    "grpcio-health-checking>=1.76.0",
+    "langchain>=1.0.0",
+    "langchain-openai>=1.1.12",
+    "langchain-xai>=1.3.0",
+    "langchain-anthropic>=1.4.0",
+]
+
+[project.scripts]
+insurance-agent = "insurance_agent.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/insurance_agent"]
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.390",
+    "ruff>=0.1.0",
+]
+
+[tool.uv.sources]
+# Keep standalone templates on the tested SDK layout during the upstream package rename.
+agent-engine-runner-shared = { git = "https://github.com/10gen/magenta-client-libraries", rev = "55a847994b20f8ef4bf9dcae551941e6a2cb70de", subdirectory = "packages/python/packages/agent-engine-runner-shared" }
+agent-engine-sdk-langgraph = { git = "https://github.com/10gen/magenta-client-libraries", rev = "55a847994b20f8ef4bf9dcae551941e6a2cb70de", subdirectory = "packages/python/packages/agent-engine-sdk-langgraph" }
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F"]

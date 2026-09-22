@@ -1,0 +1,34 @@
+# Human-readable app slug used by Agentic Platform tooling.
+# `agentic create` should rewrite this when generating a new app from the template.
+name: hello-world-agent
+
+# Node entry point for the SDK App instance.
+# Format: <module path>:<export name>. This template exposes `app` from
+# src/hello_world_agent/main.ts (compiled to dist/hello_world_agent/main.js).
+entrypoint: hello_world_agent.main:app
+framework: langgraph
+
+# Programming language for this agent.
+language: typescript
+
+# Runtime feature flags controlled by agent.yaml, not .env. A key that is
+# present here wins over any ENABLE_* environment variable, so declaring memory
+# keeps ambient environment state from switching it on behind your back.
+# Set memory to true to enable long-term profile memory; VOYAGE_API_KEY must be
+# present in .env when memory is enabled.
+features:
+  durable_workflow: true
+  memory: false
+
+# Tool placement and pass-through secrets. This template's tools are all
+# remote-capable, so they run in the tool sandbox.
+sandboxes:
+  agent:
+    secrets: ["*"]
+    tools: []
+  tool:
+    secrets: ["*"]
+    tools:
+      - get_current_date
+      - save_user_info
+      - recall_user_info

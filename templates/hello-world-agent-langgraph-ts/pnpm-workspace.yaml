@@ -1,0 +1,12 @@
+overrides:
+  "@mongodb-js/agent-engine-sdk": "git+https://github.com/10gen/magenta-client-libraries#path:packages/javascript/packages/agent-engine-sdk"
+  "@mongodb-js/agent-engine-runner-shared": "git+https://github.com/10gen/magenta-client-libraries#path:packages/javascript/packages/agent-engine-runner-shared"
+  "@mongodb-js/agent-engine-sdk-langgraph": "git+https://github.com/10gen/magenta-client-libraries#path:packages/javascript/packages/agent-engine-sdk-langgraph"
+
+allowBuilds:
+  "@mongodb-js/agent-engine-sdk": true
+  "@mongodb-js/agent-engine-runner-shared": true
+  "@mongodb-js/agent-engine-sdk-langgraph": true
+  esbuild: true
+
+blockExoticSubdeps: false
