@@ -18,15 +18,6 @@ Agents that discover skills from a different directory can use the same `SKILL.m
 After the public-preview documentation site is live, the skill reads
 `https://www.mongodb.com/docs/agentengine`.
 
-For private-preview documentation before that launch, configure the authorized
-repository URL outside the agent project. On the first relevant question, the
-skill clones it using the developer's existing Git authentication:
-
-```bash
-export AGENT_ENGINE_DOCS_REPO_URL=<authorized-private-docs-repository-url>
-export AGENT_ENGINE_DOCS_DIR="$HOME/.cache/atlas-agent-engine-docs"
-```
-
-Do not add shared preview-site credentials to the agent project, environment
-examples, or this skill. Do not commit the private repository URL. Keep the
-local documentation checkout within the authorized environment.
+Before the public site launches, the skill reports that public documentation is
+not available yet. It does not use private-preview documentation sources or
+credentials.
