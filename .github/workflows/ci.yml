@@ -1,0 +1,21 @@
+name: Public Template CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  template-smoke:
+    name: Template Smoke (hello-world-agent)
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Compile template source
+        run: python3 -m compileall -q templates/hello-world-agent/src
