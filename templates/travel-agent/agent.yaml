@@ -1,0 +1,31 @@
+name: travel-agent
+
+# Python import path to the App instance: <module path>:<variable name>.
+entrypoint: travel_agent.main:app
+framework: langgraph
+
+# Memory requires VOYAGE_API_KEY in .env.
+features:
+  memory: true
+
+# Which tools run in each sandbox, and which secrets each sandbox can read.
+sandboxes:
+  agent:
+    secrets: ["*"]
+    tools: []
+  tool:
+    secrets: ["*"]
+    tools:
+      - mongodb_list_collections
+      - mongodb_schema
+      - mongodb_query
+      - create_booking
+      - list_bookings
+
+# Outbound hosts the sandboxes may reach. Replace the LLM host if you switch providers.
+network:
+  egress:
+    - fqdn: api.openai.com
+      ports: [443]
+      component: tool
+  egress_mode: allow_list
