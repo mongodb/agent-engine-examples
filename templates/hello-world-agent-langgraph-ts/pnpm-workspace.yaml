@@ -1,0 +1,5 @@
+allowBuilds:
+  "@mongodb-js/agent-engine-sdk": true
+  "@mongodb-js/agent-engine-runner-shared": true
+  "@mongodb-js/agent-engine-sdk-langgraph": true
+  esbuild: true
