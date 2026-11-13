@@ -1,0 +1,45 @@
+# Human-readable app slug used by Agent Engine tooling.
+# `agentengine create` should rewrite this when generating a new app from the template.
+name: insurance-agent-openai
+
+# Python import path to the SDK App instance.
+# Format: <module path>:<variable name>. This template exposes `app` from
+# src/insurance_agent/main.py.
+entrypoint: insurance_agent.main:app
+framework: openai-agents
+
+# Runtime feature flags controlled by agent.yaml, not .env. A key that is
+# present here wins over any ENABLE_* environment variable. Set memory to true
+# to enable long-term memory; VOYAGE_API_KEY must be present in .env when
+# memory is enabled.
+features:
+  durable_workflow: true
+  memory: true
+
+# Tool placement and pass-through secrets. Approval happens before a tool
+# call is dispatched, so the approval-gated tools (`create_policy`,
+# `resolve_reviewed_claim`) run in the tool sandbox like the others.
+sandboxes:
+  agent:
+    secrets: ["*"]
+    tools: []
+  tool:
+    secrets: ["*"]
+    tools:
+      - lookup_policy
+      - get_quote
+      - create_policy
+      - list_customer_policies
+      - file_claim
+      - analyze_claim_risk
+      - send_notification
+      - check_claim_status
+      - list_customer_claims
+      - approve_low_risk_claim
+      - resolve_reviewed_claim
+      - save_customer_info
+      - recall_customer_info
+      - save_conversation_summary
+      - recall_past_conversations
+      - explain_insurance_term
+      - get_coverage_options

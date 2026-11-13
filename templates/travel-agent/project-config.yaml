@@ -1,0 +1,16 @@
+# Memory settings, shared by all agents in the Agent Engine project.
+memory:
+  log_level: info
+  voyage:
+    model: "voyage-4-large"
+    dimension: 1024
+  # LLM that extracts long-term memories from conversations
+  extraction_llm:
+    provider: openai
+    model: gpt-5.4-mini
+    api_key_secret: LLM_API_KEY
+  extraction:
+    enabled:
+      - semantic
+      - episodic
+      - preferences

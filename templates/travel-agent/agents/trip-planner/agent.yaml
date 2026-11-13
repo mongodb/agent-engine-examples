@@ -1,0 +1,57 @@
+name: trip-planner
+# Python import path to the App instance: <module path>:<variable name>.
+entrypoint: trip_planner.main:app
+framework: langgraph
+# Memory requires VOYAGE_API_KEY. Memory settings are in project-config.yaml at the project root.
+features:
+  memory: true
+# MongoDB's managed MCP server. The agent calls its tools as mongodb__<tool>,
+# for example mongodb__aggregate.
+mcp:
+  servers:
+    mongodb:
+      transport: streamable_http
+      url: https://mcp.mongodb.com
+      # Atlas Managed MCP configuration with the Project Data Access Read Only role.
+      auth:
+        type: client_credentials
+        client_id_env: MDB_MCP_CLIENT_ID
+        client_secret_env: MDB_MCP_CLIENT_SECRET
+        token_url: https://cloud.mongodb.com/api/oauth/token
+      # remote-atlas-connect connects to the cluster the other tools query.
+      allowed_tools:
+        - remote-atlas-connect
+        - list-collections
+        - collection-schema
+        - aggregate
+      timeout_seconds: 30
+# Which tools run in each sandbox, which secrets each sandbox can read, and
+# which outbound hosts it may reach.
+sandboxes:
+  agent:
+    secrets: ["*"]
+    tools: []
+    network:
+      egress_mode: allow_list
+      # MongoDB MCP server and its token endpoint, for tool discovery at startup.
+      egress:
+        - fqdn: mcp.mongodb.com
+          ports: [443]
+        - fqdn: cloud.mongodb.com
+          ports: [443]
+  tool:
+    secrets: ["*"]
+    tools:
+      - create_booking
+      - list_bookings
+    network:
+      egress_mode: allow_list
+      # The LLM host (replace it if you switch providers), and the MongoDB MCP
+      # server and its token endpoint.
+      egress:
+        - fqdn: api.openai.com
+          ports: [443]
+        - fqdn: mcp.mongodb.com
+          ports: [443]
+        - fqdn: cloud.mongodb.com
+          ports: [443]
