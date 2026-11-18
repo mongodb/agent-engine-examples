@@ -1,0 +1,6 @@
+# Local state from `agentengine dev up`. Workspace ignores are in agents/trip-planner/.gitignore.
+.agentengine/
+.agentic/
+.env
+.env.*
+.DS_Store
